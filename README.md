@@ -1,6 +1,10 @@
 # Harvey Chowdhury — Portfolio
 
-A dark, responsive design portfolio featuring GymLog, a workout logging prototype.
+A dark, responsive design portfolio featuring GymLog, a workout logging prototype, and Studio Apartment Evening, an audio storytelling project.
+
+[![View Live Portfolio](https://img.shields.io/badge/View_Live_Portfolio-%E2%86%97-b91f40?style=for-the-badge&labelColor=000000)](https://rayhanson-git.github.io/)
+
+**Live site:** https://rayhanson-git.github.io/
 
 ## Preview
 
@@ -19,6 +23,8 @@ Then open `http://localhost:8080`.
 - `index.html` — portfolio homepage
 - `projects/gymlog/index.html` — GymLog case study
 - `projects/gymlog/prototype.html` — interactive workout prototype
+- `projects/studio-apartment-evening/index.html` — sound storytelling project, audio player, process, session screenshot, and recording credits
+- `projects/studio-apartment-evening/media/` — finished MP3, waveform, and Audition screenshot
 - `assets/` — interface illustrations and favicon
 - `style.css` and `script.js` — portfolio styles and interactions
 
@@ -33,3 +39,4 @@ For a personal site, use a repository named `Rayhanson-Git.github.io`.
 Responsive layouts, pointer-following highlights, subtle floating motion, an optional motion toggle, keyboard-accessible screen previews, and reduced-motion support. The site uses system fonts and has no external dependencies, analytics, or trackers.
 
 The GymLog prototype uses sample workout records and keeps changes in memory for the current page session. The case-study images are static interface views; the prototype provides the working interactions.
+
