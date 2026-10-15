@@ -2,7 +2,11 @@
 
 A dark, responsive design portfolio featuring GymLog, a workout logging prototype, and Studio Apartment Evening, an audio storytelling project.
 
-[![View Live Portfolio](https://img.shields.io/badge/View_Live_Portfolio-%E2%86%97-b91f40?style=for-the-badge&labelColor=000000)](https://rayhanson-git.github.io/)
+<p>
+  <a href="https://rayhanson-git.github.io/" aria-label="View Harvey Chowdhury's live portfolio">
+    <img src="assets/live-portfolio-button.svg" alt="View Live Portfolio" width="340" height="84" />
+  </a>
+</p>
 
 **Live site:** https://rayhanson-git.github.io/
 
