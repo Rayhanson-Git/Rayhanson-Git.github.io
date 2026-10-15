@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="84" viewBox="0 0 340 84" role="img" aria-labelledby="title desc">
+  <title id="title">View Live Portfolio</title>
+  <desc id="desc">Open Harvey Chowdhury's design portfolio</desc>
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#191014"/><stop offset="1" stop-color="#050405"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#d62d54"/><stop offset="1" stop-color="#9d1734"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ed718e"/><stop offset=".5" stop-color="#b91f40"/><stop offset="1" stop-color="#4a1321"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="5" width="338" height="74" rx="22" fill="#b91f40" opacity=".12"/>
+  <rect x="3" y="3" width="334" height="74" rx="21" fill="url(#surface)" stroke="url(#edge)" stroke-width="1.5"/>
+  <path d="M25 4h290" stroke="#fff" stroke-opacity=".08" stroke-linecap="round"/>
+  <text x="26" y="29" fill="#ff9eb1" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="700" letter-spacing="2.2">HARVEY CHOWDHURY</text>
+  <text x="25" y="56" fill="#f6f4f5" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" letter-spacing="-.5">View Live Portfolio</text>
+  <rect x="274" y="17" width="46" height="46" rx="15" fill="url(#accent)" stroke="#f990a7" stroke-opacity=".3"/>
+  <path d="M289 48l15-15m-13 0h13v13" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
