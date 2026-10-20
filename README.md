@@ -1,6 +1,6 @@
 # Harvey Chowdhury — Portfolio
 
-A dark, responsive design portfolio featuring GymLog, a workout logging prototype, and Studio Apartment Evening, an audio storytelling project.
+A dark, responsive design portfolio featuring GymLog, a workout logging prototype, Studio Apartment Evening, an audio storytelling project, and LeaveBy, a live workout transition planner.
 
 <p>
   <a href="https://rayhanson-git.github.io/" aria-label="View Harvey Chowdhury's live portfolio">
@@ -28,6 +28,8 @@ Then open `http://localhost:8080`.
 - `projects/gymlog/index.html` — GymLog case study
 - `projects/gymlog/prototype.html` — interactive workout prototype
 - `projects/studio-apartment-evening/index.html` — sound storytelling project, audio player, process, session screenshot, and recording credits
+- `projects/leaveby/index.html` — LeaveBy overview, form and result previews, and a Visit LeaveBy button
+- `projects/leaveby/media/` — development screenshots of the plan form and calculated result
 - `projects/studio-apartment-evening/media/` — finished MP3, waveform, and Audition screenshot
 - `assets/` — interface illustrations and favicon
 - `style.css` and `script.js` — portfolio styles and interactions
@@ -44,3 +46,5 @@ Responsive layouts, pointer-following highlights, subtle floating motion, an opt
 
 The GymLog prototype uses sample workout records and keeps changes in memory for the current page session. The case-study images are static interface views; the prototype provides the working interactions.
 
+
+LeaveBy works backward from one upcoming commitment to calculate when to stop a workout, leave, and arrive. Its live-app buttons open the deployed app on the custom domain. The previews are development screenshots; the working app also follows the device’s light or dark appearance.

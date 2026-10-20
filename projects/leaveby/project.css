@@ -1,0 +1,15 @@
+/* LeaveBy additions use the portfolio's existing colors, cards, and buttons. */
+.leaveby-preview-pair{display:flex;align-items:center;justify-content:center;gap:28px;width:min(760px,85%);position:relative;margin-top:30px}
+.leaveby-screen{position:relative;aspect-ratio:404/670;overflow:hidden;background:#0a0a0a;border:1px solid var(--border);border-radius:16px;width:100%}
+/* Frame the app panel within the original, unmodified development screenshots. */
+.leaveby-screen img{position:absolute;height:131%;width:auto;max-width:none;left:50%;top:50%;transform:translate(-50%,-50%)}
+.leaveby-art{height:590px}
+.leaveby-art .leaveby-preview-pair{width:min(570px,78%);gap:24px;margin-top:10px}
+.leaveby-art .leaveby-screen:first-child{transform:rotate(-4deg) translateY(12px)}
+.leaveby-art .leaveby-screen:last-child{transform:rotate(4deg) translateY(-10px)}
+.leaveby-gallery{display:grid;grid-template-columns:1fr 1fr;gap:36px;padding:45px;border:1px solid var(--border);border-radius:25px;background:var(--surface)}
+.leaveby-gallery figure{margin:0;min-width:0;max-width:404px;width:100%;justify-self:center}
+.leaveby-gallery figcaption{margin-top:20px;font-size:14px;color:var(--muted)}
+.leaveby-gallery figcaption span{color:var(--pink);margin-right:10px}
+.leaveby-hero .project-links{margin-top:28px}
+@media(max-width:760px){.leaveby-art{height:380px}.leaveby-art .leaveby-preview-pair{width:min(360px,83%);gap:12px}.leaveby-gallery{grid-template-columns:1fr;padding:22px;gap:35px}.leaveby-gallery figure{max-width:330px}.leaveby-card .project-topline .eyebrow{max-width:230px}}
