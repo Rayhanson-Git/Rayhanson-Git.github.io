@@ -1,50 +1,58 @@
-# Harvey Chowdhury — Portfolio
+<a href="https://rayhanson.tech/">
+  <img src="assets/portfolio-banner.svg" width="1200" height="360" alt="Harvey Chowdhury — Thoughtful design. Everyday impact." />
+</a>
 
-A dark, responsive design portfolio featuring GymLog, a workout logging prototype, Studio Apartment Evening, an audio storytelling project, and LeaveBy, a live workout transition planner.
-
-<p>
-  <a href="https://rayhanson-git.github.io/" aria-label="View Harvey Chowdhury's live portfolio">
-    <img src="assets/live-portfolio-button.svg" alt="View Live Portfolio" width="340" height="84" />
+<p align="center">
+  <a href="https://rayhanson.tech/">
+    <img src="assets/live-portfolio-button.svg" alt="Explore the live portfolio" width="340" height="84" />
   </a>
 </p>
 
-**Live site:** https://rayhanson-git.github.io/
+<p align="center">
+  <a href="https://rayhanson.tech/#work">Selected work</a> ·
+  <a href="https://rayhanson.tech/#about">About me</a> ·
+  <a href="mailto:Harvey@Rayhanson.tech">Get in touch</a>
+</p>
 
-## Preview
+A personal portfolio exploring everyday experiences through interface design, interactive prototypes, and sound. Built around a black and crimson palette, fluid motion, and clear paths into each project.
 
-Open `index.html` in a browser. No installation or build step is required.
+## Selected work
 
-For a local web server:
+| Project | Focus | Explore |
+| --- | --- | --- |
+| **GymLog** | A workout companion that keeps set logging clear, quick, and easy to correct. | [Case study](https://rayhanson.tech/projects/gymlog/) · [Interactive prototype](https://rayhanson.tech/projects/gymlog/prototype.html) |
+| **Studio Apartment Evening** | A 3:06 audio story built from 11 self-recorded sounds in Adobe Audition. | [Project and audio](https://rayhanson.tech/projects/studio-apartment-evening/) |
+| **LeaveBy** | A workout transition planner that calculates when to stop, get ready, and leave for the next commitment. | [Project](https://rayhanson.tech/projects/leaveby/) · [Live app](https://leaveby.rayhanson.tech/) |
+
+## The experience
+
+- A horizontally scrolling hero with previews of every project, gentle automatic rotation, swipe, arrow, and keyboard controls.
+- Motion pauses during interaction and can be switched off across the site. Device reduced-motion preferences are respected.
+- Responsive project layouts, subtle section entrances, pointer highlights, and expandable GymLog screen previews.
+- A dedicated contact section with email and copy controls: **[Harvey@Rayhanson.tech](mailto:Harvey@Rayhanson.tech)**.
+
+## Run locally
+
+Plain HTML, CSS, and JavaScript. No packages or build step required.
 
 ```sh
 python3 -m http.server 8080
 ```
 
-Then open `http://localhost:8080`.
+Open [localhost:8080](http://localhost:8080). You can also open `index.html` directly for a quick preview.
 
-## Pages
+## Structure
 
-- `index.html` — portfolio homepage
-- `projects/gymlog/index.html` — GymLog case study
-- `projects/gymlog/prototype.html` — interactive workout prototype
-- `projects/studio-apartment-evening/index.html` — sound storytelling project, audio player, process, session screenshot, and recording credits
-- `projects/leaveby/index.html` — LeaveBy overview, form and result previews, and a Visit LeaveBy button
-- `projects/leaveby/media/` — development screenshots of the plan form and calculated result
-- `projects/studio-apartment-evening/media/` — finished MP3, waveform, and Audition screenshot
-- `assets/` — interface illustrations and favicon
-- `style.css` and `script.js` — portfolio styles and interactions
+| Path | Contents |
+| --- | --- |
+| `index.html` | Homepage, project showcase, about, and contact |
+| `style.css`, `refinements.css`, `script.js` | Shared design and interactions |
+| `projects/gymlog/` | Case study and working prototype |
+| `projects/studio-apartment-evening/` | Audio story, process, recordings, and session screenshot |
+| `projects/leaveby/` | App overview, previews, and live-app link |
+| `assets/` | Interface illustrations, README artwork, and favicon |
 
-## GitHub Pages
+Hosted on GitHub Pages at **[rayhanson.tech](https://rayhanson.tech/)**, deployed from `main` at the repository root. System fonts, no external dependencies, analytics, or trackers.
 
-Upload this folder’s contents to the root of a GitHub repository. In the repository’s **Settings → Pages**, select **Deploy from a branch**, the `main` branch, and `/ (root)`, then save. All internal links are relative, so the site works at either a user site or project site URL.
+The GymLog prototype keeps sample workout changes in memory for the current session. LeaveBy uses entered time estimates and the device time zone; it does not use live transit data or save plans between sessions.
 
-For a personal site, use a repository named `Rayhanson-Git.github.io`.
-
-## Experience
-
-Responsive layouts, pointer-following highlights, subtle floating motion, an optional motion toggle, keyboard-accessible screen previews, and reduced-motion support. The site uses system fonts and has no external dependencies, analytics, or trackers.
-
-The GymLog prototype uses sample workout records and keeps changes in memory for the current page session. The case-study images are static interface views; the prototype provides the working interactions.
-
-
-LeaveBy works backward from one upcoming commitment to calculate when to stop a workout, leave, and arrive. Its live-app buttons open the deployed app on the custom domain. The previews are development screenshots; the working app also follows the device’s light or dark appearance.
