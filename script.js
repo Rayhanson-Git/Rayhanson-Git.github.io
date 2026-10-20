@@ -33,7 +33,7 @@
       rotation.setAttribute('aria-pressed', String(!automatic));
       rotation.setAttribute('aria-label', automatic ? 'Pause automatic project scrolling' : 'Start automatic project scrolling');
       rotation.textContent = automatic ? 'Ⅱ' : '▷';
-      if (canRotate()) timer = setTimeout(() => go(current + 1), 6500);
+      if (canRotate()) timer = setTimeout(() => go(current + 1), 3000);
     }
     function go(index) {
       const target = (index + slides.length) % slides.length;
