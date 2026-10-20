@@ -84,3 +84,6 @@
 @media(max-width:370px){.site-header{padding-inline:12px;gap:8px}.site-header nav{gap:9px}.site-header nav a{font-size:11px}.motion-toggle{padding:8px 10px}.contact-email>span{margin-left:8px}}
 
 @media(max-width:760px){.hero h1{font-size:clamp(2rem,10.6vw,4rem)}.hero h1 br:first-child{display:initial}.hero h1 .outline-word::before{content:none}.contact-email br{display:initial}.contact-email>span{position:absolute;right:0;top:0;margin:0}}
+
+@media(max-width:760px){.case-hero h1{font-size:clamp(3rem,13vw,5rem)}}
+@media(max-width:370px){.site-header nav{gap:8px}.site-header nav a{font-size:10px;white-space:nowrap}}
