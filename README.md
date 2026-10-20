@@ -27,7 +27,7 @@ Harvey Rayhanson’s portfolio, also known as Harvey Chowdhury. Exploring everyd
 ## The experience
 
 - A horizontally scrolling hero with previews of every project, gentle automatic rotation, swipe, arrow, and keyboard controls.
-- Motion pauses during interaction and can be switched off across the site. Device reduced-motion preferences are respected.
+- The carousel pauses during interaction and has its own pause control. Decorative animation automatically respects the device’s reduced-motion preference.
 - Responsive project layouts, subtle section entrances, pointer highlights, and expandable GymLog screen previews.
 - A dedicated contact section with email and copy controls: **[Harvey@Rayhanson.tech](mailto:Harvey@Rayhanson.tech)**.
 

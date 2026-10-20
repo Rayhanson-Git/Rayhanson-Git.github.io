@@ -1,19 +1,13 @@
 (() => {
   const root = document.documentElement;
   const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const toggle = document.querySelector('.motion-toggle');
   let paused = media.matches;
   const motionListeners = [];
-  try { paused = media.matches || localStorage.getItem('portfolio-motion') === 'off'; } catch {}
   function syncMotion() {
     root.classList.toggle('motion-off', paused);
-    toggle?.setAttribute('aria-pressed', String(paused));
-    toggle?.setAttribute('aria-label', paused ? 'Enable decorative motion' : 'Pause decorative motion');
     motionListeners.forEach(listener => listener());
-    if (toggle) { toggle.querySelector('.motion-icon').textContent = paused ? '▷' : 'Ⅱ'; toggle.querySelector('.motion-label').textContent = paused ? 'Motion off' : 'Motion on'; }
   }
   syncMotion();
-  toggle?.addEventListener('click', () => { paused = !paused; syncMotion(); try { localStorage.setItem('portfolio-motion', paused ? 'off' : 'on'); } catch {} });
   media.addEventListener('change', event => { paused = event.matches; syncMotion(); });
   document.querySelectorAll('.glow-card').forEach(card => {
     card.addEventListener('pointermove', event => { if (paused || media.matches || event.pointerType === 'touch') return; const rect = card.getBoundingClientRect(); card.style.setProperty('--mx', `${event.clientX - rect.left}px`); card.style.setProperty('--my', `${event.clientY - rect.top}px`); });
