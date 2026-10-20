@@ -14,7 +14,7 @@
   <a href="mailto:Harvey@Rayhanson.tech">Get in touch</a>
 </p>
 
-A personal portfolio exploring everyday experiences through interface design, interactive prototypes, and sound. Built around a black and crimson palette, fluid motion, and clear paths into each project.
+Harvey Rayhanson’s portfolio, also known as Harvey Chowdhury. Exploring everyday experiences through visual design, AI, interactive projects, and sound. Built around a black and crimson palette, fluid motion, and clear paths into each project.
 
 ## Selected work
 
@@ -31,6 +31,14 @@ A personal portfolio exploring everyday experiences through interface design, in
 - Responsive project layouts, subtle section entrances, pointer highlights, and expandable GymLog screen previews.
 - A dedicated contact section with email and copy controls: **[Harvey@Rayhanson.tech](mailto:Harvey@Rayhanson.tech)**.
 
+## Navigation and future sections
+
+The shared left rail expands on hover, keyboard focus, or its toggle. On mobile, the toggle opens a vertical drawer with an overlay, Escape support, and focus management. Home, Work, About, and Contact use real links; the homepage highlights the section currently in view.
+
+To add another destination, such as Poetry, add a link to `.rail-links` on each page with a matching `data-section` and a real section ID or page URL. No tab-switching framework is required. Case studies use the same navigation and link back to the homepage sections.
+
+`navigation.css` controls the rail and biography layout; `navigation.js` manages expansion, mobile behavior, and the active section.
+
 ## Run locally
 
 Plain HTML, CSS, and JavaScript. No packages or build step required.
@@ -46,7 +54,7 @@ Open [localhost:8080](http://localhost:8080). You can also open `index.html` dir
 | Path | Contents |
 | --- | --- |
 | `index.html` | Homepage, project showcase, about, and contact |
-| `style.css`, `refinements.css`, `script.js` | Shared design and interactions |
+| `style.css`, `refinements.css`, `script.js`, `navigation.css`, `navigation.js` | Shared design and interactions |
 | `projects/gymlog/` | Case study and working prototype |
 | `projects/studio-apartment-evening/` | Audio story, process, recordings, and session screenshot |
 | `projects/leaveby/` | App overview, previews, and live-app link |
