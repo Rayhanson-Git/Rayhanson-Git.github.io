@@ -20,10 +20,10 @@ Harvey Rayhanson’s portfolio, also known as Harvey Chowdhury. Exploring everyd
 
 | Project | Focus | Explore |
 | --- | --- | --- |
+| **JimBro** | LeaveBy scheduling and GymLog’s completed-set logging, unified in one persistent gym companion. | [Case study](https://rayhanson.tech/projects/jimbro/) · [Live app](https://jimbro.rayhanson.tech/) |
 | **GymLog** | A workout companion that keeps set logging clear, quick, and easy to correct. | [Case study](https://rayhanson.tech/projects/gymlog/) · [Interactive prototype](https://rayhanson.tech/projects/gymlog/prototype.html) |
 | **Studio Apartment Evening** | A 3:06 audio story built from 11 self-recorded sounds in Adobe Audition. | [Project and audio](https://rayhanson.tech/projects/studio-apartment-evening/) |
-| **LeaveBy** | A workout transition planner that calculates when to stop, get ready, and leave for the next commitment. | [Project](https://rayhanson.tech/projects/leaveby/) · [Live app](https://leaveby.rayhanson.tech/) |
-
+| **LeaveBy** | A workout transition planner that calculates when to stop, get ready, and leave for the next commitment. | [Project](https://rayhanson.tech/projects/leaveby/) · [Live app](https://leaveby.rayhanson.tech/leaveby) |
 | **Neon Orbit Arcade** | A glowing particle playground where the cursor becomes an orb, clicks create portals, and a single key shifts the scene from calm to chaos. | [Project](https://rayhanson.tech/projects/neon-orbit/) · [Live experience](https://neon-orbit.rayhanson.tech/) |
 | **Orbit Playground** | An interactive canvas of orbiting dots. Build new centers of motion, change the palette, and find a rhythm somewhere between stillness and speed. | [Project](https://rayhanson.tech/projects/orbit-playground/) · [Live experience](https://orbit-playground.rayhanson.tech/) |
 | **Gesture Particles** | A browser-based particle system that turns hand gestures into scale, rotation, and color. Computer vision meets an evolving field of light. | [Project](https://rayhanson.tech/projects/gesture-particles/) · [Live experience](https://gesture-particles.rayhanson.tech/) |
@@ -61,6 +61,7 @@ Open [localhost:8080](http://localhost:8080). You can also open `index.html` dir
 | --- | --- |
 | `index.html` | Homepage, project showcase, about, and contact |
 | `style.css`, `refinements.css`, `script.js`, `navigation.css`, `navigation.js` | Shared design and interactions |
+| `projects/jimbro/` | Unified gym companion case study, inspiration, project origins and working-app previews |
 | `projects/gymlog/` | Case study and working prototype |
 | `projects/studio-apartment-evening/` | Audio story, process, recordings, and session screenshot |
 | `projects/leaveby/` | App overview, previews, and live-app link |
