@@ -7,3 +7,15 @@
 .jimbro-desktop-frame figcaption,.jimbro-mobile-frame figcaption{font-size:12px;color:var(--muted);line-height:1.7;padding-top:18px}.jimbro-origins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.jimbro-origins .text-link{display:inline-block;margin-top:25px}.jimbro-mobile-frame{width:min(100%,320px);margin:0 auto}.jimbro-mobile-frame img{border:1px solid var(--border);border-radius:20px;width:100%}
 @media(max-width:760px){.jimbro-origins{grid-template-columns:1fr}.jimbro-intro{font-size:15px}.jimbro-desktop-frame{padding:8px;border-radius:15px}.jimbro-art{height:auto;min-height:300px}.jimbro-art .jimbro-mini-browser{margin-block:65px}.jimbro-browser-bar{gap:10px}.jimbro-desktop-frame figcaption{padding:14px 6px 6px}}
 @media(prefers-reduced-motion:reduce){.jimbro-mini-browser{transform:none;transition:none}.showcase-jimbro:hover .jimbro-mini-browser,.jimbro-art:hover .jimbro-mini-browser{transform:none}}
+
+/* Current release case-study sections */
+.jimbro-character-frame{max-width:250px;margin:30px auto 0}
+.jimbro-character-frame img{display:block;width:100%;height:auto}
+.jimbro-theme-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:800px;margin:0 auto}
+.jimbro-theme-pair figure{margin:0;min-width:0}
+.jimbro-settings-crop{aspect-ratio:390/850;overflow:hidden;border:1px solid var(--border);border-radius:20px;background:#0c0d0f}
+.jimbro-settings-crop img{display:block;width:100%;height:auto}
+.jimbro-theme-pair figcaption{padding:15px 4px 0;font-size:12px;line-height:1.7;color:var(--muted)}
+.jimbro-theme-pair a{display:block;border-radius:20px}
+.jimbro-theme-pair a:focus-visible{outline:2px solid var(--pink);outline-offset:5px}
+@media(max-width:600px){.jimbro-theme-pair{gap:14px}.jimbro-settings-crop{border-radius:12px}.jimbro-theme-pair figcaption{font-size:11px;padding-top:12px}}
