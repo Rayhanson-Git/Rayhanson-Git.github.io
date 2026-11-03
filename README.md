@@ -1,5 +1,5 @@
 <a href="https://rayhanson.tech/">
-  <img src="assets/portfolio-banner.svg" width="1200" height="360" alt="Harvey Chowdhury — Thoughtful design. Everyday impact." />
+  <img src="assets/portfolio-banner.svg" width="1200" height="360" alt="Rayhanson — Thoughtful design, everyday impact" />
 </a>
 
 <p align="center">
@@ -14,7 +14,14 @@
   <a href="mailto:Harvey@Rayhanson.tech">Get in touch</a>
 </p>
 
-Harvey Rayhanson’s portfolio, also known as Harvey Chowdhury. Exploring everyday experiences through visual design, AI, interactive projects, and sound. Built around a black and crimson palette, fluid motion, and clear paths into each project.
+Harvey Rayhanson’s portfolio, also known as Harvey Chowdhury. Exploring everyday experiences through visual design, AI, interactive projects, and sound. Built around the Rayhanson identity: forest-black, graphite, crimson, and warm ivory, with fluid motion and clear paths into each project.
+
+<details>
+<summary>Preview the portfolio</summary>
+
+[![Rayhanson portfolio with the approved logo and dark brand palette](assets/portfolio-preview.jpg)](https://rayhanson.tech/)
+
+</details>
 
 ## Selected work
 
@@ -44,6 +51,15 @@ The shared left rail expands on hover, keyboard focus, or its toggle. On mobile,
 To add another destination, such as Poetry, add a link to `.rail-links` on each page with a matching `data-section` and a real section ID or page URL. No tab-switching framework is required. Case studies use the same navigation and link back to the homepage sections.
 
 `navigation.css` controls the rail and biography layout; `navigation.js` manages expansion, mobile behavior, and the active section.
+
+## Rayhanson identity
+
+The portfolio uses the supplied Rayhanson logo kit. Reflective artwork appears at a readable size on the homepage; ivory vector symbols and wordmarks serve the navigation rail, mobile header, and footer. Original aspect ratios and artwork are preserved.
+
+- `brand.css` applies the shared brand palette and responsive logo placement.
+- `assets/brand/` contains the selected original logo exports, icon sizes, and palette.
+- `assets/favicon.svg`, `assets/brand/favicon.ico`, and `site.webmanifest` supply browser and home-screen icons.
+- `assets/portfolio-banner.svg` and `assets/portfolio-share.png` carry the identity into GitHub and shared links.
 
 ## Run locally
 

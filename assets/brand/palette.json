@@ -1,0 +1,12 @@
+{
+  "brand": "Rayhanson",
+  "colors": {
+    "graphite": "#171717",
+    "forestBlack": "#06110C",
+    "crimson": "#A31C1B",
+    "ivory": "#F2EDE4"
+  },
+  "finish": "Reflective brushed burgundy, smoky graphite and deep forest-black; lighter highlights and darker shadows are material shading.",
+  "defaultDarkBackground": "#06110C",
+  "defaultLightBackground": "#F2EDE4"
+}

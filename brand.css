@@ -1,0 +1,69 @@
+/* Rayhanson identity. Original logo exports remain unaltered. */
+:root{
+  --bg:#06110c;
+  --surface:#101712;
+  --ink:#f2ede4;
+  --muted:#afb2a8;
+  --red:#a31c1b;
+  --pink:#e2a296;
+  --border:#f2ede424;
+}
+body{background:var(--bg)}
+.ambient{background:radial-gradient(ellipse at 90% 28%,#a31c1b17,transparent 50%)}
+.outline-word{color:#a4aa9f}
+.primary{color:#fff6ed;background:linear-gradient(115deg,#ad2522,#851b1b);border-color:#d57f6745;box-shadow:inset 0 1px #ffffff18,0 5px 22px #0002}
+.primary:hover{box-shadow:0 7px 30px #a31c1b35;border-color:var(--pink)}
+.site-rail{background:linear-gradient(160deg,#142016f5,#07110cf5 70%);border-color:#f2ede420}
+.site-rail.is-open,.site-rail:not(.rail-enhanced):is(:hover,:focus-within){border-color:#b8755859}
+.rail-brand{height:48px;min-height:48px;padding-left:2px;gap:13px}
+.rail-brand-symbol{width:42px;max-width:none;flex:0 0 42px;height:auto}
+.rail-brand-wordmark{width:139px;max-width:none;flex:0 0 139px;height:auto;opacity:0;transform:translateX(-7px);transition:opacity .3s,transform .5s var(--ease)}
+.site-rail.is-open .rail-brand-wordmark,.site-rail:not(.rail-enhanced):is(:hover,:focus-within) .rail-brand-wordmark{opacity:1;transform:none}
+.rail-link{color:#a8b0a3}
+.rail-link-number{color:#b48b7b}
+.rail-link[aria-current]{color:var(--pink);background:linear-gradient(100deg,#a31c1b30,#a31c1b08);box-shadow:inset 2px 0 #ce7868}
+.rail-toggle{background:#101912f5;color:var(--pink)}
+.rail-toggle:hover{background:#241b16;border-color:#d78c8370}
+.mobile-wordmark{display:none}
+.hero-brand{margin-bottom:30px;max-width:100%}
+.hero-brand>img{width:340px;max-width:100%;height:auto}
+.brand-discipline{font-size:9px;line-height:1.8;letter-spacing:.14em;color:var(--muted);margin:16px 0 0}
+.hero h1{margin-top:0}
+.showcase-track,.project-card,.decision,details{background-color:#0c1510}
+.showcase-art{background:radial-gradient(ellipse at 55% 75%,#a31c1b18,transparent 70%),#090f0c}
+.showcase-caption{background:linear-gradient(140deg,#121b14,#0b120e)}
+.showcase-note{background:#111811e6;border-color:#f2ede422}
+.glow-card{background-image:radial-gradient(500px circle at var(--mx,50%) var(--my,0%),#a31c1b0d,transparent 75%)}
+.glow-card:hover{border-color:#a66b5266;box-shadow:0 0 40px #0002}
+.contact-card{background-color:#0d1710;border-color:#b8745852}
+.contact-card::before{background:radial-gradient(ellipse at 100% 100%,#a31c1b17,transparent 65%)}
+.prototype-cta{background-color:#0d1710}
+.social-link:hover{background:#a31c1b0c;border-color:#bc806655}
+.about-disciplines span{border-color:#bc806640}
+.footer{padding-block:38px;gap:24px}
+.footer-brand{display:block;flex:0 0 220px;width:220px;max-width:100%;padding:5px 0}
+.footer-brand img{width:100%;height:auto}
+.brand-home:focus-visible{outline:2px solid var(--pink);outline-offset:6px;border-radius:6px}
+@media(max-width:1050px){
+  .hero-brand>img{width:300px}
+  .brand-discipline{max-width:310px;font-size:8px}
+  .footer-brand{flex-basis:190px;width:190px}
+}
+@media(max-width:760px){
+  .site-rail .rail-brand-wordmark{width:125px;flex-basis:125px;opacity:1;transform:none}
+  .rail-ready .site-rail .rail-brand{padding-left:4px}
+  .mobile-wordmark{display:block;position:fixed;z-index:28;right:20px;top:12px;width:138px;padding:3px 0;border-radius:8px}
+  .mobile-wordmark img{width:100%;height:auto}
+  .rail-ready body::before{content:"";position:fixed;z-index:27;inset:0 0 auto;height:72px;background:linear-gradient(#06110cf7,#06110ce8 75%,#06110c00);pointer-events:none}
+  .hero{padding-top:30px}
+  .hero-brand{margin-bottom:26px}
+  .hero-brand>img{width:280px}
+  .brand-discipline{margin-top:14px;font-size:8px;max-width:none;letter-spacing:.1em}
+  .hero h1{margin-top:0}
+  .footer{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;row-gap:24px}
+  .footer-brand{grid-column:1/-1;width:225px}
+  .footer>span{grid-column:1/-1}
+  .footer>.text-link{width:max-content;max-width:100%}
+}
+@media(max-width:360px){.hero-brand>img{width:250px}.brand-discipline{max-width:260px}.mobile-wordmark{width:122px;top:15px}}
+@media(prefers-reduced-motion:reduce){.rail-brand-wordmark{transition:none;transform:none}}

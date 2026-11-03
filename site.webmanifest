@@ -1,0 +1,20 @@
+{
+  "name": "Harvey Rayhanson \u2014 Portfolio",
+  "short_name": "Rayhanson",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#06110C",
+  "theme_color": "#06110C",
+  "icons": [
+    {
+      "src": "/assets/brand/rayhanson-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/brand/rayhanson-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
