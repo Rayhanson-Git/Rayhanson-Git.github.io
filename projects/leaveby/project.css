@@ -1,6 +1,6 @@
 /* LeaveBy additions use the portfolio's existing colors, cards, and buttons. */
 .leaveby-preview-pair{display:flex;align-items:center;justify-content:center;gap:28px;width:min(760px,85%);position:relative;margin-top:30px}
-.leaveby-screen{position:relative;aspect-ratio:404/670;overflow:hidden;background:#0a0a0a;border:1px solid var(--border);border-radius:16px;width:100%}
+.leaveby-screen{position:relative;aspect-ratio:404/670;overflow:hidden;background:#0a0f14;border:1px solid var(--border);border-radius:16px;width:100%}
 /* Frame the app panel within the original, unmodified development screenshots. */
 .leaveby-screen img{position:absolute;height:131%;width:auto;max-width:none;left:50%;top:50%;transform:translate(-50%,-50%)}
 .leaveby-art{height:590px}

@@ -14,7 +14,7 @@
   <a href="mailto:Harvey@Rayhanson.tech">Get in touch</a>
 </p>
 
-Harvey Rayhanson’s portfolio, also known as Harvey Chowdhury. Exploring everyday experiences through visual design, AI, interactive projects, and sound. Built around the Rayhanson identity: forest-black, graphite, crimson, and warm ivory, with fluid motion and clear paths into each project.
+Harvey Rayhanson’s portfolio, also known as Harvey Chowdhury. Exploring everyday experiences through visual design, AI, interactive projects, and sound. Built around the Rayhanson identity: midnight navy, layered teals, warm cream, and burnt orange, with fluid motion and clear paths into each project.
 
 <details>
 <summary>Preview the portfolio</summary>

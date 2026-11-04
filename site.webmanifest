@@ -3,8 +3,8 @@
   "short_name": "Rayhanson",
   "start_url": "/",
   "display": "browser",
-  "background_color": "#06110C",
-  "theme_color": "#06110C",
+  "background_color": "#0A0F14",
+  "theme_color": "#0A0F14",
   "icons": [
     {
       "src": "/assets/brand/rayhanson-icon-192.png",

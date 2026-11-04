@@ -1,7 +1,7 @@
 /* Creative project collection, shared by the homepage and project pages. */
 .creative-visual{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
 .creative-project-art:hover .creative-visual,.showcase-project:hover .creative-visual{transform:scale(1.04)}
-.creative-project-art .art-label,.creative-art-label{background:#08070dd9;border:1px solid #ffffff18;backdrop-filter:blur(12px);padding:8px 12px;border-radius:30px}
+.creative-project-art .art-label,.creative-art-label{background:#0f3d3ed9;border:1px solid #ffffff18;backdrop-filter:blur(12px);padding:8px 12px;border-radius:30px}
 .creative-art-label{position:absolute;bottom:20px;left:20px;font-size:9px;letter-spacing:.14em;color:var(--pink)}
 .creative-project-art .art-label{left:24px;bottom:24px;font-size:9px}
 .creative-card .project-info h3{overflow-wrap:break-word}

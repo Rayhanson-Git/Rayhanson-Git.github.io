@@ -1,45 +1,47 @@
-/* Rayhanson identity. Original logo exports remain unaltered. */
+/* Rayhanson site palette. Original logo exports remain unaltered. */
 :root{
-  --bg:#06110c;
-  --surface:#101712;
-  --ink:#f2ede4;
-  --muted:#afb2a8;
-  --red:#a31c1b;
-  --pink:#e2a296;
-  --border:#f2ede424;
+  --bg:#0a0f14;
+  --teal-deep:#0f3d3e;
+  --teal-mid:#2e6f73;
+  --surface:#0f3d3e;
+  --ink:#eadcc8;
+  --muted:#7fb3b8;
+  --red:#c6601f;
+  --pink:#7fb3b8;
+  --border:#eadcc824;
 }
 body{background:var(--bg)}
-.ambient{background:radial-gradient(ellipse at 90% 28%,#a31c1b17,transparent 50%)}
-.outline-word{color:#a4aa9f}
-.primary{color:#fff6ed;background:linear-gradient(115deg,#ad2522,#851b1b);border-color:#d57f6745;box-shadow:inset 0 1px #ffffff18,0 5px 22px #0002}
-.primary:hover{box-shadow:0 7px 30px #a31c1b35;border-color:var(--pink)}
-.site-rail{background:linear-gradient(160deg,#142016f5,#07110cf5 70%);border-color:#f2ede420}
-.site-rail.is-open,.site-rail:not(.rail-enhanced):is(:hover,:focus-within){border-color:#b8755859}
+.ambient{background:radial-gradient(ellipse at 90% 28%,#2e6f7340,transparent 50%)}
+.outline-word{color:#7fb3b8}
+.primary{color:var(--bg);background:var(--red);border-color:#eadcc842;box-shadow:0 5px 22px #0002}
+.primary:hover{background:#cf692a;box-shadow:0 7px 30px #c6601f35;border-color:var(--pink)}
+.site-rail{background:linear-gradient(160deg,#0f3d3ef5,#0a0f14f5 70%);border-color:#eadcc820}
+.site-rail.is-open,.site-rail:not(.rail-enhanced):is(:hover,:focus-within){border-color:#c6601f59}
 .rail-brand{height:48px;min-height:48px;padding-left:2px;gap:13px}
 .rail-brand-symbol{width:42px;max-width:none;flex:0 0 42px;height:auto}
 .rail-brand-wordmark{width:139px;max-width:none;flex:0 0 139px;height:auto;opacity:0;transform:translateX(-7px);transition:opacity .3s,transform .5s var(--ease)}
 .site-rail.is-open .rail-brand-wordmark,.site-rail:not(.rail-enhanced):is(:hover,:focus-within) .rail-brand-wordmark{opacity:1;transform:none}
-.rail-link{color:#a8b0a3}
-.rail-link-number{color:#b48b7b}
-.rail-link[aria-current]{color:var(--pink);background:linear-gradient(100deg,#a31c1b30,#a31c1b08);box-shadow:inset 2px 0 #ce7868}
-.rail-toggle{background:#101912f5;color:var(--pink)}
-.rail-toggle:hover{background:#241b16;border-color:#d78c8370}
+.rail-link{color:#7fb3b8}
+.rail-link-number{color:#7fb3b8}
+.rail-link[aria-current]{color:var(--pink);background:linear-gradient(100deg,#c6601f30,#c6601f08);box-shadow:inset 2px 0 #7fb3b8}
+.rail-toggle{background:#0f3d3ef5;color:var(--pink)}
+.rail-toggle:hover{background:#0f3d3e;border-color:#7fb3b870}
 .mobile-wordmark{display:none}
 .hero-brand{margin-bottom:30px;max-width:100%}
 .hero-brand>img{width:340px;max-width:100%;height:auto}
 .brand-discipline{font-size:9px;line-height:1.8;letter-spacing:.14em;color:var(--muted);margin:16px 0 0}
 .hero h1{margin-top:0}
-.showcase-track,.project-card,.decision,details{background-color:#0c1510}
-.showcase-art{background:radial-gradient(ellipse at 55% 75%,#a31c1b18,transparent 70%),#090f0c}
-.showcase-caption{background:linear-gradient(140deg,#121b14,#0b120e)}
-.showcase-note{background:#111811e6;border-color:#f2ede422}
-.glow-card{background-image:radial-gradient(500px circle at var(--mx,50%) var(--my,0%),#a31c1b0d,transparent 75%)}
-.glow-card:hover{border-color:#a66b5266;box-shadow:0 0 40px #0002}
-.contact-card{background-color:#0d1710;border-color:#b8745852}
-.contact-card::before{background:radial-gradient(ellipse at 100% 100%,#a31c1b17,transparent 65%)}
-.prototype-cta{background-color:#0d1710}
-.social-link:hover{background:#a31c1b0c;border-color:#bc806655}
-.about-disciplines span{border-color:#bc806640}
+.showcase-track,.project-card,.decision,details{background-color:color-mix(in srgb,var(--teal-deep) 25%,var(--bg))}
+.showcase-art{background:radial-gradient(ellipse at 55% 75%,#2e6f7328,transparent 70%),#0a0f14}
+.showcase-caption{background:linear-gradient(140deg,color-mix(in srgb,var(--teal-deep) 42%,var(--bg)),var(--bg))}
+.showcase-note{background:#0f3d3ee6;border-color:#eadcc822}
+.glow-card{background-image:radial-gradient(500px circle at var(--mx,50%) var(--my,0%),#2e6f7328,transparent 75%)}
+.glow-card:hover{border-color:#2e6f7366;box-shadow:0 0 40px #0a0f1422}
+.contact-card{background-color:color-mix(in srgb,var(--teal-deep) 40%,var(--bg));border-color:#c6601f52}
+.contact-card::before{background:radial-gradient(ellipse at 100% 100%,#c6601f17,transparent 65%)}
+.prototype-cta{background-color:color-mix(in srgb,var(--teal-deep) 30%,var(--bg))}
+.social-link:hover{background:#c6601f0c;border-color:#7fb3b855}
+.about-disciplines span{border-color:#7fb3b840}
 .footer{padding-block:38px;gap:24px}
 .footer-brand{display:block;flex:0 0 220px;width:220px;max-width:100%;padding:5px 0}
 .footer-brand img{width:100%;height:auto}
@@ -54,7 +56,7 @@ body{background:var(--bg)}
   .rail-ready .site-rail .rail-brand{padding-left:4px}
   .mobile-wordmark{display:block;position:fixed;z-index:28;right:20px;top:12px;width:138px;padding:3px 0;border-radius:8px}
   .mobile-wordmark img{width:100%;height:auto}
-  .rail-ready body::before{content:"";position:fixed;z-index:27;inset:0 0 auto;height:72px;background:linear-gradient(#06110cf7,#06110ce8 75%,#06110c00);pointer-events:none}
+  .rail-ready body::before{content:"";position:fixed;z-index:27;inset:0 0 auto;height:72px;background:linear-gradient(#0a0f14f7,#0a0f14e8 75%,#0a0f1400);pointer-events:none}
   .hero{padding-top:30px}
   .hero-brand{margin-bottom:26px}
   .hero-brand>img{width:280px}
@@ -67,3 +69,6 @@ body{background:var(--bg)}
 }
 @media(max-width:360px){.hero-brand>img{width:250px}.brand-discipline{max-width:260px}.mobile-wordmark{width:122px;top:15px}}
 @media(prefers-reduced-motion:reduce){.rail-brand-wordmark{transition:none;transform:none}}
+
+::selection{color:var(--bg);background:var(--pink)}
+.skip{color:var(--bg)}

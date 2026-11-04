@@ -15,4 +15,4 @@ Selected original exports from Harvey’s supplied Rayhanson logo kit. The uploa
 
 `../favicon.svg` is the original supplied vector app icon. `../portfolio-banner.svg` and `../portfolio-share.svg` arrange the supplied ivory vectors with portfolio copy; the artwork paths are not redrawn or filtered. `../portfolio-share.png` is the social-card export.
 
-The reflective PNG is displayed without recoloring, distortion, or CSS filters. Ivory vectors keep the small placements readable. `../../brand.css` applies forest-black `#06110C`, graphite `#171717`, crimson `#A31C1B`, and warm ivory `#F2EDE4`, with lighter supporting text accents.
+The reflective PNG is displayed without recoloring, distortion, or CSS filters. Ivory vectors keep the small placements readable. `../../brand.css` applies the site palette: navy `#0A0F14`, deep teal `#0F3D3E`, muted teal `#2E6F73`, light teal `#7FB3B8`, cream `#EADCC8`, and burnt orange `#C6601F`. The original logo palette is recorded separately in `palette.json`.
