@@ -1,0 +1,344 @@
+/* Hallmark · shape: Index-First (the web of projects is the first screen) · genre: atmospheric · theme: brand · redesign: full · job: hire · draw: ee7432
+ * paper: oklch(16.6% 0.013 249) · accent: oklch(58% 0.21 25) · display: Clash Display · body: Switzer · hero: Poster · nav: floating bar at the foot · footer: index columns · signature: a living black web, one node for each project, whose strands drip, reach for the cursor and fire crimson; the camera travels through it as the page scrolls
+ * axes: dark/display-heavy/chromatic-red · posture: Committed · contrast: pass · fold: pass · imagery: the user's own product screens and project art · v2.0.0 */
+/* Hallmark · pre-emit critique: P5 H4 E4 S5 R2 V5 · weakest: R, on purpose: the owner asked for a living web behind the page; solid teal tiles keep the content apart from it */
+/* Hallmark · waive 77 · the open half of each panel holds the web's node for that section · the scene is this page's visual and is drawn on the fixed canvas, not inside the section */
+/* Hallmark · waive 80 · five project artworks from the owner's repository · they are the creative projects' existing key art, kept as found */
+/* Hallmark · waive 49b · the email address and one project title run to two lines at 320px · neither name can be shortened without changing it */
+/* Hallmark · waive 38iii · the role line under the name is set in crimson · it carries over the two-tone headline of the owner's earlier page */
+/* Hallmark · waive 29 · a teal bloom and a crimson one, and a clear blurred bar at the foot · the owner asked for a hint of crimson and an almost transparent floating bar */
+/* Hallmark · dropped showcase-track, script.js, navigation.js · the auto-rotating carousel and side rail they drove give way to the web and a floating bar; every project keeps its entry and links */
+/* Hallmark · dropped plan-form.png, jimbro-brand.svg · LeaveBy shows its result screen once, large; the JimBro capture already carries the wordmark and Jim */
+@import url("./tokens.css");
+@import url("./base.css");
+
+/* The bottom padding keeps a link reached with the keyboard clear of the floating bar. */
+html { color-scheme: dark; scroll-behavior: smooth; scroll-padding-bottom: var(--space-3xl); }
+
+/* Navy, with a teal glow where the web lives and a hint of crimson in the opposite corner. */
+body {
+  background:
+    radial-gradient(64% 60% at 78% 36%, color-mix(in oklab, var(--color-haze) 58%, transparent), transparent 72%),
+    radial-gradient(46% 44% at 0% 100%, color-mix(in oklab, var(--color-haze-2) 30%, transparent), transparent 72%),
+    var(--color-paper);
+  background-attachment: fixed;
+}
+/* Grain over the background and the web, under the content. */
+body::after { content: ""; position: fixed; inset: 0; z-index: calc(-1 * var(--z-base)); pointer-events: none; opacity: 0.28; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* Tiles are solid deep teal with a light edge, so they stand clear of the navy ground and the black web. */
+.card, .plate, .web__label {
+  border: 1px solid color-mix(in oklab, var(--color-muted) 30%, transparent);
+  background: linear-gradient(150deg, var(--color-paper-3), var(--color-paper-2) 70%);
+  box-shadow: 0 var(--space-lg) var(--space-2xl) color-mix(in oklab, var(--color-night) 60%, transparent);
+}
+
+.skip { position: absolute; left: var(--space-md); top: calc(-1 * var(--space-3xl)); z-index: var(--z-toast); padding: var(--space-xs) var(--space-md); background: var(--color-ink); color: var(--color-paper); }
+.skip:focus-visible { top: var(--space-md); }
+
+/* The web is drawn behind everything. Its project links ride on the nodes; without WebGL they are a plain list. */
+.scene { position: fixed; inset: 0; z-index: calc(-1 * var(--z-base)); display: none; width: 100%; height: 100%; }
+.webgl .scene { display: block; }
+.web { display: flex; flex-wrap: wrap; gap: var(--space-xs); max-width: 50rem; margin: var(--space-lg) 0 0; padding: 0; }
+.web__node { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-ink); text-decoration: none; }
+.web__label { padding: var(--space-2xs) var(--space-sm); border-radius: var(--radius-pill); font-size: var(--text-sm); white-space: nowrap; transition: border-color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+.mark { display: none; }
+/* The link layer sits above the page so its nodes can be clicked; it is only live on the first screen. */
+.webgl .web { position: fixed; inset: 0; z-index: var(--z-base); display: block; max-width: none; margin: 0; pointer-events: none; }
+.webgl .web__node { position: absolute; left: 0; top: 0; display: grid; place-items: center; min-height: 0; border-radius: 50%; }
+.webgl .web.is-map .web__node { pointer-events: auto; }
+.webgl .web__label { position: absolute; left: 50%; top: 100%; transform: translate(-50%, var(--space-2xs)); opacity: var(--overview, 1); }
+.webgl .web:not(.is-map) .web__label { visibility: hidden; }
+/* The logo rides on the hub node, behind the page like the web itself. */
+.webgl .mark { position: fixed; left: 0; top: 0; z-index: calc(-1 * var(--z-base)); display: block; aspect-ratio: 724 / 410; overflow: hidden; pointer-events: none; }
+.mark img { width: auto; max-width: none; height: 100%; }
+.webgl .web__node--hub .web__label { top: auto; bottom: 100%; transform: translate(-50%, calc(-1 * var(--space-2xs))); }
+
+/* One icon set, drawn in the text colour at the text size */
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.icon { flex: none; width: 1.15em; height: 1.15em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* The bar floats at the foot of the screen: a thin, clear capsule with white icons. The section you are in shows its name. */
+.dock { position: fixed; left: 50%; bottom: var(--space-md); z-index: var(--z-sticky-nav); display: flex; align-items: center; gap: var(--space-3xs); padding: var(--space-3xs); overflow: hidden; border: 1px solid color-mix(in oklab, var(--color-bone) 22%, transparent); border-radius: var(--radius-pill); background: color-mix(in oklab, var(--color-night) 26%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); translate: -50% 0; }
+.dock::after { content: ""; position: absolute; inset: auto var(--space-md) 0; height: 1px; background: color-mix(in oklab, var(--color-bone) 70%, transparent); transform: scaleX(0); transform-origin: left; }
+/* Each item is 32px tall; its tap area reaches past it so it is still easy to hit. */
+.dock a { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs); min-width: 36px; min-height: 32px; padding: 0 var(--space-xs); border-radius: var(--radius-pill); color: var(--color-ink-2); font: 500 var(--text-sm)/1 var(--font-body); text-decoration: none; white-space: nowrap; cursor: pointer; transition: color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out); }
+.dock a:focus-visible { outline-offset: -2px; } /* inside the capsule, which clips anything outside it */
+.dock a::before { content: ""; position: absolute; inset: calc(-1 * var(--space-xs)) calc(-1 * var(--space-3xs)); }
+.dock a span { display: none; }
+.dock a[aria-current="true"] { padding-inline: var(--space-sm); background-color: color-mix(in oklab, var(--color-bone) 14%, transparent); color: var(--color-ink); }
+.dock a[aria-current="true"] span { display: inline; }
+.dock a:hover { background-color: color-mix(in oklab, var(--color-bone) 10%, transparent); color: var(--color-ink); }
+.dock a:active { background-color: color-mix(in oklab, var(--color-bone) 6%, transparent); }
+@media (prefers-reduced-transparency: reduce) {
+  .dock { background: var(--color-paper-2); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* Pause and play: a ghost circle in the corner that opens to say what it does when you point at it. */
+.motion { position: fixed; right: var(--space-md); bottom: var(--space-md); z-index: var(--z-sticky); display: none; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid color-mix(in oklab, var(--color-muted) 32%, transparent); border-radius: 50%; background: color-mix(in oklab, var(--color-night) 22%, transparent); color: var(--color-ink-2); font: 500 var(--text-sm)/1 var(--font-body); cursor: pointer; opacity: 0.65; transition: opacity var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+.webgl .motion { display: grid; }
+.motion .icon { grid-area: 1 / 1; width: 1.25em; height: 1.25em; }
+.motion .icon--play, .motion[data-state="paused"] .icon--pause { display: none; }
+.motion[data-state="paused"] .icon--play { display: block; }
+/* The label is a capsule lying behind the circle. It unrolls to the left when pointed at; the circle never changes shape. */
+.motion__label { position: absolute; top: -1px; right: -1px; bottom: -1px; z-index: calc(-1 * var(--z-base)); display: flex; align-items: center; padding: 0 calc(44px + var(--space-2xs)) 0 var(--space-md); border: 1px solid color-mix(in oklab, var(--color-muted) 32%, transparent); border-radius: var(--radius-pill); background: var(--color-paper-2); white-space: nowrap; opacity: 0; clip-path: inset(0 0 0 calc(100% - 44px) round var(--radius-pill)); transition: clip-path var(--dur-long) var(--ease-out), opacity var(--dur-short) var(--ease-out); }
+.motion:hover, .motion:focus-visible { opacity: 1; color: var(--color-ink); }
+.motion:active { border-color: var(--color-ink-2); }
+.motion:hover .motion__label, .motion:focus-visible .motion__label { opacity: 1; clip-path: inset(0 round var(--radius-pill)); }
+
+/* Buttons are flat: cream for the main action, a thin outline for the other. No shine and no colour. */
+.btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs); min-height: 44px; padding: 0 var(--space-lg); border: 1px solid var(--color-ink); border-radius: var(--radius-pill); background: var(--color-ink); color: var(--color-paper); font: 500 var(--text-sm)/1 var(--font-body); white-space: nowrap; text-decoration: none; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out), translate var(--dur-long) var(--ease-hop); }
+.btn:hover { border-color: var(--color-ink-2); background: var(--color-ink-2); }
+/* Pointed at with a mouse, a button hops and settles a little higher. While it is up, a strip under it covers the
+   place it left, so the pointer stays on it and it cannot flicker. */
+.btn::after { content: ""; position: absolute; inset: 0; }
+@media (hover: hover) {
+  .btn:hover { translate: 0 -3px; }
+  .btn:hover::after { inset: 0 0 calc(-1 * var(--space-xs)); }
+}
+.btn .icon { transform-origin: 50% 85%; }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; transform: none; translate: none; }
+.btn--quiet { border-color: color-mix(in oklab, var(--color-ink) 45%, transparent); background: transparent; color: var(--color-ink); }
+.btn--quiet:hover { border-color: var(--color-ink); background: color-mix(in oklab, var(--color-ink) 10%, transparent); }
+.web__node:hover .web__label, .web__node:focus-visible .web__label { border-color: var(--color-ink); background: var(--color-paper-3); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+
+.links { display: flex; flex-wrap: wrap; gap: 0 var(--space-lg); }
+.links a, .text-link, .back-link { display: inline-flex; align-items: center; gap: var(--space-xs); min-height: 44px; color: var(--color-ink-2); text-decoration: underline; text-decoration-color: var(--color-signal); text-decoration-thickness: 2px; text-underline-offset: 0.3em; transition: color var(--dur-short) var(--ease-out); }
+.links a:hover, .text-link:hover, .back-link:hover { color: var(--color-ink); }
+.links a:active, .text-link:active, .back-link:active { color: var(--color-muted); }
+.links .icon, .text-link .icon, .back-link .icon { transition: transform var(--dur-long) var(--ease-hop); }
+.links a:hover .icon, .text-link:hover .icon { transform: translate(2px, -2px); }
+.back-link:hover .icon { transform: translateX(-3px); }
+
+.meta { color: var(--color-muted); font-size: var(--text-sm); }
+.note { color: var(--color-ink-2); font-size: var(--text-sm); }
+.hook { color: var(--color-ink); font-weight: 500; line-height: 1.35; }
+.tags { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin: 0; padding: 0; list-style: none; font-size: var(--text-sm); }
+.tags li { padding: var(--space-2xs) var(--space-sm); border: 1px solid color-mix(in oklab, var(--color-bone) 26%, transparent); border-radius: var(--radius-pill); color: var(--color-ink-2); }
+
+/* Cards tilt toward the pointer and light up under it */
+.card { position: relative; overflow: hidden; border-radius: var(--radius-card); transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: border-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out); }
+.card::before { content: ""; position: absolute; inset: 0; z-index: var(--z-base); pointer-events: none; opacity: 0; background: radial-gradient(460px circle at var(--mx, 50%) var(--my, 0%), color-mix(in oklab, var(--color-ice) 26%, transparent), transparent 70%); transition: opacity var(--dur-short) var(--ease-out); }
+.card.is-lit { border-color: color-mix(in oklab, var(--color-ice) 70%, transparent); }
+.card.is-lit::before { opacity: 1; }
+.plate { padding: var(--space-lg); border-radius: var(--radius-card); }
+
+/* Screens sit a little askew inside their card and pop forward when the card is pointed at, as on the earlier site. */
+.shot img, .tile__art img, .phones img { transition: transform var(--dur-long) var(--ease-out); }
+.shot img { transform: rotate(-2.5deg); border-radius: var(--space-xs); box-shadow: 0 var(--space-md) var(--space-xl) var(--color-night); }
+.card:hover .shot img, .card:focus-within .shot img { transform: scale(1.08) translate(-1%, -2%); }
+.tile__art img { transform: scale(1.02); }
+.card:hover .tile__art img, .card:focus-within .tile__art img { transform: scale(1.12) rotate(-1.5deg) translate(-1.5%, -1.5%); }
+.phones img:nth-child(1) { transform: rotate(-4deg) translateY(4%); }
+.phones img:nth-child(2) { transition-delay: 60ms; }
+.phones img:nth-child(3) { transform: rotate(4deg) translateY(4%); transition-delay: 120ms; }
+.card:hover .phones img, .card:focus-within .phones img { transform: translateY(-3%); }
+.card:hover .phones img:nth-child(2), .card:focus-within .phones img:nth-child(2) { transform: translateY(-5%) scale(1.04); }
+
+/* Hero: the logo in the corner, then who he is and what he does. The web fills the rest and is clickable. */
+.hero { position: relative; display: grid; align-items: center; min-height: 100dvh; padding-block: var(--space-4xl); }
+.brand { position: absolute; top: var(--space-lg); left: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter))); }
+.brand img { width: auto; height: 52px; }
+.hero__text { display: grid; gap: var(--space-md); max-width: 30rem; }
+.hero h1 { max-width: none; font-size: var(--text-display-s); font-weight: 500; }
+.hero__role { color: var(--color-accent-2); font: 500 var(--text-title)/1.25 var(--font-body); }
+.hero .lead { color: var(--color-ink-2); }
+.does { display: grid; gap: var(--space-sm); margin: var(--space-xs) 0; padding: var(--space-md) 0; list-style: none; border-block: var(--rule-hair) solid color-mix(in oklab, var(--color-muted) 24%, transparent); }
+.does li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-sm); color: var(--color-ink-2); }
+.does .icon { margin-top: 0.2em; color: var(--color-muted); }
+.does b { display: block; color: var(--color-ink); font-weight: 500; }
+
+/* A panel leaves its other half to the web */
+.panel { display: grid; align-items: center; min-height: 100dvh; padding-block: var(--section-gap); }
+.panel__text { display: grid; gap: var(--space-md); max-width: var(--tile); }
+.panel__mark { width: 48px; height: 48px; }
+.panel--aside { min-height: 70dvh; }
+.aside h2 { font-size: var(--text-title); line-height: 1.2; }
+.aside { display: grid; gap: var(--space-xs); max-width: 26rem; padding: var(--space-lg); font-size: var(--text-sm); }
+.panel__text--wide { gap: var(--space-lg); }
+html:not(.webgl) .panel { min-height: 0; }
+html:not(.webgl) .panel__text { max-width: none; }
+
+.figures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; }
+.figures > div { display: flex; flex-direction: column-reverse; gap: var(--space-2xs); padding-inline: var(--space-lg); border-left: var(--rule-hair) solid var(--color-rule); }
+.figures > :first-child { padding-left: 0; border-left: 0; }
+.figures dt { color: var(--color-muted); font-size: var(--text-sm); }
+.figures dd { margin: 0; color: var(--color-accent); font: 600 var(--text-display-s)/1 var(--font-display); font-variant-numeric: tabular-nums; letter-spacing: var(--tracking-display); }
+
+.facts { display: grid; margin: 0; padding: var(--space-2xs) var(--space-lg); font-size: var(--text-sm); }
+.facts > div { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--space-lg); padding-block: var(--space-sm); border-bottom: var(--rule-hair) solid color-mix(in oklab, var(--color-bone) 16%, transparent); }
+.facts > :last-child { border-bottom: 0; }
+.facts dt { font-weight: 500; }
+.facts dd { margin: 0; color: var(--color-ink-2); }
+
+/* Products and creative coding: one column of cards on the left, the web beside them */
+.products { padding-block: var(--section-gap-l); }
+.products > .container > * { max-width: var(--tile); }
+.head { display: grid; gap: var(--space-sm); margin-bottom: var(--space-lg); }
+/* A project tile is wide and short: its picture on the left, its story beside it. */
+.feature, .tile { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr); }
+.feature { grid-template-columns: minmax(0, 6fr) minmax(0, 8fr); }
+.feature__text { display: grid; align-content: start; gap: var(--space-xs); padding: var(--space-lg); font-size: var(--text-sm); }
+/* The screen floats whole inside its frame instead of being cropped to fill it. */
+.shot { display: grid; place-items: center; padding: var(--space-md); }
+.shot img { position: relative; inset: auto; width: 100%; height: auto; }
+.pair__item .shot { padding: var(--space-xs); }
+.shot--tall { border-radius: calc(var(--radius-card) - var(--space-xs)); }
+.shot:focus-visible, .phones:focus-visible, .tile__art:focus-visible { outline: 2px solid var(--color-focus); outline-offset: -2px; }
+.pair { display: grid; gap: var(--gap-columns); margin-top: var(--gap-columns); }
+.pair__item { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr); align-content: start; gap: var(--space-xs) var(--space-lg); padding: var(--space-lg); font-size: var(--text-sm); }
+.pair__item > :first-child { grid-row: 1 / span 6; }
+.phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-xs); align-self: center; }
+.phones img { border-radius: calc(var(--radius-card) - var(--space-xs)); }
+
+.tiles { display: grid; gap: var(--space-lg); margin: 0; padding: 0; list-style: none; }
+.tile__art { position: relative; display: block; overflow: hidden; background: var(--color-night); }
+.tile__art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tile > div { display: grid; gap: var(--space-2xs); padding: var(--space-md) var(--space-lg); font-size: var(--text-sm); }
+
+/* Sound: the running time at graphic scale; the story's node rises from the foot and swells with the audio */
+.sound { display: grid; align-items: center; min-height: 100dvh; padding-block: var(--section-gap); }
+.sound > .container { display: grid; gap: var(--space-lg); }
+.sound__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-md); }
+.sound__time { color: var(--color-accent); font: 600 var(--text-section)/1 var(--font-display); letter-spacing: var(--tracking-display); }
+.sound__text { display: grid; gap: var(--space-sm); max-width: var(--tile); }
+.sound__player { width: 100%; max-width: 28rem; min-height: 44px; }
+.sound__still { grid-column: 1 / -1; width: 100%; }
+.webgl .sound__still { display: none; }
+
+/* A band of type that slides as the page scrolls past it */
+.band { display: grid; gap: var(--space-2xs); padding-block: var(--space-xl); overflow: clip; }
+.band__row { display: flex; gap: var(--space-xl); margin: 0; white-space: nowrap; font: 600 clamp(1.5rem, 3vw, 2.75rem)/1.1 var(--font-display); letter-spacing: var(--tracking-display); }
+.band__row--line { color: transparent; -webkit-text-stroke: 1px var(--color-ink-2); }
+.band__row--fill { justify-content: flex-end; color: var(--color-accent); }
+
+/* About: two tiles over the centre of the web */
+.about { display: grid; align-items: center; min-height: 100dvh; padding-block: var(--section-gap); }
+.about .about__in { display: grid; gap: var(--space-lg); }
+/* The introduction is wide and short: the heading and who he is on one side, where to find him on the other. Its
+   heading never wraps; the tile takes its width from it, and the type scales with the window. */
+.about__head { display: grid; grid-template-columns: max-content minmax(14rem, 17rem); gap: var(--space-md) var(--space-xl); align-items: start; justify-self: start; max-width: 100%; padding: var(--space-lg); }
+.about__head h2 { font-size: clamp(1.375rem, 1.1vw + 0.9rem, 2rem); white-space: nowrap; }
+.about__head .social { grid-column: 2; grid-row: 1 / span 2; }
+.about__body { columns: 24rem; column-gap: var(--space-xl); padding: var(--space-lg); font-size: var(--text-sm); }
+.about__body p { max-width: none; margin-bottom: var(--space-sm); break-inside: avoid; }
+.about__body .lead { column-span: all; margin-bottom: var(--space-md); }
+.about__body p:last-child { margin-bottom: 0; }
+.who { display: grid; gap: var(--space-md); margin: 0; }
+.who dt { font-weight: 500; }
+.who dd { margin: 0; color: var(--color-ink-2); }
+.social { display: grid; margin: 0; padding: 0; list-style: none; border-top: var(--rule-hair) solid color-mix(in oklab, var(--color-bone) 18%, transparent); }
+/* Each row is a link: a faint arrow says so at rest, and the row lights, slides and wakes its icon when pointed at. */
+.social a { display: flex; align-items: center; gap: var(--space-sm); min-height: 44px; margin-inline: calc(-1 * var(--space-sm)); padding-inline: var(--space-sm); border-bottom: var(--rule-hair) solid color-mix(in oklab, var(--color-bone) 18%, transparent); border-radius: var(--space-xs); color: var(--color-ink-2); font-size: var(--text-sm); text-decoration: none; transition: color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out); }
+.social b { transition: translate var(--dur-long) var(--ease-hop); }
+.social .icon { transition: transform var(--dur-long) var(--ease-hop), color var(--dur-short) var(--ease-out), opacity var(--dur-short) var(--ease-out); }
+.social .social__go { width: 1em; height: 1em; opacity: 0.4; }
+.social a:hover { background-color: color-mix(in oklab, var(--color-bone) 9%, transparent); color: var(--color-ink); }
+.social a:hover b { translate: var(--space-2xs) 0; }
+.social a:hover .icon:first-child { color: var(--color-accent-2); }
+.social a:hover .social__go { opacity: 1; transform: translate(2px, -2px); }
+.social a:active { color: var(--color-muted); }
+.social b { margin-right: auto; font-weight: 400; }
+.social span { color: var(--color-muted); font-size: var(--text-sm); }
+
+/* Contact */
+.contact .panel__text { padding: var(--space-xl); }
+.contact__mail { display: inline-flex; align-items: center; gap: var(--space-sm); font: 600 clamp(1.125rem, 1.1vw + 0.5rem, 1.625rem)/1.05 var(--font-display); letter-spacing: var(--tracking-display); text-decoration: none; }
+.contact__mail .icon { width: 0.7em; height: 0.7em; color: var(--color-accent); }
+.contact__mail:hover span { text-decoration: underline; text-decoration-color: var(--color-signal); text-decoration-thickness: 2px; text-underline-offset: 0.15em; }
+.copy-status { min-height: 1lh; }
+
+/* Footer: index columns on solid night, so the page ends on something firm */
+.footer { padding-block: var(--space-xl) var(--space-lg); border-top: var(--rule-hair) solid var(--color-rule); background: var(--color-night); color: var(--color-ink); }
+.footer__in { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 3fr); gap: var(--space-sm) var(--gap-columns); }
+.footer__brand { display: grid; gap: var(--space-xs); align-self: start; color: var(--color-ink-2); text-decoration: none; }
+.footer__line { margin-top: var(--space-2xs); color: var(--color-ink); font: 600 var(--text-md)/1.2 var(--font-display); }
+.footer__aim { max-width: 22rem; font-size: var(--text-sm); }
+.footer__brand img { width: auto; height: 44px; }
+.footer__title { margin-bottom: var(--space-2xs); color: var(--color-muted); font: 500 var(--text-sm)/1.4 var(--font-body); letter-spacing: 0; }
+.footer__col ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.25rem, 1fr)); column-gap: var(--space-md); margin: 0; padding: 0; list-style: none; }
+.footer__col a, .footer__legal a { display: inline-flex; align-items: center; gap: var(--space-xs); min-height: 28px; color: var(--color-ink-2); font-size: var(--text-sm); text-decoration: none; transition: color var(--dur-short) var(--ease-out); }
+.footer__col a:hover, .footer__legal a:hover { color: var(--color-ink); text-decoration: underline; }
+.footer__legal { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); padding-top: var(--space-xs); border-top: var(--rule-hair) solid var(--color-rule); color: var(--color-muted); font-size: var(--text-sm); }
+/* Fingers need taller rows than a mouse pointer does. */
+@media (pointer: coarse) { .footer__col a, .footer__legal a { min-height: 44px; } }
+.webgl .footer__legal { padding-right: var(--space-2xl); } /* "Back to top" clears the pause button */
+
+/* Entrances: tiles and text fly in from the side as they scroll into view, overshoot and rock to a stop, like something
+   with weight. Visible without script. translate and rotate are used so a card keeps its own tilt transform. */
+.js [data-reveal] { opacity: 0; }
+.js [data-reveal="right"] { --from: 60vw; --lean: 2deg; }
+.js [data-reveal].is-in { animation: fly-in 1000ms cubic-bezier(0.25, 0.7, 0.3, 1) calc(var(--i, 0) * 90ms) both; }
+@keyframes fly-in {
+  0% { opacity: 0; translate: var(--from, -60vw) 0; rotate: var(--lean, -2deg); }
+  50% { opacity: 1; translate: calc(var(--from, -60vw) * -0.025) 0; rotate: calc(var(--lean, -2deg) * -0.5); }
+  68% { translate: calc(var(--from, -60vw) * 0.01) 0; rotate: calc(var(--lean, -2deg) * 0.22); }
+  84% { translate: calc(var(--from, -60vw) * -0.004) 0; rotate: calc(var(--lean, -2deg) * -0.08); }
+  100% { opacity: 1; translate: none; rotate: none; }
+}
+
+/* A button's icon bobs just after the button lands. */
+@media (prefers-reduced-motion: no-preference) {
+  .btn:hover .icon, .social a:hover .icon:first-child, .copy-code:hover .icon { animation: bob 560ms var(--ease-out) 140ms both; }
+  @keyframes bob { 0%, 100% { transform: none; } 30% { transform: translateY(-4px) rotate(-12deg); } 60% { transform: translateY(1px) rotate(5deg); } 80% { transform: translateY(-1px) rotate(-2deg); } }
+}
+
+/* Scroll-linked pieces: the progress line and the sliding band */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .dock::after { animation: grow linear both; animation-timeline: scroll(root); }
+    .band__row { animation: slide linear both; animation-timeline: view(); }
+    .band__row--fill { animation-name: slide-back; }
+    @keyframes grow { to { transform: scaleX(1); } }
+    @keyframes slide { from { transform: translateX(4%); } to { transform: translateX(-28%); } }
+    @keyframes slide-back { from { transform: translateX(-4%); } to { transform: translateX(28%); } }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js [data-reveal], .js [data-reveal].is-in { opacity: 1; animation: none; }
+  .btn { transition: border-color var(--dur-short) linear; }
+  .btn:hover, .social a:hover b { translate: none; }
+  .card { transform: none; transition: border-color var(--dur-short) linear; }
+  .webgl .motion { display: none; }
+  .motion__label { transition: none; }
+}
+
+@media (max-width: 60rem) {
+  .webgl .web__label { display: none; }
+  .footer__in { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer__brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 46rem) {
+  .about__head { grid-template-columns: minmax(0, 1fr); justify-self: stretch; }
+  .about__head h2 { white-space: normal; }
+  .about__head .social { grid-column: auto; grid-row: auto; }
+}
+
+@media (max-width: 40rem) {
+  .brand img { height: 40px; }
+  .motion { bottom: calc(var(--space-md) + var(--space-2xl)); } /* clear of the floating bar */
+  .footer { padding-bottom: var(--space-3xl); } /* the copyright line clears the floating bar */
+  .facts { padding-inline: var(--space-md); }
+  .facts > div { grid-template-columns: minmax(0, 1fr); gap: var(--space-2xs); }
+  .feature__text, .about__head, .about__body, .contact .panel__text { padding: var(--space-lg); }
+  .feature, .tile, .pair__item { grid-template-columns: minmax(0, 1fr); }
+  .pair__item > :first-child { grid-row: auto; }
+  .tile__art { aspect-ratio: 2 / 1; }
+  .footer__legal { flex-direction: column; align-items: flex-start; }
+}
+
+/* On an upright screen the web fades once you scroll, so the tiles take the full width. Matches the rule in scene.js. */
+@media (max-aspect-ratio: 9 / 10) {
+  .panel__text, .panel__text--wide, .products > .container > *, .sound__text { max-width: none; }
+}
+
+/* On paper nothing has scrolled into view, so nothing may wait for it. */
+@media print {
+  .js [data-reveal], .js [data-reveal].is-in { opacity: 1; animation: none; }
+}

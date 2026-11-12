@@ -1,0 +1,99 @@
+/* Case-study pages. Loaded after home.css, which brings the ground, tiles, buttons, links, floating bar and footer. No web here. */
+
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-xs) var(--space-md); padding-block: var(--space-lg); }
+.top .brand { position: static; }
+
+main { display: grid; gap: var(--section-gap-s); padding-bottom: var(--section-gap); }
+main > * { min-width: 0; }
+main > section { display: grid; gap: var(--space-md); }
+main :is(.btn, .text-link) { justify-self: start; }
+/* A section that is itself a tile sits inside the page margins, like the sections around it. */
+main > .card { width: calc(100% - 2 * var(--gutter)); max-width: calc(var(--container) - 2 * var(--gutter)); }
+figure { margin: 0; }
+figcaption, .prototype-note, .project-device-note { color: var(--color-ink-2); font-size: var(--text-sm); }
+h1 em, h2 em { font-style: normal; }
+.label { color: var(--color-muted); font-size: var(--text-sm); }
+
+/* Opening: the name, what kind of work it is, the way in, then the facts in a tile */
+.case-hero { padding-top: var(--space-xl); }
+.case-hero h1 { font-size: var(--text-display-s); font-weight: 500; }
+.kind { color: var(--color-accent-2); font: 500 var(--text-title)/1.25 var(--font-body); }
+.case-subtitle { color: var(--color-ink-2); font-size: var(--text-lead); line-height: 1.45; }
+.project-meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-lg); margin: var(--space-lg) 0 0; }
+.project-meta dt { color: var(--color-muted); font-size: var(--text-sm); }
+.project-meta dd { margin: 0; overflow-wrap: anywhere; }
+.project-alias { display: block; color: var(--color-muted); font-size: var(--text-sm); }
+
+/* A section: its heading on the ground, its story in a tile beside it */
+.case-section { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-lg) var(--gap-columns); align-items: start; }
+.case-section > :first-child, .section-heading > div { display: grid; align-content: start; gap: var(--space-sm); }
+.case-copy { display: grid; gap: var(--space-md); }
+.section-heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--space-md) var(--gap-columns); }
+.section-heading > p { color: var(--color-ink-2); }
+.decision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: var(--space-lg); }
+.decision { display: grid; align-content: start; gap: var(--space-sm); padding: var(--space-lg); }
+.decision p:not(.label) { color: var(--color-ink-2); }
+
+.flow-strip { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin: 0; padding: 0; list-style: none; font-size: var(--text-sm); }
+.flow-strip li { padding: var(--space-2xs) var(--space-sm); border: 1px solid color-mix(in oklab, var(--color-bone) 26%, transparent); border-radius: var(--radius-pill); }
+.flow-strip span { margin-right: var(--space-xs); color: var(--color-muted); font-variant-numeric: tabular-nums; }
+
+details { border-top: var(--rule-hair) solid color-mix(in oklab, var(--color-bone) 18%, transparent); }
+summary { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); min-height: 48px; font-weight: 500; list-style: none; cursor: pointer; }
+summary::-webkit-details-marker { display: none; }
+summary span { transition: rotate var(--dur-short) var(--ease-out); }
+details[open] summary span { rotate: 45deg; }
+details p { padding-bottom: var(--space-sm); color: var(--color-ink-2); }
+
+.swatches { display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-lg); color: var(--color-ink-2); font-size: var(--text-sm); }
+.swatches span { display: inline-flex; align-items: center; gap: var(--space-xs); }
+.swatches i { width: 1.5rem; height: 1.5rem; border: 1px solid var(--color-rule); border-radius: 50%; background: var(--swatch); }
+
+/* Pictures */
+.creative-case-art img { width: 100%; max-height: 40rem; object-fit: cover; border: 1px solid var(--color-rule); border-radius: var(--radius-card); }
+.creative-case-art figcaption { margin-top: var(--space-sm); }
+.screen-showcase { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap-columns); }
+.screen-showcase figure { display: grid; gap: var(--space-sm); }
+.screen-zoom { display: block; width: 100%; padding: 0; overflow: hidden; border: 1px solid var(--color-rule); border-radius: var(--radius-card); background: var(--color-night); }
+.js .screen-zoom { cursor: zoom-in; }
+.screen-zoom img { width: 100%; }
+.screen-showcase figcaption span { margin-right: var(--space-xs); color: var(--color-muted); font-variant-numeric: tabular-nums; }
+dialog { max-width: min(92vw, 26rem); padding: var(--space-md); border: 1px solid var(--color-rule); border-radius: var(--radius-card); background: var(--color-paper-2); color: var(--color-ink); }
+dialog::backdrop { background: color-mix(in oklab, var(--color-night) 82%, transparent); }
+#dialog-image { width: auto; max-height: 72dvh; margin: var(--space-sm) auto; }
+
+/* The way out: one tile with the action, then the neighbouring projects */
+.prototype-cta { padding: var(--space-xl); }
+.prototype-cta > p:not([class]) { color: var(--color-ink-2); }
+.creative-next { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 var(--space-lg); }
+
+@media (max-width: 60rem) {
+  .case-section { grid-template-columns: minmax(0, 1fr); }
+  .project-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 40rem) {
+  .prototype-cta { padding: var(--space-lg); }
+  .plate { padding: var(--space-lg); }
+  .screen-showcase { gap: var(--space-xs); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  summary span { transition: none; }
+}
+
+/* A project's own mark, banner, film and install steps */
+.case-mark { width: 64px; height: 64px; }
+.case-banner img, .case-film video { width: 100%; height: auto; border: 1px solid var(--color-rule); border-radius: var(--radius-card); }
+.case-film figcaption { margin-top: var(--space-sm); }
+.steps { display: grid; gap: var(--space-md); margin: 0; padding-left: var(--space-lg); }
+.steps li { min-width: 0; }
+code { font-family: var(--font-mono); font-size: 0.92em; }
+pre { margin: var(--space-xs) 0 0; padding: var(--space-sm) var(--space-md); overflow-x: auto; border: 1px solid var(--color-rule); border-radius: var(--space-xs); background: var(--color-night); color: var(--color-ink); font-size: var(--text-xs); line-height: 1.6; }
+/* A command block with its copy button in the corner. The frame is added by script, with the button. */
+.code { position: relative; margin-top: var(--space-xs); }
+.code pre { margin: 0; padding-right: var(--space-3xl); }
+.copy-code { position: absolute; top: var(--space-xs); right: var(--space-xs); display: inline-flex; align-items: center; gap: var(--space-2xs); min-height: 28px; padding: 0 var(--space-xs); border: 1px solid color-mix(in oklab, var(--color-bone) 26%, transparent); border-radius: var(--space-xs); background: var(--color-paper-2); color: var(--color-ink-2); font: 500 var(--text-xs)/1 var(--font-body); cursor: pointer; transition: color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out); }
+.copy-code:hover { border-color: var(--color-ink-2); color: var(--color-ink); }
+.copy-code:active { color: var(--color-muted); }
+@media (pointer: coarse) { .copy-code { min-height: 44px; } }
