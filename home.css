@@ -308,8 +308,12 @@ html:not(.webgl) .panel__text { max-width: none; }
   .motion__label { transition: none; }
 }
 
-@media (max-width: 60rem) {
+/* Below this width the web sits behind the opening text, so its name tags would land on the words. */
+@media (max-width: 80rem) {
   .webgl .web__label { display: none; }
+}
+
+@media (max-width: 60rem) {
   .footer__in { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer__brand { grid-column: 1 / -1; }
 }
