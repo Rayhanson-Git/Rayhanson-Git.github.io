@@ -97,3 +97,11 @@ pre { margin: var(--space-xs) 0 0; padding: var(--space-sm) var(--space-md); ove
 .copy-code:hover { border-color: var(--color-ink-2); color: var(--color-ink); }
 .copy-code:active { color: var(--color-muted); }
 @media (pointer: coarse) { .copy-code { min-height: 44px; } }
+
+/* A table of measurements: the operation on the left, its numbers ranged right so they line up. */
+.bench { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.bench th, .bench td { padding: var(--space-xs) 0 var(--space-xs) var(--space-md); border-bottom: var(--rule-hair) solid color-mix(in oklab, var(--color-bone) 16%, transparent); font-weight: 400; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.bench th:first-child { padding-left: 0; text-align: left; white-space: normal; }
+.bench thead th { color: var(--color-muted); }
+.bench tbody th { color: var(--color-ink); }
+.bench td { color: var(--color-ink-2); }

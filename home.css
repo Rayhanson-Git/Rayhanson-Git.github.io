@@ -74,6 +74,37 @@ body::after { content: ""; position: fixed; inset: 0; z-index: calc(-1 * var(--z
   .dock { background: var(--color-paper-2); -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 
+/* The grip: the pointer's tendril takes hold of a button or a tile. grip.js draws it with the web's own renderer on
+   a canvas laid over the held thing. It never gets in the pointer's way, and its edges fade out so it joins the web
+   behind the page without a seam. */
+.grip { position: fixed; left: 0; top: 0; z-index: var(--z-toast); pointer-events: none; -webkit-mask-image: linear-gradient(to right, transparent, var(--color-night) 2.5rem, var(--color-night) calc(100% - 2.5rem), transparent), linear-gradient(to bottom, transparent, var(--color-night) 2.5rem, var(--color-night) calc(100% - 2.5rem), transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent, var(--color-night) 2.5rem, var(--color-night) calc(100% - 2.5rem), transparent), linear-gradient(to bottom, transparent, var(--color-night) 2.5rem, var(--color-night) calc(100% - 2.5rem), transparent); mask-composite: intersect; }
+
+/* A project tile brought forward by lift.js: a larger copy in the middle of the screen over a dimmed page. The grip
+   above is drawn over it, so the tendril can carry it there. */
+.js [data-lift] { cursor: zoom-in; }
+/* "Quick look" is the keyboard's way to bring a tile forward. It stays out of the layout and shows in the tile's
+   corner only when the keyboard reaches it; with a mouse, a click on the tile does the same. */
+.peek { display: none; } /* it needs lift.js, so without script it is not offered */
+.js .peek { display: block; position: absolute; right: var(--space-sm); bottom: var(--space-sm); z-index: var(--z-raised); padding: 0 var(--space-sm); border: 0; border-radius: var(--radius-pill); background: var(--color-night); font: inherit; cursor: pointer; opacity: 0; pointer-events: none; }
+.js .peek:focus-visible { opacity: 1; pointer-events: auto; }
+.links:has(.peek) { position: relative; } /* so a "Quick look" in a row of links appears in that row */
+.more { display: grid; gap: var(--space-sm); }
+.more__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm) var(--space-lg); margin: 0; }
+.more__facts dt { color: var(--color-muted); }
+.more__facts dd { margin: 0; }
+.lift { position: fixed; inset: 0; z-index: var(--z-modal); display: grid; place-items: center; padding: var(--space-lg); background: color-mix(in oklab, var(--color-night) 76%, transparent); }
+.lift__card { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); width: min(58rem, 100%); max-height: calc(100dvh - 2 * var(--space-lg)); overflow: auto; overscroll-behavior: contain; transform-origin: 0 0; cursor: auto; }
+.lift__media { position: relative; display: grid; place-items: center; padding: var(--space-lg); background: color-mix(in oklab, var(--color-night) 45%, transparent); }
+.lift__media > * { width: 100%; }
+.lift__media .tile__art { align-self: stretch; min-height: 18rem; border-radius: calc(var(--radius-card) - var(--space-xs)); }
+.lift__text { display: grid; align-content: start; gap: var(--space-sm); padding: var(--space-2xl) var(--space-xl) var(--space-xl); font-size: var(--text-md); }
+.lift__text :is(h2, h3) { font-size: var(--text-section); }
+.lift__close { position: absolute; top: var(--space-xs); right: var(--space-xs); z-index: var(--z-raised); display: grid; place-items: center; width: 30px; height: 30px; padding: 0; border: 1px solid color-mix(in oklab, var(--color-bone) 26%, transparent); border-radius: 50%; background: color-mix(in oklab, var(--color-night) 70%, transparent); color: var(--color-ink-2); cursor: pointer; transition: color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out); }
+.lift__close .icon { width: 0.9em; height: 0.9em; }
+.lift__close:hover { border-color: var(--color-ink-2); color: var(--color-ink); }
+.lift__close:active { color: var(--color-muted); }
+@media (pointer: coarse) { .lift__close { width: 44px; height: 44px; } }
+
 /* Pause and play: a ghost circle in the corner that opens to say what it does when you point at it. */
 .motion { position: fixed; right: var(--space-md); bottom: var(--space-md); z-index: var(--z-sticky); display: none; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid color-mix(in oklab, var(--color-muted) 32%, transparent); border-radius: 50%; background: color-mix(in oklab, var(--color-night) 22%, transparent); color: var(--color-ink-2); font: 500 var(--text-sm)/1 var(--font-body); cursor: pointer; opacity: 0.65; transition: opacity var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
 .webgl .motion { display: grid; }
@@ -187,6 +218,11 @@ html:not(.webgl) .panel__text { max-width: none; }
 .shot img { position: relative; inset: auto; width: 100%; height: auto; }
 .pair__item .shot { padding: var(--space-xs); }
 .shot--tall { border-radius: calc(var(--radius-card) - var(--space-xs)); }
+/* A project whose picture is its mark, not a screen: the mark sits upright and smaller. */
+.shot--mark img { width: 58%; transform: none; box-shadow: none; }
+.card:hover .shot--mark img, .card:focus-within .shot--mark img { transform: scale(1.1) rotate(-4deg); }
+.feature__text h2 { font-size: var(--text-title); line-height: 1.2; }
+.feature__text .figures dd { font-size: var(--text-section); }
 .shot:focus-visible, .phones:focus-visible, .tile__art:focus-visible { outline: 2px solid var(--color-focus); outline-offset: -2px; }
 .pair { display: grid; gap: var(--gap-columns); margin-top: var(--gap-columns); }
 .pair__item { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr); align-content: start; gap: var(--space-xs) var(--space-lg); padding: var(--space-lg); font-size: var(--text-sm); }
@@ -319,6 +355,10 @@ html:not(.webgl) .panel__text { max-width: none; }
 }
 
 @media (max-width: 46rem) {
+  .lift { padding: var(--space-sm); }
+  .lift__card { grid-template-columns: minmax(0, 1fr); max-height: calc(100dvh - 2 * var(--space-sm)); }
+  .lift__text { padding: var(--space-lg); }
+  .lift__media .tile__art { min-height: 11rem; }
   .about__head { grid-template-columns: minmax(0, 1fr); justify-self: stretch; }
   .about__head h2 { white-space: normal; }
   .about__head .social { grid-column: auto; grid-row: auto; }

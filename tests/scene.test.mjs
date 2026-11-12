@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 
-const { blendAt, centroid, project, mixCam, narrowCam, strand } = createRequire(import.meta.url)('../scene.js');
+const { blendAt, centroid, project, mixCam, narrowCam, arriveOffset, strand } = createRequire(import.meta.url)('../scene.js');
 
 test('the view holds still while its own section is centred', () => {
   const centers = [500, 1500, 2500];
@@ -76,4 +76,18 @@ test('on an upright phone the web starts small above the headline, then grows an
   assert.deepEqual([first.fx, first.fy, later.fx, later.fy], [1, -1, 1, -1]);
   near(first.zoom, 0.76); near(first.ax, 0.42); near(first.ay, 0.25);
   near(later.zoom, 1); near(later.ax, 0.5); near(later.ay, 0.5);
+});
+
+test('the web enters from beyond the right edge, passes its place a little and settles on it', () => {
+  // Act: sample the entrance from before it starts to after it ends
+  const ages = Array.from({ length: 27 }, (_, i) => i * 0.05), offsets = ages.map(arriveOffset);
+
+  // Assert: it starts more than a full screen to the right, and ends exactly in place and stays there
+  assert.ok(offsets[0] > 1, `starts at ${offsets[0]}`);
+  assert.ok(Math.abs(arriveOffset(1.3)) < 1e-9 && Math.abs(arriveOffset(5)) < 1e-9);
+  // It overshoots: at some moment it is left of its place, but by no more than an eighth of a screen
+  const furthestLeft = Math.min(...offsets);
+  assert.ok(furthestLeft < -0.05 && furthestLeft > -0.125, `overshoot ${furthestLeft}`);
+  // And a negative age (before the first frame) is treated as the start, not as somewhere further away
+  assert.equal(arriveOffset(-1), arriveOffset(0));
 });

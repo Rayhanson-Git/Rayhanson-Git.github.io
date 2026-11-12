@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0A0F14">
-  <meta name="description" content="Harvey Rayhanson: media artist, graphic designer and AI engineer. AI systems, product design and creative code, from a shared memory for AI agents to web apps, gesture-controlled visuals and sound.">
-  <title>Harvey Rayhanson, media artist and AI engineer</title>
+  <meta name="description" content="Harvey Rayhanson: Media Artist, Graphic Designer, and AI Engineer. AI systems, product design, and creative code, from a shared memory for AI agents to web apps, gesture-controlled visuals, and sound.">
+  <title>Harvey Rayhanson, Media Artist, Graphic Designer, and AI Engineer</title>
   <link rel="canonical" href="https://rayhanson.tech/">
-  <meta property="og:title" content="Harvey Rayhanson, media artist and AI engineer">
-  <meta property="og:description" content="AI systems, product design and creative code: a shared memory for AI agents, three web apps, gesture-controlled visuals, browser games and sound.">
-  <meta property="og:image" content="https://rayhanson.tech/assets/portfolio-share.png?v=20261114e">
+  <meta property="og:title" content="Harvey Rayhanson, Media Artist, Graphic Designer, and AI Engineer">
+  <meta property="og:description" content="AI systems, product design, and creative code: a shared memory for AI agents, web apps, gesture-controlled visuals, browser games, and sound.">
+  <meta property="og:image" content="https://rayhanson.tech/assets/portfolio-share.png?v=20261114x">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rayhanson, media artist, graphic designer, and AI engineer">
+  <meta property="og:image:alt" content="Harvey Rayhanson, Media Artist, Graphic Designer, and AI Engineer">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rayhanson.tech/">
@@ -25,10 +25,12 @@
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&f[]=switzer@400,500&display=swap">
   <link rel="preload" as="style" href="tokens.css">
   <link rel="preload" as="style" href="base.css">
-  <link rel="stylesheet" href="home.css?v=20261114e">
+  <link rel="stylesheet" href="home.css?v=20261114x">
   <script>document.documentElement.classList.add('js');</script>
-  <script src="scene.js?v=20261114e" defer></script>
-  <script src="home.js?v=20261114e" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="scene.js?v=20261114x" defer></script>
+  <script src="grip.js?v=20261114x" defer></script>
+  <script src="home.js?v=20261114x" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="lift.js?v=20261114x" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -63,12 +65,12 @@
         </a>
         <div class="hero__text">
           <h1 data-reveal>Harvey Rayhanson</h1>
-          <p class="hero__role" data-reveal style="--i:1">Media artist, graphic designer and AI engineer</p>
+          <p class="hero__role" data-reveal style="--i:1">Media Artist, Graphic Designer, and AI Engineer</p>
           <p class="lead" data-reveal style="--i:2">I like understanding how things work, then imagining what else they could do.</p>
           <ul class="does" data-reveal style="--i:3">
             <li><svg class="icon" aria-hidden="true"><use href="#i-cpu"/></svg><span><b>AI systems</b> Enigma MCP, a shared memory for AI agents</span></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span><b>Product design and development</b> JimBro, GymLog and LeaveBy</span></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-sound"/></svg><span><b>Creative code and sound</b> Gesture, generative and audio pieces</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span><b>Product design and development</b> JimBro, GymLog, and LeaveBy</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-sound"/></svg><span><b>Creative code and sound</b> Gesture, generative, and audio pieces</span></li>
           </ul>
           <div class="actions" data-reveal style="--i:4">
             <a class="btn" href="#work"><svg class="icon" aria-hidden="true"><use href="#i-down"/></svg>Explore my work</a>
@@ -98,20 +100,43 @@
         <div class="panel__text">
           <img class="panel__mark" src="projects/enigma/media/logo.svg" width="256" height="256" alt="Enigma MCP logo" data-reveal>
           <h2 data-reveal>One memory for all your AI agents</h2>
-          <p class="lead" data-reveal style="--i:1">Enigma MCP is one Rust binary that gives Claude Code, Codex and other agents a shared memory, kept as plain notes in Obsidian.</p>
+          <p class="lead" data-reveal style="--i:1">Enigma MCP is one Rust binary that gives Claude Code, Codex, and other agents a shared memory, kept as plain notes in Obsidian.</p>
           <dl class="figures" data-reveal style="--i:2">
             <div><dt>MCP tools</dt><dd>25</dd></div>
-            <div><dt>tests</dt><dd>507</dd></div>
+            <div><dt>Tests</dt><dd>507</dd></div>
           </dl>
-          <dl class="facts card" data-tilt data-reveal style="--i:3">
+          <dl class="facts card" id="enigma-facts" data-lift="#enigma-forward" data-tilt data-reveal style="--i:3">
             <div><dt>Search by words and by meaning</dt><dd>A keyword ranking and an embedding ranking, merged into one result list.</dd></div>
             <div><dt>A graph you can open</dt><dd>Entities are ordinary notes, so Obsidian’s graph view shows them.</dd></div>
-            <div><dt>A vault that looks after itself</dt><dd>One nightly run indexes new notes, suggests filing, checks health and reports.</dd></div>
+            <div><dt>A vault that looks after itself</dt><dd>One nightly run indexes new notes, suggests filing, checks health, and reports.</dd></div>
+            <div><dt>Write rules enforced in code</dt><dd>Agents write inside one folder of the vault. Anything else needs an explicit confirmation.</dd></div>
           </dl>
           <p class="links" data-reveal style="--i:4">
-            <a href="projects/enigma/">View the Enigma case study</a>
+            <a href="projects/enigma/">View the Enigma MCP case study</a>
             <a href="https://github.com/Rayhanson-Git/enigma" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Read Enigma on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+            <button class="text-link peek" type="button" data-peek="#enigma-facts">Quick look<span class="visually-hidden">, Enigma MCP</span></button>
           </p>
+          <article class="feature card" id="enigma-forward" hidden>
+            <a class="shot shot--mark" href="projects/enigma/" data-slot="enigma" data-kind="mark" data-alt="Enigma MCP logo">
+              <img src="projects/enigma/media/logo.svg" width="256" height="256" alt="Enigma MCP logo" loading="lazy">
+            </a>
+            <div class="feature__text">
+              <h2>Enigma MCP</h2>
+              <p class="hook">One memory for all your AI agents</p>
+              <p class="meta">AI systems, Rust, 2026</p>
+              <p>One Rust binary that gives Claude Code, Codex, and other agents a shared memory, kept as plain notes in Obsidian.</p>
+              <dl class="figures">
+                <div><dt>MCP tools</dt><dd>25</dd></div>
+                <div><dt>Tests</dt><dd>507</dd></div>
+              </dl>
+              <ul class="tags"><li>Rust</li><li>MCP server</li><li>Hybrid search</li></ul>
+              <div class="more" hidden>
+                <p>Every agent that connects gets the same 25 tools: search the vault, read and write notes, follow the knowledge graph, log a session, add a task. The notes stay yours.</p>
+                <dl class="more__facts"><div><dt>Search</dt><dd>By words and by meaning, merged into one result list</dd></div><div><dt>Graph</dt><dd>Entities are ordinary notes, so Obsidian’s graph view shows them</dd></div><div><dt>Upkeep</dt><dd>One nightly run indexes, suggests filing, and checks health</dd></div><div><dt>Runs on</dt><dd>macOS, Linux, and Windows</dd></div></dl>
+              </div>
+              <p class="links"><a href="projects/enigma/">View the Enigma MCP case study</a><a href="https://github.com/Rayhanson-Git/enigma" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Read Enigma on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -131,10 +156,10 @@
       <div class="container">
         <div class="head plate" data-reveal>
           <h2>Designed around the moment</h2>
-          <p class="lead">Projects exploring everyday experiences through design, code, movement, and sound</p>
+          <p class="lead">Projects exploring everyday experiences through design, code, movement, and sound.</p>
         </div>
 
-        <article class="feature card" id="jimbro" data-tilt data-reveal>
+        <article class="feature card" id="jimbro" data-lift data-tilt data-reveal>
           <a class="shot" href="projects/jimbro/" data-slot="jimbro" data-kind="product" data-alt="JimBro’s Today screen">
             <img src="projects/jimbro/media/today-desktop.png" width="1760" height="1100" alt="JimBro’s Today screen: planning a workout around the next commitment, with Jim the cucumber alongside" loading="lazy">
           </a>
@@ -143,13 +168,17 @@
             <p class="hook">Plan your time<br>Train, log, and review with Jim</p>
             <p class="meta">Product design and development, 2026</p>
             <p>A local-first gym companion combining LeaveBy’s scheduling with GymLog’s completed-set logging. Plan a routine, track your workout, review history and progress, and keep your own backups, with animated Jim along the way.</p>
-            <ul class="tags"><li>Product design</li><li>Next.js and React</li><li>Local persistence</li></ul>
-            <p class="links"><a href="https://jimbro.rayhanson.tech/" target="_blank" rel="noopener">Try JimBro<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/jimbro/">View the JimBro case study</a></p>
+            <ul class="tags"><li>Product design</li><li>Next.js</li><li>React</li><li>Local persistence</li></ul>
+            <div class="more" hidden>
+              <p>My routine often runs from the gym to school, then work. The difficult part is making room for what happens between them.</p>
+              <dl class="more__facts"><div><dt>Role</dt><dd>Product design, development, and character design</dd></div><div><dt>Context</dt><dd>From two focused tools to one daily companion</dd></div><div><dt>Built with</dt><dd>Next.js, React, TypeScript, Tailwind CSS, IndexedDB, SVG</dd></div><div><dt>Status</dt><dd>Live web app, local-first</dd></div></dl>
+            </div>
+            <p class="links"><a href="https://jimbro.rayhanson.tech/" target="_blank" rel="noopener">Try JimBro<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/jimbro/">View the JimBro case study</a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, JimBro</span></button></p>
           </div>
         </article>
 
         <div class="pair">
-          <article class="pair__item card" id="gymlog" data-tilt data-reveal>
+          <article class="pair__item card" id="gymlog" data-lift data-tilt data-reveal>
             <a class="phones" href="projects/gymlog/index.html">
               <img src="assets/home.svg" width="390" height="844" alt="GymLog home screen" loading="lazy">
               <img src="assets/review.svg" width="390" height="844" alt="GymLog review screen for confirming a set" loading="lazy">
@@ -160,10 +189,14 @@
             <p class="meta">Mobile app design, 2026</p>
             <p>A workout companion that keeps logging simple, so your attention stays on the next set.</p>
             <ul class="tags"><li>UX design</li><li>Interface design</li><li>Interactive prototype</li></ul>
-            <p class="links"><a href="projects/gymlog/index.html">View the GymLog case study</a><a href="projects/gymlog/prototype.html">Try the prototype</a></p>
+            <div class="more" hidden>
+              <p>A workout log should fit into a busy day, without becoming another task to manage.</p>
+              <dl class="more__facts"><div><dt>Context</dt><dd>Design Foundations II</dd></div><div><dt>Focus</dt><dd>Core workout flow</dd></div><div><dt>Process</dt><dd>Flow, wireframes, mockup</dd></div><div><dt>Format</dt><dd>Interactive web prototype</dd></div></dl>
+            </div>
+            <p class="links"><a href="projects/gymlog/index.html">View the GymLog case study</a><a href="projects/gymlog/prototype.html">Try the prototype</a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, GymLog</span></button></p>
           </article>
 
-          <article class="pair__item card" id="leaveby" data-tilt data-reveal style="--i:1">
+          <article class="pair__item card" id="leaveby" data-lift data-tilt data-reveal style="--i:1">
             <a class="shot shot--tall" href="projects/leaveby/index.html" data-slot="leaveby" data-kind="product" data-alt="LeaveBy timing plan">
               <img src="projects/leaveby/media/plan-result.png" width="1484" height="878" alt="LeaveBy timing plan showing when to stop, leave, and arrive" loading="lazy">
             </a>
@@ -172,7 +205,11 @@
             <p class="meta">Web app design and development, 2026</p>
             <p>A simple planner for the transition from a workout to class or work. Start with your next commitment, add time to get ready, commute, and arrive early, then see when to stop and leave.</p>
             <ul class="tags"><li>Product design</li><li>Next.js</li><li>TypeScript</li></ul>
-            <p class="links"><a href="https://leaveby.rayhanson.tech/leaveby" target="_blank" rel="noopener">Visit LeaveBy<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/leaveby/index.html">View the LeaveBy project</a></p>
+            <div class="more" hidden>
+              <p>LeaveBy helps plan the transition from a workout to a fixed class or work start time.</p>
+              <dl class="more__facts"><div><dt>Context</dt><dd>Product Design &amp; Prototyping</dd></div><div><dt>Format</dt><dd>Responsive web app</dd></div><div><dt>Built with</dt><dd>Next.js, TypeScript, Tailwind CSS</dd></div><div><dt>Hosting</dt><dd>Vercel, custom domain</dd></div></dl>
+            </div>
+            <p class="links"><a href="https://leaveby.rayhanson.tech/leaveby" target="_blank" rel="noopener">Try LeaveBy<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/leaveby/index.html">View the LeaveBy case study</a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, LeaveBy</span></button></p>
           </article>
         </div>
       </div>
@@ -183,57 +220,77 @@
         <div class="panel__text panel__text--wide">
           <h2 data-reveal>Move your hands<br>Reshape the scene</h2>
           <ul class="tiles">
-            <li class="tile card" id="gesture-particles" data-tilt data-reveal>
+            <li class="tile card" id="gesture-particles" data-lift data-tilt data-reveal>
               <a class="tile__art" href="projects/gesture-particles/index.html"><img src="assets/projects/gesture-particles.svg" width="800" height="500" alt="A spherical constellation of particles surrounded by gesture guide marks" loading="lazy"></a>
               <div>
                 <h3>Gesture Particles</h3>
                 <p class="meta">Computer vision and 3D, React, 2026</p>
                 <p>A browser-based particle system that turns hand gestures into scale, rotation, and color. Computer vision meets an evolving field of light.</p>
-                <p class="links"><a href="https://gesture-particles.rayhanson.tech/" target="_blank" rel="noopener">Try Gesture Particles<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/gesture-particles/index.html">View the project<span class="visually-hidden">, Gesture Particles</span></a></p>
+                <div class="more" hidden>
+                  <p>Gesture Particles connects webcam hand tracking to a three-dimensional particle system. Rather than relying only on sliders, it lets a physical gesture change the composition. Shape templates and a settings panel provide another way to explore density, color, and movement.</p>
+                  <dl class="more__facts"><div><dt>Format</dt><dd>Interactive web experience</dd></div><div><dt>Built with</dt><dd>React, TypeScript, Three.js, MediaPipe</dd></div></dl>
+                </div>
+                <p class="links"><a href="https://gesture-particles.rayhanson.tech/" target="_blank" rel="noopener">Try Gesture Particles<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/gesture-particles/index.html">View the project<span class="visually-hidden">, Gesture Particles</span></a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, Gesture Particles</span></button></p>
                 <p class="note">A webcam and WebGL-capable browser are needed for gesture interaction. A desktop or laptop gives the controls more room.</p>
               </div>
             </li>
-            <li class="tile card" id="virtual-theremin" data-tilt data-reveal>
+            <li class="tile card" id="virtual-theremin" data-lift data-tilt data-reveal>
               <a class="tile__art" href="projects/virtual-theremin/index.html"><img src="assets/projects/virtual-theremin.svg" width="800" height="500" alt="A flowing audio wave between two gesture nodes" loading="lazy"></a>
               <div>
                 <h3>Virtual Theremin</h3>
                 <p class="hook">An instrument in the space between your hands</p>
                 <p class="meta">Gesture and sound, React, 2026</p>
                 <p>A webcam instrument that maps hand movement to synthesized vocals, bass, and finger-tap drums, with visuals that follow the performance.</p>
-                <p class="links"><a href="https://virtual-theremin.rayhanson.tech/" target="_blank" rel="noopener">Try Virtual Theremin<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/virtual-theremin/index.html">View the project<span class="visually-hidden">, Virtual Theremin</span></a></p>
+                <div class="more" hidden>
+                  <p>Virtual Theremin brings creative coding, computer vision, and web audio into a single performance space. Hand landmarks drive sound parameters and drum triggers, while the visual scene responds to the same movements. An audio-file player lets a personal track become part of the session.</p>
+                  <dl class="more__facts"><div><dt>Format</dt><dd>Interactive web experience</dd></div><div><dt>Built with</dt><dd>React, TypeScript, Tone.js, MediaPipe, Three.js</dd></div></dl>
+                </div>
+                <p class="links"><a href="https://virtual-theremin.rayhanson.tech/" target="_blank" rel="noopener">Try Virtual Theremin<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/virtual-theremin/index.html">View the project<span class="visually-hidden">, Virtual Theremin</span></a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, Virtual Theremin</span></button></p>
                 <p class="note">Use a webcam and speakers or headphones. The interface is best explored on a desktop or laptop, with both hands well lit.</p>
               </div>
             </li>
-            <li class="tile card" id="neon-orbit" data-tilt data-reveal>
+            <li class="tile card" id="neon-orbit" data-lift data-tilt data-reveal>
               <a class="tile__art" href="projects/neon-orbit/index.html"><img src="assets/projects/neon-orbit.svg" width="800" height="500" alt="Portal rings and a flowing trail of glowing particles" loading="lazy"></a>
               <div>
                 <h3>Neon Orbit Arcade</h3>
                 <p class="hook">A cursor, a trail<br>A little controlled chaos</p>
                 <p class="meta">Creative coding, p5.js, 2025</p>
                 <p>A glowing particle playground where the cursor becomes an orb, clicks create portals, and a single key shifts the scene from calm to chaos.</p>
-                <p class="links"><a href="https://neon-orbit.rayhanson.tech/" target="_blank" rel="noopener">Try Neon Orbit Arcade<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/neon-orbit/index.html">View the project<span class="visually-hidden">, Neon Orbit Arcade</span></a></p>
+                <div class="more" hidden>
+                  <p>Neon Orbit Arcade explores how a few simple inputs can make a screen feel alive. Moving the mouse guides an orb; holding it leaves particles behind. Placed portals pull and swirl nearby particles, turning a trail into a small moving system.</p>
+                  <dl class="more__facts"><div><dt>Format</dt><dd>Interactive canvas</dd></div><div><dt>Built with</dt><dd>p5.js, JavaScript</dd></div></dl>
+                </div>
+                <p class="links"><a href="https://neon-orbit.rayhanson.tech/" target="_blank" rel="noopener">Try Neon Orbit Arcade<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/neon-orbit/index.html">View the project<span class="visually-hidden">, Neon Orbit Arcade</span></a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, Neon Orbit Arcade</span></button></p>
                 <p class="note">Best explored with a mouse and keyboard.</p>
               </div>
             </li>
-            <li class="tile card" id="orbit-playground" data-tilt data-reveal>
+            <li class="tile card" id="orbit-playground" data-lift data-tilt data-reveal>
               <a class="tile__art" href="projects/orbit-playground/index.html"><img src="assets/projects/orbit-playground.svg" width="800" height="500" alt="Overlapping orbital paths with pink, lavender, and mint dots" loading="lazy"></a>
               <div>
                 <h3>Orbit Playground</h3>
                 <p class="hook">Click a point<br>Set a small universe in motion</p>
                 <p class="meta">Generative interaction, p5.js, 2025</p>
                 <p>An interactive canvas of orbiting dots. Build new centers of motion, change the palette, and find a rhythm somewhere between stillness and speed.</p>
-                <p class="links"><a href="https://orbit-playground.rayhanson.tech/" target="_blank" rel="noopener">Try Orbit Playground<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/orbit-playground/index.html">View the project<span class="visually-hidden">, Orbit Playground</span></a></p>
+                <div class="more" hidden>
+                  <p>Orbit Playground turns each click into a new center for an orbiting dot. The canvas starts with a small collection of orbiters and builds into overlapping trails. Color and speed controls make the same underlying system feel quiet, playful, or restless.</p>
+                  <dl class="more__facts"><div><dt>Format</dt><dd>Interactive canvas</dd></div><div><dt>Built with</dt><dd>p5.js, JavaScript</dd></div></dl>
+                </div>
+                <p class="links"><a href="https://orbit-playground.rayhanson.tech/" target="_blank" rel="noopener">Try Orbit Playground<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/orbit-playground/index.html">View the project<span class="visually-hidden">, Orbit Playground</span></a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, Orbit Playground</span></button></p>
                 <p class="note">Best explored with a mouse and keyboard.</p>
               </div>
             </li>
-            <li class="tile card" id="wasp-dodge" data-tilt data-reveal>
+            <li class="tile card" id="wasp-dodge" data-lift data-tilt data-reveal>
               <a class="tile__art" href="projects/wasp-dodge/index.html"><img src="assets/projects/wasp-dodge.svg" width="800" height="500" alt="A stylized wasp weaving between circular obstacles" loading="lazy"></a>
               <div>
                 <h3>Wasp Dodge+</h3>
                 <p class="hook">Four lives<br>One more second</p>
                 <p class="meta">Browser game, p5.js, 2025</p>
                 <p>A survival game built around a simple challenge: guide a wasp through moving circles and stay in play for as long as possible.</p>
-                <p class="links"><a href="https://wasp-dodge.rayhanson.tech/" target="_blank" rel="noopener">Try Wasp Dodge+<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/wasp-dodge/index.html">View the project<span class="visually-hidden">, Wasp Dodge+</span></a></p>
+                <div class="more" hidden>
+                  <p>Wasp Dodge+ is a full-screen arcade experiment in movement, collision, and feedback. Four lives leave room to recover from a mistake, while a brief cooldown prevents a single collision from ending the run. The score measures time survived, making every extra second the next small goal.</p>
+                  <dl class="more__facts"><div><dt>Format</dt><dd>Interactive canvas</dd></div><div><dt>Built with</dt><dd>p5.js, JavaScript, p5.sound</dd></div></dl>
+                </div>
+                <p class="links"><a href="https://wasp-dodge.rayhanson.tech/" target="_blank" rel="noopener">Try Wasp Dodge+<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/wasp-dodge/index.html">View the project<span class="visually-hidden">, Wasp Dodge+</span></a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, Wasp Dodge+</span></button></p>
                 <p class="note">Keyboard required for movement. Open it on a desktop or laptop to play.</p>
               </div>
             </li>
@@ -259,7 +316,7 @@
     </div>
 
     <div class="band" aria-hidden="true">
-      <p class="band__row band__row--line"><span>Media artist</span><span>Graphic designer</span><span>AI engineer</span><span>Media artist</span><span>Graphic designer</span><span>AI engineer</span><span>Media artist</span><span>Graphic designer</span><span>AI engineer</span></p>
+      <p class="band__row band__row--line"><span>Media Artist</span><span>Graphic Designer</span><span>AI Engineer</span><span>Media Artist</span><span>Graphic Designer</span><span>AI Engineer</span><span>Media Artist</span><span>Graphic Designer</span><span>AI Engineer</span></p>
       <p class="band__row band__row--fill"><span>Always making</span><span>Always figuring something out</span><span>Always making</span><span>Always figuring something out</span><span>Always making</span><span>Always figuring something out</span></p>
     </div>
 
@@ -270,7 +327,7 @@
           <h2 id="about-heading">It started with a screwdriver<br>It’s still curiosity</h2>
           <dl class="who">
             <div><dt>Harvey Rayhanson</dt><dd>Also known as Harvey Chowdhury</dd></div>
-            <div><dt>Media artist, graphic designer, AI engineer</dt><dd>Always making, always figuring something out</dd></div>
+            <div><dt>Media Artist, Graphic Designer, and AI Engineer</dt><dd>Always making, always figuring something out</dd></div>
           </dl>
           <ul class="social">
             <li><a href="https://www.linkedin.com/in/rayhason/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg><b>LinkedIn</b><span>in/rayhason</span><svg class="icon social__go" aria-hidden="true"><use href="#i-out"/></svg><span class="visually-hidden"> (opens in a new tab)</span></a></li>
@@ -284,7 +341,7 @@
           <p class="lead">I’m Harvey, a media artist, graphic designer, and AI engineer who likes understanding how things work, then imagining what else they could do.</p>
           <p>I was the kid with a screwdriver in his pocket, taking things apart to see what was inside. That instinct never really left. I still learn by experimenting, breaking things, fixing them, and asking one more question.</p>
           <p>Gaming first drew me toward graphic design and a future in the games industry. From there, I found my way into interactive experiences, photography, video editing, and gaming content through RayBits Gaming. As AI opened up new possibilities, I began exploring how it could bring these interests together and help turn ideas into useful tools.</p>
-          <p>Today, most of my work is AI systems and automation: tools that take repetitive work off people’s hands and give AI agents what they need to be useful. Enigma MCP, the shared memory my own agents use every day, came out of that. I’m a designer as much as an engineer, so I still design, record and edit, and I’m still exploring cybersecurity. Each project gives me a reason to try something unfamiliar and understand it a little better.</p>
+          <p>Today, most of my work is AI systems and automation: tools that take repetitive work off people’s hands and give AI agents what they need to be useful. Enigma MCP, the shared memory my own agents use every day, came out of that. I’m a designer as much as an engineer, so I still design, record, and edit, and I’m still exploring cybersecurity. Each project gives me a reason to try something unfamiliar and understand it a little better.</p>
           <p>I want technology to fit naturally into everyday life: to help us become more capable, use our time well, and make room for the things that matter. I see AI as the way to get there, and my work is about making it practical for everyday use.</p>
           <p>Outside the screen, I sometimes pick up a guitar or write a poem. This portfolio is a growing collection of what I make, what I’m learning, and the things that keep me curious. There’s more than one side to the work, and to the person behind it.</p>
         </div>
@@ -297,11 +354,11 @@
           <h2 id="skills-heading" data-reveal>How I work</h2>
           <p class="lead" data-reveal style="--i:1">I work as the architect and the reviewer. I define what a system must do, break it into steps that can be verified, and direct AI coding agents to build it. Nothing ships until it passes the tests and checks I set.</p>
           <dl class="facts card" data-tilt data-reveal style="--i:2">
-            <div><dt>AI systems and agents</dt><dd>MCP servers, multi-agent setups across Claude Code, Codex and OpenClaw, hybrid retrieval, knowledge graphs and evaluation sets. Shown in Enigma MCP.</dd></div>
-            <div><dt>What my projects are built in</dt><dd>Rust for Enigma. TypeScript and React with Next.js for JimBro and LeaveBy. Python for the Tesseract contribution. JavaScript and p5.js for the creative pieces.</dd></div>
-            <div><dt>Product design</dt><dd>Flows, wireframes and interactive prototypes, through to live web apps that keep their data on your device. Shown in GymLog, LeaveBy and JimBro.</dd></div>
-            <div><dt>Creative code</dt><dd>Webcam gesture tracking, generative visuals, real-time shaders and browser games. Shown in Gesture Particles, Virtual Theremin and the web behind this page.</dd></div>
-            <div><dt>Media</dt><dd>Graphic design, sound design in Adobe Audition, photography and video editing. Shown in Studio Apartment Evening.</dd></div>
+            <div><dt>AI systems and agents</dt><dd>MCP servers, multi-agent setups across Claude Code, Codex, and OpenClaw, hybrid retrieval, knowledge graphs, and evaluation sets. Shown in Enigma MCP.</dd></div>
+            <div><dt>What my projects are built in</dt><dd>Rust for Enigma MCP. TypeScript and React with Next.js for JimBro and LeaveBy. Python for the Tesseract contribution. React, Three.js, and p5.js for the creative pieces.</dd></div>
+            <div><dt>Product design</dt><dd>Flows, wireframes, and interactive prototypes, through to live web apps that keep their data on your device. Shown in GymLog, LeaveBy, and JimBro.</dd></div>
+            <div><dt>Creative code</dt><dd>Webcam gesture tracking, generative visuals, real-time shaders, and browser games. Shown in Gesture Particles, Virtual Theremin, and the web behind this page.</dd></div>
+            <div><dt>Media</dt><dd>Graphic design, sound design in Adobe Audition, photography, and video editing. Shown in Studio Apartment Evening.</dd></div>
             <div><dt>Quality</dt><dd>Automated tests, retrieval and speed measurements, builds on three operating systems, and checks for keyboard use and reduced motion.</dd></div>
           </dl>
         </div>
@@ -313,7 +370,7 @@
       <div class="container">
         <div class="panel__text card" data-tilt data-reveal>
           <h2 id="contact-heading">Have something in mind?</h2>
-          <p class="lead">A project, a question, or a new perspective. Let’s talk about it</p>
+          <p class="lead">A project, a question, or a new perspective. Let’s talk about it.</p>
           <p><a class="contact__mail" href="mailto:Harvey@Rayhanson.tech"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Harvey@<wbr>Rayhanson.tech</span></a></p>
           <div class="actions">
             <a class="btn" href="mailto:Harvey@Rayhanson.tech"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Say hello</a>
@@ -332,8 +389,8 @@
         <span class="footer__line">Thoughtful design, everyday impact</span>
         <span class="footer__aim">Exploring the space between a good idea and an experience that feels right</span>
       </a>
-      <nav class="footer__col" aria-label="Product work">
-        <h2 class="footer__title">Products</h2>
+      <nav class="footer__col" aria-label="Projects">
+        <h2 class="footer__title">Projects</h2>
         <ul>
           <li><a href="projects/enigma/">Enigma MCP</a></li>
           <li><a href="projects/jimbro/">JimBro</a></li>

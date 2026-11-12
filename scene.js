@@ -48,7 +48,15 @@
     return { fx: cam.fx, fy: cam.fy, zoom: cam.zoom * m('zoom'), ax: m('ax'), ay: m('ay') };
   }
 
-  if (typeof module === 'object' && module.exports) module.exports = { blendAt, centroid, project, mixCam, narrowCam, strand };
+  // The web enters from the right like the tiles do: it starts a little over one screen away, passes its place by
+  // about a tenth of a screen and settles back. The result is how many screen-widths right of its place it sits.
+  const ARRIVE_SECONDS = 1.3, ARRIVE_FROM = 1.15, OVERSHOOT = 1.70158;
+  function arriveOffset(age) {
+    const u = Math.min(1, Math.max(0, age / ARRIVE_SECONDS)) - 1;
+    return ARRIVE_FROM * -((OVERSHOOT + 1) * u * u * u + OVERSHOOT * u * u);
+  }
+
+  if (typeof module === 'object' && module.exports) module.exports = { blendAt, centroid, project, mixCam, narrowCam, arriveOffset, strand };
   if (typeof document === 'undefined') return;
 
   const MAX_NODES = 16, MAX_SEGS = 40;
@@ -202,8 +210,10 @@ void main() {
   float under = pow(max(dot(n, normalize(vec3(0.6, 0.55, 0.4))), 0.0), 3.0); // a faint red light from below
   float rim = pow(1.0 - dome, 3.0) * max(dot(slope / px, vec2(0.6, 0.7)), 0.0);
   rim += pow(1.0 - dome, 7.0) * uRim * 1.7; // a faint line round the whole edge keeps the black body off the dark ground
-  vec3 col = uInk + uSheen * (0.2 * diff * dome + 0.1 * sheen) + uBone * (0.05 * diff + 0.95 * spec + 0.1 * sheen + 0.16 * rim) + uSignal * 0.09 * under * dome;
-  col += (uSheen * 0.42 + uBone * 0.07) * (veins + hairs * 0.6) * dome; // the veins stand a little proud and paler
+  // The body stays black. Only the tight glint and the edge are bright; the broad grey wash over the big blobs is kept
+  // very low, or it reads as a film lying on the goo instead of light on it.
+  vec3 col = uInk + uSheen * (0.07 * diff * dome + 0.03 * sheen) + uBone * (0.015 * diff + 0.95 * spec + 0.03 * sheen + 0.16 * rim) + uSignal * 0.09 * under * dome;
+  col += (uSheen * 0.2 + uBone * 0.02) * (veins + hairs * 0.5) * dome; // the veins stand a little proud and paler
   col += uSignal * min(fire, 1.4) * (0.45 + 0.55 * dome);
 
   float shadow = smoothstep(0.03 * uLift, -0.015 * uLift, body(p - vec2(0.008, 0.016) * uLift, unused, 0.0)) * 0.2 * (1.0 - inside);
@@ -221,9 +231,10 @@ void main() {
     return [d[0] / 255, d[1] / 255, d[2] / 255];
   }
 
-  function start(canvas, web) {
+  // Sets a canvas up to draw with the web's material. Returns null where WebGL cannot do it.
+  function painter(canvas) {
     const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false });
-    if (!gl || !gl.getExtension('OES_standard_derivatives')) return false;
+    if (!gl || !gl.getExtension('OES_standard_derivatives')) return null;
 
     const compile = (type, src) => {
       const sh = gl.createShader(type);
@@ -252,6 +263,38 @@ void main() {
     gl.uniform3fv(loc.uSheen, tokenRGB('--color-sheen'));
     gl.uniform1f(loc.uRim, parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--goo-rim')) || 0);
     gl.clearColor(0, 0, 0, 0);
+    return { gl, loc };
+  }
+
+  // Draws knots and strands on a painter's canvas. Each knot is [x, y, radius, glow] and each strand is
+  // [x0, y0, x1, y1, halfWidth0, halfWidth1, pulse], in that canvas's CSS pixels; a pulse of -9 means none.
+  // `detail` is the size of the surface detail (ripples, the dome, how far strands melt together) as a share of
+  // `screen`, the page's height: the web itself uses its zoom.
+  const knots = new Float32Array(MAX_NODES * 4), strands = new Float32Array(MAX_SEGS * 4), tapers = new Float32Array(MAX_SEGS * 3);
+  function draw(brush, canvas, nodes, segs, time, detail, screen) {
+    const gl = brush.gl, loc = brush.loc, h = canvas.clientHeight || 1, size = (detail * screen) / h;
+    nodes = nodes.slice(0, MAX_NODES); segs = segs.slice(0, MAX_SEGS);
+    nodes.forEach((n, i) => knots.set([n[0] / h, n[1] / h, n[2] / h, n[3]], i * 4));
+    segs.forEach((g, i) => { strands.set([g[0] / h, g[1] / h, g[2] / h, g[3] / h], i * 4); tapers.set([g[4] / h, g[5] / h, g[6]], i * 3); });
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform2f(loc.uRes, canvas.width, canvas.height);
+    gl.uniform4fv(loc.uNode, knots);
+    gl.uniform4fv(loc.uSeg, strands);
+    gl.uniform3fv(loc.uTaper, tapers);
+    gl.uniform1i(loc.uNodes, nodes.length);
+    gl.uniform1i(loc.uSegs, segs.length);
+    gl.uniform1f(loc.uSmooth, 0.03 * size);
+    gl.uniform1f(loc.uTime, time);
+    gl.uniform1f(loc.uDepth, 0.022 * size);
+    gl.uniform1f(loc.uLift, size);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  }
+
+  function start(canvas, web) {
+    const brush = painter(canvas);
+    if (!brush) return false;
+    const gl = brush.gl, loc = brush.loc;
 
     // Nodes and their links are read from the project links in the page, so the web and the markup cannot drift apart.
     const nodes = [...web.querySelectorAll('[data-node]')].slice(0, MAX_NODES - 1).map((el, i) => ({
@@ -280,7 +323,21 @@ void main() {
     });
 
     const reduce = matchMedia('(prefers-reduced-motion: reduce)');
-    const state = root.RayScene = { level: 0, paused: false };
+    const nearestNode = (x, y) => nodes.reduce((best, n) => (Math.hypot(n.sx - x, n.sy - y) < Math.hypot(best.sx - x, best.sy - y) ? n : best));
+    // `hold` is set by grip.js: the point on a held button or tile that the tendril should reach for.
+    // `reach` is the tendril as last drawn, so grip.js can carry the very same strand on over the edge.
+    const state = root.RayScene = {
+      level: 0, paused: false, hold: null, pulse: -1, reach: null, time: 0, height: 1, sharp: 1,
+      // Which knot a hold on `box` should come from: the closest one that is not hidden behind the box itself.
+      // It is chosen once per hold and named in `hold.from`, so the tendril does not jump between knots.
+      from: (box) => {
+        const gap = (n) => Math.hypot(Math.max(box.left - n.sx, 0, n.sx - box.right), Math.max(box.top - n.sy, 0, n.sy - box.bottom));
+        const outside = nodes.filter((n) => gap(n) > 0);
+        return nodes.indexOf((outside.length ? outside : nodes).reduce((best, n) => (gap(n) < gap(best) ? n : best)));
+      },
+      where: (i) => ({ x: nodes[i].sx, y: nodes[i].sy }),
+      painter, draw,
+    };
     let centers = [], W = 1, H = 1, sharp = Math.min(devicePixelRatio || 1, 1.1), dirty = true;
 
     function measure() {
@@ -320,7 +377,7 @@ void main() {
     canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); alive = false; document.documentElement.classList.remove('webgl'); });
 
     const nodeData = new Float32Array(MAX_NODES * 4), segData = new Float32Array(MAX_SEGS * 4), taperData = new Float32Array(MAX_SEGS * 3);
-    let time = 0, level = 0, last = performance.now(), eye = scrollY + innerHeight / 2, seen = -1, slowFrames = 0, frames = 0, warmup = 45;
+    let time = 0, level = 0, last = performance.now(), eye = scrollY + innerHeight / 2, seen = -1, slowFrames = 0, frames = 0, warmup = 45, age = 0;
 
     function frame(now) {
       if (!alive) return;
@@ -338,7 +395,10 @@ void main() {
         }
       }
       last = now;
-      const still = reduce.matches || state.paused;
+      age += dt;
+      const arriving = !reduce.matches && age < ARRIVE_SECONDS; // the entrance always finishes, even if motion is paused meanwhile
+      const still = reduce.matches || (state.paused && !arriving);
+      const held = still ? null : state.hold;
       const aim = scrollY + innerHeight / 2;
       eye = still ? aim : eye + (aim - eye) * Math.min(1, dt * 8);
       if (still && eye === seen && !dirty) return;
@@ -347,8 +407,9 @@ void main() {
       if (!still) {
         time += dt;
         level += (state.level - level) * Math.min(1, dt * 10);
-        tipX += (mouseX - tipX) * Math.min(1, dt * 7);
-        tipY += (mouseY - tipY) * Math.min(1, dt * 7);
+        // The tendril's tip follows the pointer, or goes to the edge of whatever is being held.
+        tipX += ((held ? held.x : mouseX) - tipX) * Math.min(1, dt * 7);
+        tipY += ((held ? held.y : mouseY) - tipY) * Math.min(1, dt * 7);
       }
 
       const b = blendAt(centers, eye), from = sections[b.i], to = sections[b.i + 1];
@@ -357,6 +418,10 @@ void main() {
       const overview = b.i === 0 ? 1 - t : 0;
       let cam = mixCam(from.cam, to.cam, t);
       if (narrow) cam = narrowCam(cam, overview);
+      if (arriving) {
+        cam = { fx: cam.fx, fy: cam.fy, zoom: cam.zoom, ax: cam.ax + arriveOffset(age), ay: cam.ay };
+        dirty = true; // so one more frame is drawn after the entrance ends, exactly in place, even if motion is paused
+      }
       canvas.style.opacity = narrow ? NARROW_DIM + (1 - NARROW_DIM) * overview : 1;
       if (mark) mark.style.opacity = canvas.style.opacity;
       web.style.setProperty('--overview', overview.toFixed(3));
@@ -395,12 +460,14 @@ void main() {
       const addStrand = (a, b, wEnd, sway, pulse) => {
         if (segs + 2 > MAX_SEGS) return;
         const sag = Math.hypot(b.x - a.x, b.y - a.y) * SAG;
-        strand(a, b, sway, wEnd, wEnd * 0.42).forEach((piece, half) => {
+        const pieces = strand(a, b, sway, wEnd, wEnd * 0.42);
+        pieces.forEach((piece, half) => {
           piece[half ? 1 : 3] += sag; // the shared midpoint hangs lower
           segData.set([piece[0] / H, piece[1] / H, piece[2] / H, piece[3] / H], segs * 4);
           taperData.set([piece[4] / H, piece[5] / H, pulse < 0 ? -9 : pulse * 2 - half], segs * 3);
           segs++;
         });
+        return pieces;
       };
       links.forEach((l) => {
         if (!still) {
@@ -419,14 +486,20 @@ void main() {
         addStrand({ x: l.a.sx, y: l.a.sy }, { x: l.b.sx, y: l.b.sy }, Math.min(l.a.sr, l.b.sr) * 0.11, still ? 0.05 : 0.05 + 0.05 * Math.sin(time * 0.8 + l.phase), along);
       });
 
-      // A tendril reaches from the nearest node to the cursor.
-      reach += ((live && nearest ? 1 : 0) - reach) * Math.min(1, dt * 6);
+      // A tendril reaches from the nearest node to the cursor. When something is held it comes from the node nearest
+      // that thing, however far, and ends on its edge, where grip.js takes over above the page.
+      const source = held ? nodes[held.from] || nearestNode(held.x, held.y) : nearest;
+      reach += ((held || (live && nearest) ? 1 : 0) - reach) * Math.min(1, dt * 6);
       let count = nodes.length;
-      if (reach > 0.02 && nearest) {
+      state.reach = null;
+      if (reach > 0.02 && source) {
         nodeData.set([tipX / H, tipY / H, (0.015 * k * reach) / H, 0], count * 4);
         count++;
-        addStrand({ x: nearest.sx, y: nearest.sy }, { x: tipX, y: tipY }, nearest.sr * 0.085 * reach, 0.12 * Math.sin(time * 1.3), -1);
+        // `pulse` is set by grip.js: one red pulse runs down the tendril as it takes hold.
+        const pieces = addStrand({ x: source.sx, y: source.sy }, { x: tipX, y: tipY }, source.sr * 0.085 * reach, 0.12 * Math.sin(time * 1.3), held ? state.pulse : -1);
+        if (pieces) state.reach = { pieces, tip: { x: tipX, y: tipY }, knot: 0.015 * k * reach };
       }
+      state.time = time; state.height = H; state.sharp = sharp;
 
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform2f(loc.uRes, canvas.width, canvas.height);

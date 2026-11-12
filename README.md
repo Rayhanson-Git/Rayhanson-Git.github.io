@@ -41,7 +41,7 @@ Harvey Rayhanson’s portfolio: AI systems, product design, creative code and so
 
 ## The experience
 
-- A black web drawn in WebGL sits behind the page. Each node is a project and a real link; strands pulse, reach for the pointer and drip. The view travels through the web as the page scrolls.
+- A black web drawn in WebGL sits behind the page and enters from the right. Each node is a project and a real link; strands pulse, reach for the pointer and drip. Point at a project button, a tile or one of the two opening buttons and a tendril takes hold of it. The view travels through the web as the page scrolls.
 - Tiles and text fly in from the side as they scroll into view, overshoot and settle. Buttons hop on hover, and screenshots straighten and lift inside their tiles.
 - A floating bar at the foot of the screen marks the section in view. A round control pauses all motion.
 - The page works without JavaScript and without WebGL (the web becomes a plain list of links), and it respects the device’s reduced-motion preference.
@@ -51,9 +51,9 @@ Harvey Rayhanson’s portfolio: AI systems, product design, creative code and so
 
 - `tokens.css` holds every colour, size and timing. `base.css` holds the resets. `home.css` holds the shared look: ground, tiles, buttons, links, floating bar, footer and entrances.
 - `case.css` adds what only the case-study pages need. A project can add its own `project.css` after it.
-- `scene.js` draws the web and moves the camera. `home.js` handles entrances, the current link in the bar, hover lighting, copy buttons and GymLog’s screen dialog.
+- `scene.js` draws the web and moves the camera. `grip.js` makes the web's tendril take hold of the button or tile under the pointer, drawn with the same renderer on a small canvas above the page. `lift.js` brings a project tile forward when it is clicked, with a little more about the project. `home.js` handles entrances, the current link in the bar, hover lighting, copy buttons and GymLog’s screen dialog.
 - To add a project to the web, add one `<a class="web__node" data-node="..." data-x data-y data-r>` in `index.html` and name it in a section’s `data-focus`.
-- `tests/scene.test.mjs` covers the camera maths: run `node --test tests/scene.test.mjs`.
+- `tests/scene.test.mjs` covers the camera maths and `tests/grip.test.mjs` the grip's geometry: run `node --test tests/scene.test.mjs tests/grip.test.mjs tests/lift.test.mjs`.
 
 ## Rayhanson identity
 
@@ -78,7 +78,7 @@ Open [localhost:8080](http://localhost:8080). You can also open `index.html` dir
 | Path | Contents |
 | --- | --- |
 | `index.html` | Homepage: the web, the work, how I work, about and contact |
-| `tokens.css`, `base.css`, `home.css`, `scene.js`, `home.js` | Shared design, the web and interactions |
+| `tokens.css`, `base.css`, `home.css`, `scene.js`, `grip.js`, `lift.js`, `home.js` | Shared design, the web, its grip, tiles brought forward, and interactions |
 | `case.css` | Styles shared by the case-study pages |
 | `projects/enigma/` | Enigma MCP case study, with install steps |
 | `projects/tesseract/` | A short page on one contribution to another author’s project |
