@@ -40,11 +40,19 @@
     return [[a.x, a.y, mx, my, wEnd, wMid], [mx, my, b.x, b.y, wMid, wEnd]];
   }
 
-  if (typeof module === 'object' && module.exports) module.exports = { blendAt, centroid, project, mixCam, strand };
+  // An upright phone has no open half of the screen for the web. It starts small above the headline; as you scroll on
+  // it grows and moves to the middle, where it stays behind the page.
+  const NARROW_OVERVIEW = { zoom: 0.38, ax: 0.42, ay: 0.25 }, NARROW_DEEP = { zoom: 0.5, ax: 0.5, ay: 0.5 };
+  function narrowCam(cam, overview) {
+    const m = (key) => NARROW_DEEP[key] + (NARROW_OVERVIEW[key] - NARROW_DEEP[key]) * overview;
+    return { fx: cam.fx, fy: cam.fy, zoom: cam.zoom * m('zoom'), ax: m('ax'), ay: m('ay') };
+  }
+
+  if (typeof module === 'object' && module.exports) module.exports = { blendAt, centroid, project, mixCam, narrowCam, strand };
   if (typeof document === 'undefined') return;
 
   const MAX_NODES = 16, MAX_SEGS = 40;
-  const NARROW_ZOOM = 0.38;
+  const NARROW_DIM = 0.9; // behind a phone's full-width text the web is dimmed a touch, so the words stay readable
   const SAMPLE_FRAMES = 12, SLOW_FRAME_MS = 22, SLOW_SHARE = 8; // 8 of 12 frames over 22ms counts as slow
   const SAG = 0.07; // how far a strand's middle hangs, as a share of its length // on a phone the whole web sits small above the headline
   const VERTEX = 'attribute vec2 aPos; void main() { gl_Position = vec4(aPos, 0.0, 1.0); }';
@@ -348,9 +356,8 @@ void main() {
       const narrow = W / H <= 0.9;
       const overview = b.i === 0 ? 1 - t : 0;
       let cam = mixCam(from.cam, to.cam, t);
-      // A phone has no open half to put the web in, so it lives above the headline and leaves when you scroll on.
-      if (narrow) cam = { fx: cam.fx, fy: cam.fy, zoom: cam.zoom * NARROW_ZOOM, ax: 0.42, ay: 0.25 };
-      canvas.style.opacity = narrow ? overview : 1;
+      if (narrow) cam = narrowCam(cam, overview);
+      canvas.style.opacity = narrow ? NARROW_DIM + (1 - NARROW_DIM) * overview : 1;
       if (mark) mark.style.opacity = canvas.style.opacity;
       web.style.setProperty('--overview', overview.toFixed(3));
       web.classList.toggle('is-map', overview > 0.6);

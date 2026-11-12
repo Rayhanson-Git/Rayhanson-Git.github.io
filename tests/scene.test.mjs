@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 
-const { blendAt, centroid, project, mixCam, strand } = createRequire(import.meta.url)('../scene.js');
+const { blendAt, centroid, project, mixCam, narrowCam, strand } = createRequire(import.meta.url)('../scene.js');
 
 test('the view holds still while its own section is centred', () => {
   const centers = [500, 1500, 2500];
@@ -62,4 +62,18 @@ test('a strand is two pieces that share a midpoint and its thin width', () => {
   // Assert: the midpoint is pushed sideways, both pieces meet there, thick at the ends and thin in the middle
   assert.deepEqual(first, [0, 0, 5, 2, 4, 1]);
   assert.deepEqual(second, [5, 2, 10, 0, 1, 4]);
+});
+
+test('on an upright phone the web starts small above the headline, then grows and settles mid-screen', () => {
+  // Arrange: a section camera focused on (1, -1) at zoom 2
+  const cam = { fx: 1, fy: -1, zoom: 2, ax: 0.74, ay: 0.5 };
+  const near = (a, b) => assert.ok(Math.abs(a - b) < 1e-9, `${a} is not ${b}`);
+
+  // Act: the first screen (overview 1) and any later section (overview 0)
+  const first = narrowCam(cam, 1), later = narrowCam(cam, 0);
+
+  // Assert: the focus is kept; only the zoom and the anchor change, and the web is never dropped from the screen
+  assert.deepEqual([first.fx, first.fy, later.fx, later.fy], [1, -1, 1, -1]);
+  near(first.zoom, 0.76); near(first.ax, 0.42); near(first.ay, 0.25);
+  near(later.zoom, 1); near(later.ax, 0.5); near(later.ay, 0.5);
 });
