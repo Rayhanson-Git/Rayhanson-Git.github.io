@@ -14,12 +14,12 @@
   <a href="mailto:Harvey@Rayhanson.tech">Get in touch</a>
 </p>
 
-Harvey Rayhanson’s portfolio, also known as Harvey Chowdhury. Exploring everyday experiences through visual design, AI, interactive projects, and sound. Built around the Rayhanson identity: midnight navy, layered teals, warm cream, and burnt orange, with fluid motion and clear paths into each project.
+Harvey Rayhanson’s portfolio: AI systems, product design, creative code and sound. Built around the Rayhanson identity: midnight navy, layered teals, warm cream and a hint of crimson, with a living web of projects behind the page.
 
 <details>
 <summary>Preview the portfolio</summary>
 
-[![Rayhanson portfolio with the approved logo and dark brand palette](assets/portfolio-preview.jpg)](https://rayhanson.tech/)
+[![The Rayhanson portfolio homepage: the opening text beside a black web whose nodes are the projects](assets/portfolio-preview.jpg)](https://rayhanson.tech/)
 
 </details>
 
@@ -27,6 +27,7 @@ Harvey Rayhanson’s portfolio, also known as Harvey Chowdhury. Exploring everyd
 
 | Project | Focus | Explore |
 | --- | --- | --- |
+| **Enigma MCP** | One Rust binary that gives AI agents a shared memory, kept as plain notes in an Obsidian vault. | [Case study](https://rayhanson.tech/projects/enigma/) · [Repository](https://github.com/Rayhanson-Git/enigma) |
 | **JimBro** | LeaveBy scheduling and GymLog’s completed-set logging, unified in one persistent gym companion. | [Case study](https://rayhanson.tech/projects/jimbro/) · [Live app](https://jimbro.rayhanson.tech/) |
 | **GymLog** | A workout companion that keeps set logging clear, quick, and easy to correct. | [Case study](https://rayhanson.tech/projects/gymlog/) · [Interactive prototype](https://rayhanson.tech/projects/gymlog/prototype.html) |
 | **Studio Apartment Evening** | A 3:06 audio story built from 11 self-recorded sounds in Adobe Audition. | [Project and audio](https://rayhanson.tech/projects/studio-apartment-evening/) |
@@ -36,27 +37,28 @@ Harvey Rayhanson’s portfolio, also known as Harvey Chowdhury. Exploring everyd
 | **Gesture Particles** | A browser-based particle system that turns hand gestures into scale, rotation, and color. Computer vision meets an evolving field of light. | [Project](https://rayhanson.tech/projects/gesture-particles/) · [Live experience](https://gesture-particles.rayhanson.tech/) |
 | **Virtual Theremin** | A webcam instrument that maps hand movement to synthesized vocals, bass, and finger-tap drums, with visuals that follow the performance. | [Project](https://rayhanson.tech/projects/virtual-theremin/) · [Live experience](https://virtual-theremin.rayhanson.tech/) |
 | **Wasp Dodge+** | A survival game built around a simple challenge: guide a wasp through moving circles and stay in play for as long as possible. | [Project](https://rayhanson.tech/projects/wasp-dodge/) · [Live experience](https://wasp-dodge.rayhanson.tech/) |
+| **Tesseract MCP** (side contribution) | One merged pull request to Taimoor’s memory server for AI agents: atomic create-only writes and per-agent identity. | [Summary](https://rayhanson.tech/projects/tesseract/) · [Pull request](https://github.com/DeepExtrema/tesseract/pull/21) |
 
 ## The experience
 
-- A horizontally scrolling hero with previews of every project, gentle automatic rotation, swipe, arrow, and keyboard controls.
-- The carousel pauses during interaction and has its own pause control. Decorative animation automatically respects the device’s reduced-motion preference.
-- Responsive project layouts, subtle section entrances, pointer highlights, and expandable GymLog screen previews.
-- A dedicated contact section with email and copy controls: **[Harvey@Rayhanson.tech](mailto:Harvey@Rayhanson.tech)**.
+- A black web drawn in WebGL sits behind the page. Each node is a project and a real link; strands pulse, reach for the pointer and drip. The view travels through the web as the page scrolls.
+- Tiles and text fly in from the side as they scroll into view, overshoot and settle. Buttons hop on hover, and screenshots straighten and lift inside their tiles.
+- A floating bar at the foot of the screen marks the section in view. A round control pauses all motion.
+- The page works without JavaScript and without WebGL (the web becomes a plain list of links), and it respects the device’s reduced-motion preference.
+- A contact section with email and copy controls: **[Harvey@Rayhanson.tech](mailto:Harvey@Rayhanson.tech)**.
 
-## Navigation and future sections
+## How it is put together
 
-The shared left rail expands on hover, keyboard focus, or its toggle. On mobile, the toggle opens a vertical drawer with an overlay, Escape support, and focus management. Home, Work, About, and Contact use real links; the homepage highlights the section currently in view.
-
-To add another destination, such as Poetry, add a link to `.rail-links` on each page with a matching `data-section` and a real section ID or page URL. No tab-switching framework is required. Case studies use the same navigation and link back to the homepage sections.
-
-`navigation.css` controls the rail and biography layout; `navigation.js` manages expansion, mobile behavior, and the active section.
+- `tokens.css` holds every colour, size and timing. `base.css` holds the resets. `home.css` holds the shared look: ground, tiles, buttons, links, floating bar, footer and entrances.
+- `case.css` adds what only the case-study pages need. A project can add its own `project.css` after it.
+- `scene.js` draws the web and moves the camera. `home.js` handles entrances, the current link in the bar, hover lighting, copy buttons and GymLog’s screen dialog.
+- To add a project to the web, add one `<a class="web__node" data-node="..." data-x data-y data-r>` in `index.html` and name it in a section’s `data-focus`.
+- `tests/scene.test.mjs` covers the camera maths: run `node --test tests/scene.test.mjs`.
 
 ## Rayhanson identity
 
-The portfolio uses the supplied Rayhanson logo kit. Reflective artwork appears at a readable size on the homepage; ivory vector symbols and wordmarks serve the navigation rail, mobile header, and footer. Original aspect ratios and artwork are preserved.
+The portfolio uses the supplied Rayhanson logo kit. The reflective logo appears in the corner of every page, on the centre node of the web and in the footer. Original aspect ratios and artwork are preserved.
 
-- `brand.css` applies the shared brand palette and responsive logo placement.
 - `assets/brand/` contains the selected original logo exports, icon sizes, and palette.
 - `assets/favicon.svg`, `assets/brand/favicon.ico`, and `site.webmanifest` supply browser and home-screen icons.
 - `assets/portfolio-banner.svg` and `assets/portfolio-share.png` carry the identity into GitHub and shared links.
@@ -75,17 +77,20 @@ Open [localhost:8080](http://localhost:8080). You can also open `index.html` dir
 
 | Path | Contents |
 | --- | --- |
-| `index.html` | Homepage, project showcase, about, and contact |
-| `style.css`, `refinements.css`, `script.js`, `navigation.css`, `navigation.js` | Shared design and interactions |
+| `index.html` | Homepage: the web, the work, how I work, about and contact |
+| `tokens.css`, `base.css`, `home.css`, `scene.js`, `home.js` | Shared design, the web and interactions |
+| `case.css` | Styles shared by the case-study pages |
+| `projects/enigma/` | Enigma MCP case study, with install steps |
+| `projects/tesseract/` | A short page on one contribution to another author’s project |
 | `projects/jimbro/` | Unified gym companion case study, inspiration, project origins and working-app previews |
 | `projects/gymlog/` | Case study and working prototype |
 | `projects/studio-apartment-evening/` | Audio story, process, recordings, and session screenshot |
 | `projects/leaveby/` | App overview, previews, and live-app link |
 | `projects/neon-orbit/`, `projects/orbit-playground/`, `projects/gesture-particles/`, `projects/virtual-theremin/`, `projects/wasp-dodge/` | Creative coding, gesture, sound, and game project pages |
-| `creative-projects.css`, `assets/projects/` | Shared creative project styles and vector artwork |
-| `assets/` | Interface illustrations, README artwork, and favicon |
+| `assets/` | Logo kit, project artwork, README artwork, and favicon |
+| `style.css`, `refinements.css`, `script.js`, `navigation.css`, `navigation.js`, `brand.css`, `creative-projects.css` | The earlier design, kept but no longer loaded by any page |
 
-Hosted on GitHub Pages at **[rayhanson.tech](https://rayhanson.tech/)**, deployed from `main` at the repository root. System fonts, no external dependencies, analytics, or trackers.
+Hosted on GitHub Pages at **[rayhanson.tech](https://rayhanson.tech/)**, deployed from `main` at the repository root. Fonts are Clash Display and Switzer from Fontshare. No packages, analytics, or trackers.
 
 The GymLog prototype keeps sample workout changes in memory for the current session. LeaveBy uses entered time estimates and the device time zone; it does not use live transit data or save plans between sessions.
 
