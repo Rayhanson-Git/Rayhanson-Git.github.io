@@ -31,6 +31,7 @@ Harvey Rayhanson’s portfolio: AI systems, product design, creative code and so
 | **JimBro** | LeaveBy scheduling and GymLog’s completed-set logging, unified in one persistent gym companion. | [Case study](https://rayhanson.tech/projects/jimbro/) · [Live app](https://jimbro.rayhanson.tech/) |
 | **GymLog** | A workout companion that keeps set logging clear, quick, and easy to correct. | [Case study](https://rayhanson.tech/projects/gymlog/) · [Interactive prototype](https://rayhanson.tech/projects/gymlog/prototype.html) |
 | **Studio Apartment Evening** | A 3:06 audio story built from 11 self-recorded sounds in Adobe Audition. | [Project and audio](https://rayhanson.tech/projects/studio-apartment-evening/) |
+| **Devil May Cry GMV** | A 3:50 game music video (GMV) across three Devil May Cry games, cut in DaVinci Resolve with matched live action. | [Project and video](https://rayhanson.tech/projects/devil-may-cry-music-video/) |
 | **LeaveBy** | A workout transition planner that calculates when to stop, get ready, and leave for the next commitment. | [Project](https://rayhanson.tech/projects/leaveby/) · [Live app](https://leaveby.rayhanson.tech/leaveby) |
 | **Neon Orbit Arcade** | A glowing particle playground where the cursor becomes an orb, clicks create portals, and a single key shifts the scene from calm to chaos. | [Project](https://rayhanson.tech/projects/neon-orbit/) · [Live experience](https://neon-orbit.rayhanson.tech/) |
 | **Orbit Playground** | An interactive canvas of orbiting dots. Build new centers of motion, change the palette, and find a rhythm somewhere between stillness and speed. | [Project](https://rayhanson.tech/projects/orbit-playground/) · [Live experience](https://orbit-playground.rayhanson.tech/) |
@@ -85,6 +86,7 @@ Open [localhost:8080](http://localhost:8080). You can also open `index.html` dir
 | `projects/jimbro/` | Unified gym companion case study, inspiration, project origins and working-app previews |
 | `projects/gymlog/` | Case study and working prototype |
 | `projects/studio-apartment-evening/` | Audio story, process, recordings, and session screenshot |
+| `projects/devil-may-cry-music-video/` | Music video, process, matched shots, and Resolve screenshots |
 | `projects/leaveby/` | App overview, previews, and live-app link |
 | `projects/neon-orbit/`, `projects/orbit-playground/`, `projects/gesture-particles/`, `projects/virtual-theremin/`, `projects/wasp-dodge/` | Creative coding, gesture, sound, and game project pages |
 | `assets/` | Logo kit, project artwork, README artwork, and favicon |

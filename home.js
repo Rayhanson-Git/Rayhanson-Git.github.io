@@ -95,6 +95,23 @@
     });
   }
 
+  // A film's small play button opens it in a window over the page. Closing the window, by its X, Escape or a click
+  // on the dimmed page, stops the film. The button stays hidden where the browser has no such window.
+  document.querySelectorAll('[data-film]').forEach((button) => {
+    const film = document.querySelector(button.dataset.film), video = film && film.querySelector('video');
+    if (!video || !film.showModal) return;
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      film.showModal();
+      video.play().catch(() => {}); // a browser may refuse to start it; the controls are right there
+    });
+    film.addEventListener('close', () => video.pause());
+    // A click on the dimmed page closes it, but not a drag that began on the film, such as its seek bar.
+    let pressedOutside = false;
+    film.addEventListener('pointerdown', (e) => { pressedOutside = e.target === film; });
+    film.addEventListener('click', (e) => { if ((e.target === film && pressedOutside) || e.target.closest('[data-film-close]')) film.close(); });
+  });
+
   // While the sound story plays, its loudness swells the waveform in the scene.
   const audio = document.querySelector('.sound__player');
   if (audio && (window.AudioContext || window.webkitAudioContext)) {

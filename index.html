@@ -25,11 +25,11 @@
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&f[]=switzer@400,500&display=swap">
   <link rel="preload" as="style" href="tokens.css">
   <link rel="preload" as="style" href="base.css">
-  <link rel="stylesheet" href="home.css?v=20261114x">
+  <link rel="stylesheet" href="home.css?v=20261115a">
   <script>document.documentElement.classList.add('js');</script>
   <script src="scene.js?v=20261114x" defer></script>
   <script src="grip.js?v=20261114x" defer></script>
-  <script src="home.js?v=20261114x" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="home.js?v=20261115a" defer onerror="document.documentElement.classList.remove('js')"></script>
   <script src="lift.js?v=20261114x" defer></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://rayhanson.tech/#site", "url": "https://rayhanson.tech/", "name": "Harvey Rayhanson", "inLanguage": "en"}, {"@type": "Person", "@id": "https://rayhanson.tech/#harvey", "name": "Harvey Rayhanson", "alternateName": "Harvey Chowdhury", "url": "https://rayhanson.tech/", "jobTitle": ["Media Artist", "Graphic Designer", "AI Engineer"], "knowsAbout": ["AI systems", "Model Context Protocol", "Product design", "Creative coding", "Sound design"], "sameAs": ["https://www.linkedin.com/in/rayhason/", "https://www.instagram.com/AlexRayhanson/", "https://x.com/AlexRayhanson", "https://github.com/Rayhanson-Git", "https://youtube.com/@RayBitsGaming"]}]}</script>
 </head>
@@ -96,6 +96,12 @@
     </section>
 
     <div id="work">
+    <header class="chapter container" id="projects" data-reveal>
+      <h2>Projects</h2>
+      <p class="lead">Software and interactive work I’ve designed and built. Contributions to other people’s projects come last.</p>
+      <p class="links"><a href="#creative-work">Skip to creative work</a></p>
+    </header>
+
     <section class="panel" id="enigma" data-focus="enigma" data-zoom="2" data-at="0.74,0.5">
       <div class="container">
         <div class="panel__text">
@@ -139,17 +145,6 @@
             </div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="panel panel--aside" id="tesseract" data-focus="tesseract" data-zoom="2" data-at="0.74,0.5">
-      <div class="container">
-        <article class="aside card" data-tilt data-reveal>
-          <h2>Tesseract MCP</h2>
-          <p class="meta">Side contribution to Taimoor’s open-source project, 2026</p>
-          <p>Tesseract is Taimoor’s memory server for AI agents. I contributed one merged change: create-only writes that cannot overwrite each other, and a name for each agent, so several agents can share one vault.</p>
-          <p class="links"><a href="projects/tesseract/">View the contribution</a><a href="https://github.com/DeepExtrema/tesseract" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Tesseract on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></p>
-        </article>
       </div>
     </section>
 
@@ -300,6 +295,28 @@
       </div>
     </section>
 
+    <section class="panel panel--aside" id="tesseract" data-focus="tesseract" data-zoom="2" data-at="0.74,0.5">
+      <div class="container">
+        <div class="head head--small" data-reveal>
+          <h2>Contributions</h2>
+          <p class="note">Work I’ve added to other people’s projects.</p>
+        </div>
+        <article class="aside card" data-tilt data-reveal>
+          <ul class="tags"><li>Contribution</li></ul>
+          <h3>Tesseract MCP</h3>
+          <p class="meta">Side contribution to Taimoor’s open-source project, 2026</p>
+          <p>Tesseract is Taimoor’s memory server for AI agents. I contributed one merged change: create-only writes that cannot overwrite each other, and a name for each agent, so several agents can share one vault.</p>
+          <p class="links"><a href="projects/tesseract/">View the contribution</a><a href="https://github.com/DeepExtrema/tesseract" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Tesseract on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></p>
+        </article>
+      </div>
+    </section>
+
+    <header class="chapter container" id="creative-work" data-reveal>
+      <h2>Creative work</h2>
+      <p class="lead">Sound and video, made by recording, shooting and editing.</p>
+      <p class="links"><a href="#projects">Back to projects</a></p>
+    </header>
+
     <section class="sound" id="studio-apartment-evening" data-focus="sound" data-zoom="2.1" data-at="0.72,1.02">
       <div class="container">
         <div class="sound__text plate" data-reveal>
@@ -312,6 +329,29 @@
         </div>
         <img class="sound__still" src="projects/studio-apartment-evening/media/waveform.svg" width="1200" height="240" alt="Waveform of Studio Apartment Evening" loading="lazy">
       </div>
+    </section>
+
+    <section class="panel panel--aside" id="devil-may-cry-music-video" data-focus="sound" data-zoom="1.8" data-at="0.74,0.5">
+      <div class="container">
+        <div class="panel__text">
+          <article class="tile card film-card" data-tilt data-reveal>
+            <figure class="film-card__art">
+              <a class="tile__art" href="projects/devil-may-cry-music-video/index.html"><img src="projects/devil-may-cry-music-video/media/thumb.jpg" width="1200" height="900" alt="Nero, from Devil May Cry 5, raising his mechanical arm in front of a burning street" loading="lazy"></a>
+              <button class="film-play" type="button" data-film="#gmv-player" hidden><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg><span class="visually-hidden">Play the video, </span>3:50</button>
+            </figure>
+            <div>
+              <h2>Devil May Cry GMV</h2>
+              <p class="meta">Game music video (GMV), DaVinci Resolve, 2026</p>
+              <p>A game music video that runs through Devil May Cry 3, 4 and 5 on three of the series’ themes, with live-action shots cut against the same moves in the games.</p>
+              <p class="links"><a href="projects/devil-may-cry-music-video/index.html">View the project<span class="visually-hidden">, Devil May Cry GMV</span></a></p>
+            </div>
+          </article>
+        </div>
+      </div>
+      <dialog class="film" id="gmv-player" aria-label="Devil May Cry GMV">
+        <button class="lift__close" type="button" data-film-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+        <video controls playsinline preload="none" poster="projects/devil-may-cry-music-video/media/poster.jpg" width="1280" height="720" aria-label="Devil May Cry GMV, edited by Harvey Rayhanson"><source src="projects/devil-may-cry-music-video/media/devil-may-cry-music-video.mp4" type="video/mp4"></video>
+      </dialog>
     </section>
 
     </div>
@@ -359,7 +399,7 @@
             <div><dt>What my projects are built in</dt><dd>Rust for Enigma MCP. TypeScript and React with Next.js for JimBro and LeaveBy. Python for the Tesseract contribution. React, Three.js, and p5.js for the creative pieces.</dd></div>
             <div><dt>Product design</dt><dd>Flows, wireframes, and interactive prototypes, through to live web apps that keep their data on your device. Shown in GymLog, LeaveBy, and JimBro.</dd></div>
             <div><dt>Creative code</dt><dd>Webcam gesture tracking, generative visuals, real-time shaders, and browser games. Shown in Gesture Particles, Virtual Theremin, and the web behind this page.</dd></div>
-            <div><dt>Media</dt><dd>Graphic design, sound design in Adobe Audition, photography, and video editing. Shown in Studio Apartment Evening.</dd></div>
+            <div><dt>Media</dt><dd>Graphic design, sound design in Adobe Audition, photography, and video editing. Shown in Studio Apartment Evening and the Devil May Cry GMV.</dd></div>
             <div><dt>Quality</dt><dd>Automated tests, retrieval and speed measurements, builds on three operating systems, and checks for keyboard use and reduced motion.</dd></div>
           </dl>
         </div>
@@ -397,17 +437,18 @@
           <li><a href="projects/jimbro/">JimBro</a></li>
           <li><a href="projects/gymlog/index.html">GymLog</a></li>
           <li><a href="projects/leaveby/index.html">LeaveBy</a></li>
-          <li><a href="projects/studio-apartment-evening/index.html">Studio Apartment Evening</a></li>
-        </ul>
-      </nav>
-      <nav class="footer__col" aria-label="Creative coding">
-        <h2 class="footer__title">Creative coding</h2>
-        <ul>
           <li><a href="projects/gesture-particles/index.html">Gesture Particles</a></li>
           <li><a href="projects/virtual-theremin/index.html">Virtual Theremin</a></li>
           <li><a href="projects/neon-orbit/index.html">Neon Orbit Arcade</a></li>
           <li><a href="projects/orbit-playground/index.html">Orbit Playground</a></li>
           <li><a href="projects/wasp-dodge/index.html">Wasp Dodge+</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-label="Creative work">
+        <h2 class="footer__title">Creative work</h2>
+        <ul>
+          <li><a href="projects/studio-apartment-evening/index.html">Studio Apartment Evening</a></li>
+          <li><a href="projects/devil-may-cry-music-video/index.html">Devil May Cry GMV</a></li>
         </ul>
       </nav>
       <nav class="footer__col" aria-label="Elsewhere">
