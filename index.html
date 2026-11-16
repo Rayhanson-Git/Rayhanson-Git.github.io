@@ -79,9 +79,8 @@
           </div>
         </div>
         <nav class="web" aria-label="Every project, as one web">
-          <a class="web__node web__node--hub" href="#about" data-node="hub" data-x="0.25" data-y="0" data-r="0.2" data-links="enigma stanza tesseract jimbro gesture sound wasp"><span class="web__label">About Harvey</span></a>
+          <a class="web__node web__node--hub" href="#about" data-node="hub" data-x="0.25" data-y="0" data-r="0.2" data-links="enigma tesseract jimbro gesture sound wasp"><span class="web__label">About Harvey</span></a>
           <a class="web__node" href="#enigma" data-node="enigma" data-x="-0.3" data-y="-0.56" data-r="0.14"><span class="web__label">Enigma MCP</span></a>
-          <a class="web__node" href="#stanza" data-node="stanza" data-x="-0.3" data-y="0.42" data-r="0.12"><span class="web__label">Stanza</span></a>
           <a class="web__node" href="#tesseract" data-node="tesseract" data-x="-0.6" data-y="-0.3" data-r="0.08"><span class="web__label">Tesseract MCP</span></a>
           <a class="web__node" href="#studio-apartment-evening" data-node="sound" data-x="-0.42" data-y="-0.1" data-r="0.11" data-links="enigma"><span class="web__label">Studio Apartment Evening</span></a>
           <a class="web__node" href="#jimbro" data-node="jimbro" data-x="0.86" data-y="-0.5" data-r="0.15" data-links="gymlog leaveby"><span class="web__label">JimBro</span></a>
@@ -143,30 +142,6 @@
                 <dl class="more__facts"><div><dt>Search</dt><dd>By words and by meaning, merged into one result list</dd></div><div><dt>Graph</dt><dd>Entities are ordinary notes, so Obsidian’s graph view shows them</dd></div><div><dt>Upkeep</dt><dd>One nightly run indexes, suggests filing, and checks health</dd></div><div><dt>Runs on</dt><dd>macOS, Linux, and Windows</dd></div></dl>
               </div>
               <p class="links"><a href="projects/enigma/">View the Enigma MCP case study</a><a href="https://github.com/Rayhanson-Git/enigma" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Read Enigma on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" id="stanza" data-focus="stanza" data-zoom="2" data-at="0.74,0.5">
-      <div class="container">
-        <div class="panel__text panel__text--wide">
-          <article class="feature card" data-lift data-tilt data-reveal>
-            <a class="shot" href="projects/stanza/">
-              <img src="projects/stanza/media/window.jpg" width="1180" height="740" alt="The Stanza window: the Branches style playing, a path that switches on a node for each word as it is sung" loading="lazy">
-            </a>
-            <div class="feature__text">
-              <h2>Stanza</h2>
-              <p class="hook">The song you are playing<br>Word by word, on your Mac</p>
-              <p class="meta">macOS app design and development, 2026</p>
-              <p>A menu-bar app that follows the song in Spotify or Apple Music and draws its lyrics over the desktop and above the lock screen, one word at a time, in thirteen styles from kinetic type to a chat thread.</p>
-              <ul class="tags"><li>macOS</li><li>Swift</li><li>SwiftUI</li><li>Motion design</li></ul>
-              <div class="more" hidden>
-                <p>Every style plays as a live preview in the app’s window, through the same view that draws the real overlay. Songs that only have line timing get an estimated time for each word.</p>
-                <dl class="more__facts"><div><dt>Role</dt><dd>Design and development</dd></div><div><dt>Built with</dt><dd>Swift, AppKit and SwiftUI</dd></div><div><dt>Runs on</dt><dd>macOS 15 or later, Apple silicon</dd></div><div><dt>Status</dt><dd>Version 0.2, built from source, MIT license</dd></div></dl>
-              </div>
-              <p class="links"><a href="projects/stanza/">View the Stanza case study</a><a href="https://github.com/Rayhanson-Git/stanza" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Stanza on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, Stanza</span></button></p>
             </div>
           </article>
         </div>
@@ -421,7 +396,7 @@
           <p class="lead" data-reveal style="--i:1">I work as the architect and the reviewer. I define what a system must do, break it into steps that can be verified, and direct AI coding agents to build it. Nothing ships until it passes the tests and checks I set.</p>
           <dl class="facts card" data-tilt data-reveal style="--i:2">
             <div><dt>AI systems and agents</dt><dd>MCP servers, multi-agent setups across Claude Code, Codex, and OpenClaw, hybrid retrieval, knowledge graphs, and evaluation sets. Shown in Enigma MCP.</dd></div>
-            <div><dt>What my projects are built in</dt><dd>Rust for Enigma MCP. Swift with AppKit and SwiftUI for Stanza. TypeScript and React with Next.js for JimBro and LeaveBy. Python for the Tesseract contribution. React, Three.js, and p5.js for the creative pieces.</dd></div>
+            <div><dt>What my projects are built in</dt><dd>Rust for Enigma MCP. TypeScript and React with Next.js for JimBro and LeaveBy. Python for the Tesseract contribution. React, Three.js, and p5.js for the creative pieces.</dd></div>
             <div><dt>Product design</dt><dd>Flows, wireframes, and interactive prototypes, through to live web apps that keep their data on your device. Shown in GymLog, LeaveBy, and JimBro.</dd></div>
             <div><dt>Creative code</dt><dd>Webcam gesture tracking, generative visuals, real-time shaders, and browser games. Shown in Gesture Particles, Virtual Theremin, and the web behind this page.</dd></div>
             <div><dt>Media</dt><dd>Graphic design, sound design in Adobe Audition, photography, and video editing. Shown in Studio Apartment Evening and the Devil May Cry GMV.</dd></div>
@@ -459,7 +434,6 @@
         <h2 class="footer__title">Projects</h2>
         <ul>
           <li><a href="projects/enigma/">Enigma MCP</a></li>
-          <li><a href="projects/stanza/">Stanza</a></li>
           <li><a href="projects/jimbro/">JimBro</a></li>
           <li><a href="projects/gymlog/index.html">GymLog</a></li>
           <li><a href="projects/leaveby/index.html">LeaveBy</a></li>
