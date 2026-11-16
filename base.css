@@ -1,6 +1,10 @@
 *, *::before, *::after { box-sizing: border-box; }
 html, body { overflow-x: clip; }
 html { scrollbar-color: var(--color-muted) var(--color-paper); scroll-padding-top: var(--space-3xl); }
+/* Everything is sized in rem, so on a large screen it all grows together: 16px up to a 1440-wide window, about 19px on a
+   1920 screen (full screen or a maximised window, about 950px tall), at most 22px. The height term keeps a wide but short
+   screen (about 840px tall or less) at 16px. */
+html { font-size: clamp(100%, min(0.625vw + 7px, 2.75vh - 7px), 137.5%); }
 body { margin: 0; background: var(--color-paper); color: var(--color-ink); font-family: var(--font-body); font-size: var(--text-md); line-height: 1.55; -webkit-font-smoothing: antialiased; caret-color: var(--color-accent); }
 ::selection { background: color-mix(in oklab, var(--color-accent) 22%, transparent); color: var(--color-ink); }
 :focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }

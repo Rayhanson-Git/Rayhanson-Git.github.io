@@ -83,7 +83,7 @@ dialog::backdrop { background: color-mix(in oklab, var(--color-night) 82%, trans
 }
 
 /* A project's own mark, banner, film and install steps */
-.case-mark { width: 64px; height: 64px; }
+.case-mark { width: 4rem; height: 4rem; }
 .case-banner img, .case-film video { width: 100%; height: auto; border: 1px solid var(--color-rule); border-radius: var(--radius-card); }
 .case-film figcaption { margin-top: var(--space-sm); }
 .steps { display: grid; gap: var(--space-md); margin: 0; padding-left: var(--space-lg); }
