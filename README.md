@@ -28,6 +28,7 @@ Harvey Rayhanson’s portfolio: AI systems, product design, creative code and so
 | Project | Focus | Explore |
 | --- | --- | --- |
 | **Enigma MCP** | One Rust binary that gives AI agents a shared memory, kept as plain notes in an Obsidian vault. | [Case study](https://rayhanson.tech/projects/enigma/) · [Repository](https://github.com/Rayhanson-Git/enigma) |
+| **Stanza** | A macOS menu-bar app that shows the song playing in Spotify or Apple Music word by word, on the desktop and lock screen. | [Case study](https://rayhanson.tech/projects/stanza/) · [Repository](https://github.com/Rayhanson-Git/stanza) |
 | **JimBro** | LeaveBy scheduling and GymLog’s completed-set logging, unified in one persistent gym companion. | [Case study](https://rayhanson.tech/projects/jimbro/) · [Live app](https://jimbro.rayhanson.tech/) |
 | **GymLog** | A workout companion that keeps set logging clear, quick, and easy to correct. | [Case study](https://rayhanson.tech/projects/gymlog/) · [Interactive prototype](https://rayhanson.tech/projects/gymlog/prototype.html) |
 | **Studio Apartment Evening** | A 3:06 audio story built from 11 self-recorded sounds in Adobe Audition. | [Project and audio](https://rayhanson.tech/projects/studio-apartment-evening/) |
@@ -82,6 +83,7 @@ Open [localhost:8080](http://localhost:8080). You can also open `index.html` dir
 | `tokens.css`, `base.css`, `home.css`, `scene.js`, `grip.js`, `lift.js`, `home.js` | Shared design, the web, its grip, tiles brought forward, and interactions |
 | `case.css` | Styles shared by the case-study pages |
 | `projects/enigma/` | Enigma MCP case study, with install steps |
+| `projects/stanza/` | Stanza case study, with the style frames and build steps |
 | `projects/tesseract/` | A short page on one contribution to another author’s project |
 | `projects/jimbro/` | Unified gym companion case study, inspiration, project origins and working-app previews |
 | `projects/gymlog/` | Case study and working prototype |

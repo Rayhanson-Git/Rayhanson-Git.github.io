@@ -11,7 +11,7 @@
 
   // Mark the nav link whose section holds the middle of the screen.
   // Only links to this page's own sections; on a case-study page the bar links back to the homepage.
-  const links = [...document.querySelectorAll('.dock a[href^="#"]')].filter((a) => document.querySelector(a.getAttribute('href')));
+  const links = [...document.querySelectorAll('.dock > a[href^="#"]')].filter((a) => document.querySelector(a.getAttribute('href')));
   const targets = links.map((a) => document.querySelector(a.getAttribute('href')));
   const current = new IntersectionObserver((entries) => entries.forEach((e) => {
     const link = links[targets.indexOf(e.target)];
@@ -20,8 +20,53 @@
   }), { rootMargin: '-50% 0px -50% 0px' });
   targets.forEach((el) => current.observe(el));
 
+  // In the work section, Work opens into Projects and Creative work, and the half that holds the middle of the screen is marked.
+  const dock = document.querySelector('.dock'), subs = dock && dock.querySelector('.dock__subs');
+  const work = document.getElementById('work'), creative = document.getElementById('creative-work');
+  if (subs && work && creative) {
+    const [toProjects, toCreative] = subs.querySelectorAll('a');
+    const mark = (link, on) => (on ? link.setAttribute('aria-current', 'true') : link.removeAttribute('aria-current'));
+    let queued = false;
+    const update = () => {
+      queued = false;
+      const middle = innerHeight / 2, box = work.getBoundingClientRect();
+      const inWork = box.top <= middle && box.bottom >= middle, inCreative = inWork && creative.getBoundingClientRect().top <= middle;
+      dock.classList.toggle('is-work', inWork);
+      if (!inWork && subs.contains(document.activeElement)) subs.previousElementSibling.focus(); // keep keyboard focus on Work
+      subs.inert = !inWork; // folded away, the two pills are out of the tab order
+      mark(toProjects, inWork && !inCreative);
+      mark(toCreative, inCreative);
+    };
+    addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener('resize', update);
+    update();
+  }
+
   // Cards lean toward the pointer and light up under it.
   const calm = matchMedia('(prefers-reduced-motion: reduce)');
+
+  // On a case study the Work item turns into this project: its icon bobs, then becomes the project's mark and name.
+  // It still leads back to the work section.
+  const here = document.querySelector('.dock a[data-project]');
+  if (here) {
+    const icon = here.querySelector('.icon'), label = here.querySelector('span'), name = here.dataset.project;
+    // A project's own image mark is loaded first, so it is there the moment it swaps in.
+    const img = here.dataset.projectImg ? Object.assign(new Image(), { src: here.dataset.projectImg, alt: '', className: 'icon' }) : null;
+    const ready = img ? img.decode().catch(() => {}) : Promise.resolve();
+    const become = () => {
+      label.textContent = name;
+      here.setAttribute('aria-label', `${name}, back to all work`);
+      if (here.dataset.projectIcon) icon.querySelector('use').setAttribute('href', `#${here.dataset.projectIcon}`);
+      else if (img) icon.replaceWith(img);
+      else icon.hidden = true; // no mark of its own: the name alone
+    };
+    if (calm.matches) ready.then(become);
+    else setTimeout(() => {
+      icon.classList.add('is-arriving');
+      Promise.all([ready, new Promise((r) => setTimeout(r, 200))])
+        .then(() => (document.startViewTransition ? document.startViewTransition(become) : become()));
+    }, 500);
+  }
   const TILT_DEGREES = 5;
   document.querySelectorAll('.card').forEach((card) => {
     const tilts = card.hasAttribute('data-tilt');

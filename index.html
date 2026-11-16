@@ -25,11 +25,12 @@
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&f[]=switzer@400,500&display=swap">
   <link rel="preload" as="style" href="tokens.css?v=20261116a">
   <link rel="preload" as="style" href="base.css?v=20261116a">
-  <link rel="stylesheet" href="home.css?v=20261116a">
+  <link rel="stylesheet" href="home.css?v=20261116i">
   <script>document.documentElement.classList.add('js');</script>
   <script src="scene.js?v=20261114x" defer></script>
   <script src="grip.js?v=20261114x" defer></script>
-  <script src="home.js?v=20261115a" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="home.js?v=20261116c" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="download.js?v=20261116a" defer></script>
   <script src="lift.js?v=20261114x" defer></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://rayhanson.tech/#site", "url": "https://rayhanson.tech/", "name": "Harvey Rayhanson", "inLanguage": "en"}, {"@type": "Person", "@id": "https://rayhanson.tech/#harvey", "name": "Harvey Rayhanson", "alternateName": "Harvey Chowdhury", "url": "https://rayhanson.tech/", "jobTitle": ["Media Artist", "Graphic Designer", "AI Engineer"], "knowsAbout": ["AI systems", "Model Context Protocol", "Product design", "Creative coding", "Sound design"], "sameAs": ["https://www.linkedin.com/in/rayhason/", "https://www.instagram.com/AlexRayhanson/", "https://x.com/AlexRayhanson", "https://github.com/Rayhanson-Git", "https://youtube.com/@RayBitsGaming"]}]}</script>
 </head>
@@ -44,7 +45,7 @@
     <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
     <symbol id="i-pause" viewBox="0 0 24 24"><rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
-    <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></symbol><symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M4 4l16 16"/><path d="M20 4 4 20"/></symbol>
     <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
@@ -79,8 +80,9 @@
           </div>
         </div>
         <nav class="web" aria-label="Every project, as one web">
-          <a class="web__node web__node--hub" href="#about" data-node="hub" data-x="0.25" data-y="0" data-r="0.2" data-links="enigma tesseract jimbro gesture sound wasp"><span class="web__label">About Harvey</span></a>
+          <a class="web__node web__node--hub" href="#about" data-node="hub" data-x="0.25" data-y="0" data-r="0.2" data-links="enigma stanza tesseract jimbro gesture sound wasp"><span class="web__label">About Harvey</span></a>
           <a class="web__node" href="#enigma" data-node="enigma" data-x="-0.3" data-y="-0.56" data-r="0.14"><span class="web__label">Enigma MCP</span></a>
+          <a class="web__node" href="#stanza" data-node="stanza" data-x="-0.3" data-y="0.42" data-r="0.12"><span class="web__label">Stanza</span></a>
           <a class="web__node" href="#tesseract" data-node="tesseract" data-x="-0.6" data-y="-0.3" data-r="0.08"><span class="web__label">Tesseract MCP</span></a>
           <a class="web__node" href="#studio-apartment-evening" data-node="sound" data-x="-0.42" data-y="-0.1" data-r="0.11" data-links="enigma"><span class="web__label">Studio Apartment Evening</span></a>
           <a class="web__node" href="#jimbro" data-node="jimbro" data-x="0.86" data-y="-0.5" data-r="0.15" data-links="gymlog leaveby"><span class="web__label">JimBro</span></a>
@@ -115,7 +117,7 @@
           <dl class="facts card" id="enigma-facts" data-lift="#enigma-forward" data-tilt data-reveal style="--i:3">
             <div><dt>Search by words and by meaning</dt><dd>A keyword ranking and an embedding ranking, merged into one result list.</dd></div>
             <div><dt>A graph you can open</dt><dd>Entities are ordinary notes, so Obsidian’s graph view shows them.</dd></div>
-            <div><dt>A vault that looks after itself</dt><dd>One nightly run indexes new notes, suggests filing, checks health, and reports.</dd></div>
+            <div><dt>A vault that looks after itself</dt><dd>One nightly run indexes new notes, suggests filing, checks health, and writes a report.</dd></div>
             <div><dt>Write rules enforced in code</dt><dd>Agents write inside one folder of the vault. Anything else needs an explicit confirmation.</dd></div>
           </dl>
           <p class="links" data-reveal style="--i:4">
@@ -142,6 +144,31 @@
                 <dl class="more__facts"><div><dt>Search</dt><dd>By words and by meaning, merged into one result list</dd></div><div><dt>Graph</dt><dd>Entities are ordinary notes, so Obsidian’s graph view shows them</dd></div><div><dt>Upkeep</dt><dd>One nightly run indexes, suggests filing, and checks health</dd></div><div><dt>Runs on</dt><dd>macOS, Linux, and Windows</dd></div></dl>
               </div>
               <p class="links"><a href="projects/enigma/">View the Enigma MCP case study</a><a href="https://github.com/Rayhanson-Git/enigma" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Read Enigma on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="stanza" data-focus="stanza" data-zoom="2" data-at="0.74,0.5">
+      <div class="container">
+        <div class="panel__text panel__text--wide">
+          <article class="feature card" data-lift data-tilt data-reveal>
+            <a class="shot" href="projects/stanza/">
+              <img src="projects/stanza/media/window.jpg" width="1180" height="740" alt="The Stanza window: the Branches style playing, a path that switches on a node for each word as it is sung" loading="lazy">
+            </a>
+            <div class="feature__text">
+              <h2>Stanza</h2>
+              <p class="hook">The song you are playing<br>Word by word, on your Mac</p>
+              <p class="meta">macOS app design and development, 2026</p>
+              <p>A menu-bar app that follows the song in Spotify or Apple Music and draws its lyrics over the desktop and above the lock screen, one word at a time, in thirteen styles from kinetic type to a chat thread.</p>
+              <ul class="tags"><li>macOS</li><li>Swift</li><li>SwiftUI</li><li>Motion design</li></ul>
+              <div class="more" hidden>
+                <p>Every style plays as a live preview in the app’s window, through the same view that draws the real overlay. Songs that only have line timing get an estimated time for each word.</p>
+                <dl class="more__facts"><div><dt>Role</dt><dd>Design and development</dd></div><div><dt>Built with</dt><dd>Swift, AppKit, and SwiftUI</dd></div><div><dt>Runs on</dt><dd>macOS 15 or later, Apple silicon</dd></div><div><dt>Get it</dt><dd>Free download for Mac, updates itself, MIT license</dd></div></dl>
+              </div>
+              <p class="actions"><a class="btn" href="https://github.com/Rayhanson-Git/stanza/releases/latest" data-latest-dmg="Rayhanson-Git/stanza"><svg class="icon" aria-hidden="true"><use href="#i-apple"/></svg>Download for Mac</a></p>
+              <p class="links"><a href="projects/stanza/">View the Stanza case study</a><a href="https://github.com/Rayhanson-Git/stanza" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Stanza on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, Stanza</span></button></p>
             </div>
           </article>
         </div>
@@ -202,7 +229,6 @@
             <p>A simple planner for the transition from a workout to class or work. Start with your next commitment, add time to get ready, commute, and arrive early, then see when to stop and leave.</p>
             <ul class="tags"><li>Product design</li><li>Next.js</li><li>TypeScript</li></ul>
             <div class="more" hidden>
-              <p>LeaveBy helps plan the transition from a workout to a fixed class or work start time.</p>
               <dl class="more__facts"><div><dt>Context</dt><dd>Product Design &amp; Prototyping</dd></div><div><dt>Format</dt><dd>Responsive web app</dd></div><div><dt>Built with</dt><dd>Next.js, TypeScript, Tailwind CSS</dd></div><div><dt>Hosting</dt><dd>Vercel, custom domain</dd></div></dl>
             </div>
             <p class="links"><a href="https://leaveby.rayhanson.tech/leaveby" target="_blank" rel="noopener">Try LeaveBy<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/leaveby/index.html">View the LeaveBy case study</a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, LeaveBy</span></button></p>
@@ -227,7 +253,7 @@
                   <dl class="more__facts"><div><dt>Format</dt><dd>Interactive web experience</dd></div><div><dt>Built with</dt><dd>React, TypeScript, Three.js, MediaPipe</dd></div></dl>
                 </div>
                 <p class="links"><a href="https://gesture-particles.rayhanson.tech/" target="_blank" rel="noopener">Try Gesture Particles<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/gesture-particles/index.html">View the project<span class="visually-hidden">, Gesture Particles</span></a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, Gesture Particles</span></button></p>
-                <p class="note">A webcam and WebGL-capable browser are needed for gesture interaction. A desktop or laptop gives the controls more room.</p>
+                <p class="note">A webcam and a WebGL-capable browser are needed for gesture interaction. A desktop or laptop gives the controls more room.</p>
               </div>
             </li>
             <li class="tile card" id="virtual-theremin" data-lift data-tilt data-reveal>
@@ -253,7 +279,7 @@
                 <p class="meta">Creative coding, p5.js, 2025</p>
                 <p>A glowing particle playground where the cursor becomes an orb, clicks create portals, and a single key shifts the scene from calm to chaos.</p>
                 <div class="more" hidden>
-                  <p>Neon Orbit Arcade explores how a few simple inputs can make a screen feel alive. Moving the mouse guides an orb; holding it leaves particles behind. Placed portals pull and swirl nearby particles, turning a trail into a small moving system.</p>
+                  <p>Neon Orbit Arcade explores how a few simple inputs can make a screen feel alive. Moving the mouse guides an orb; holding the button down leaves particles behind. Placed portals pull and swirl nearby particles, turning a trail into a small moving system.</p>
                   <dl class="more__facts"><div><dt>Format</dt><dd>Interactive canvas</dd></div><div><dt>Built with</dt><dd>p5.js, JavaScript</dd></div></dl>
                 </div>
                 <p class="links"><a href="https://neon-orbit.rayhanson.tech/" target="_blank" rel="noopener">Try Neon Orbit Arcade<span class="visually-hidden"> (opens in a new tab)</span></a><a href="projects/neon-orbit/index.html">View the project<span class="visually-hidden">, Neon Orbit Arcade</span></a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, Neon Orbit Arcade</span></button></p>
@@ -312,7 +338,7 @@
 
     <header class="chapter container" id="creative-work" data-reveal>
       <h2>Creative work</h2>
-      <p class="lead">Sound and video, made by recording, shooting and editing.</p>
+      <p class="lead">Sound and video, made by recording, shooting, and editing.</p>
       <p class="links"><a href="#projects">Back to projects</a></p>
     </header>
 
@@ -321,7 +347,7 @@
         <div class="sound__text plate" data-reveal>
           <div class="sound__head"><h2>Studio Apartment Evening</h2><p class="sound__time num"><span class="visually-hidden">Runs </span>3:06</p></div>
           <p class="hook">One shared space<br>An evening told through sound</p>
-          <p class="lead">A shared evening told through 11 self-recorded sounds. From focused computer work to the small interruptions that lead into winding down.</p>
+          <p class="lead">Eleven sounds I recorded myself, from focused computer work to the small interruptions that lead into winding down.</p>
           <p class="meta">Sound design and audio storytelling, Adobe Audition, 2026</p>
           <audio class="sound__player" controls preload="metadata" src="projects/studio-apartment-evening/media/studio-apartment-evening.mp3" aria-label="Studio Apartment Evening, the full audio story"></audio>
           <p class="links"><a href="projects/studio-apartment-evening/index.html">View the project<span class="visually-hidden">, Studio Apartment Evening</span></a><a href="projects/studio-apartment-evening/index.html#listen">Listen to the story</a></p>
@@ -341,7 +367,7 @@
             <div>
               <h2>Devil May Cry GMV</h2>
               <p class="meta">Game music video (GMV), DaVinci Resolve, 2026</p>
-              <p>A game music video that runs through Devil May Cry 3, 4 and 5 on three of the series’ themes, with live-action shots cut against the same moves in the games.</p>
+              <p>Devil May Cry 3, 4, and 5, set to three of the series’ themes, with live-action shots cut against the same moves in the games.</p>
               <p class="links"><a href="projects/devil-may-cry-music-video/index.html">View the project<span class="visually-hidden">, Devil May Cry GMV</span></a></p>
             </div>
           </article>
@@ -381,7 +407,7 @@
           <p class="lead">I’m Harvey, a media artist, graphic designer, and AI engineer who likes understanding how things work, then imagining what else they could do.</p>
           <p>I was the kid with a screwdriver in his pocket, taking things apart to see what was inside. That instinct never really left. I still learn by experimenting, breaking things, fixing them, and asking one more question.</p>
           <p>Gaming first drew me toward graphic design and a future in the games industry. From there, I found my way into interactive experiences, photography, video editing, and gaming content through RayBits Gaming. As AI opened up new possibilities, I began exploring how it could bring these interests together and help turn ideas into useful tools.</p>
-          <p>Today, most of my work is AI systems and automation: tools that take repetitive work off people’s hands and give AI agents what they need to be useful. Enigma MCP, the shared memory my own agents use every day, came out of that. I’m a designer as much as an engineer, so I still design, record, and edit, and I’m still exploring cybersecurity. Each project gives me a reason to try something unfamiliar and understand it a little better.</p>
+          <p>Today, most of my work is AI systems and automation: tools that take repetitive work off people’s hands and give AI agents what they need to be useful. Enigma MCP, the shared memory my own agents use every day, came out of that. I’m a designer as much as an engineer, so I still design, record, and edit. I’m also exploring cybersecurity. Each project gives me a reason to try something unfamiliar and understand it a little better.</p>
           <p>I want technology to fit naturally into everyday life: to help us become more capable, use our time well, and make room for the things that matter. I see AI as the way to get there, and my work is about making it practical for everyday use.</p>
           <p>Outside the screen, I sometimes pick up a guitar or write a poem. This portfolio is a growing collection of what I make, what I’m learning, and the things that keep me curious. There’s more than one side to the work, and to the person behind it.</p>
         </div>
@@ -395,9 +421,9 @@
           <p class="lead" data-reveal style="--i:1">I work as the architect and the reviewer. I define what a system must do, break it into steps that can be verified, and direct AI coding agents to build it. Nothing ships until it passes the tests and checks I set.</p>
           <dl class="facts card" data-tilt data-reveal style="--i:2">
             <div><dt>AI systems and agents</dt><dd>MCP servers, multi-agent setups across Claude Code, Codex, and OpenClaw, hybrid retrieval, knowledge graphs, and evaluation sets. Shown in Enigma MCP.</dd></div>
-            <div><dt>What my projects are built in</dt><dd>Rust for Enigma MCP. TypeScript and React with Next.js for JimBro and LeaveBy. Python for the Tesseract contribution. React, Three.js, and p5.js for the creative pieces.</dd></div>
+            <div><dt>What my projects are built in</dt><dd>Rust for Enigma MCP. Swift with AppKit and SwiftUI for Stanza. TypeScript and React with Next.js for JimBro and LeaveBy. Python for the Tesseract contribution. React, Three.js, and p5.js for the creative pieces.</dd></div>
             <div><dt>Product design</dt><dd>Flows, wireframes, and interactive prototypes, through to live web apps that keep their data on your device. Shown in GymLog, LeaveBy, and JimBro.</dd></div>
-            <div><dt>Creative code</dt><dd>Webcam gesture tracking, generative visuals, real-time shaders, and browser games. Shown in Gesture Particles, Virtual Theremin, and the web behind this page.</dd></div>
+            <div><dt>Creative code</dt><dd>Webcam gesture tracking, generative visuals, real-time shaders, and browser games. Shown in Gesture Particles, Virtual Theremin, and the living web behind this page.</dd></div>
             <div><dt>Media</dt><dd>Graphic design, sound design in Adobe Audition, photography, and video editing. Shown in Studio Apartment Evening and the Devil May Cry GMV.</dd></div>
             <div><dt>Quality</dt><dd>Automated tests, retrieval and speed measurements, builds on three operating systems, and checks for keyboard use and reduced motion.</dd></div>
           </dl>
@@ -433,6 +459,7 @@
         <h2 class="footer__title">Projects</h2>
         <ul>
           <li><a href="projects/enigma/">Enigma MCP</a></li>
+          <li><a href="projects/stanza/">Stanza</a></li>
           <li><a href="projects/jimbro/">JimBro</a></li>
           <li><a href="projects/gymlog/index.html">GymLog</a></li>
           <li><a href="projects/leaveby/index.html">LeaveBy</a></li>
@@ -467,6 +494,7 @@
   <nav class="dock" id="portfolio-navigation" aria-label="Primary">
     <a href="#top" aria-label="Home"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a>
     <a href="#work" aria-label="Work"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg><span>Work</span></a>
+    <div class="dock__subs" inert><div><a class="dock__sub" href="#projects">Projects</a><a class="dock__sub" href="#creative-work">Creative<b class="dock__long"> work</b></a></div></div>
     <a href="#about" aria-label="About"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><span>About</span></a>
     <a href="#contact" aria-label="Contact"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Contact</span></a>
   </nav>

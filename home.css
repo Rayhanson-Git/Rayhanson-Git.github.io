@@ -67,11 +67,29 @@ body::after { content: ""; position: fixed; inset: 0; z-index: calc(-1 * var(--z
 .dock a::before { content: ""; position: absolute; inset: calc(-1 * var(--space-xs)) calc(-1 * var(--space-3xs)); }
 .dock a span { display: none; }
 .dock a[aria-current="true"] { padding-inline: var(--space-sm); background-color: color-mix(in oklab, var(--color-bone) 14%, transparent); color: var(--color-ink); }
-.dock a[aria-current="true"] span { display: inline; }
+.dock a[aria-current="true"] span { display: inline-block; max-width: 13em; overflow: hidden; text-overflow: ellipsis; } /* a long project name shortens rather than widening the bar */
 .dock a:hover { background-color: color-mix(in oklab, var(--color-bone) 10%, transparent); color: var(--color-ink); }
 .dock a:active { background-color: color-mix(in oklab, var(--color-bone) 6%, transparent); }
+/* In the work section, Work opens into its two halves: two small pills slide out beside it and the bar grows to fit. */
+/* The bar sizes to what it holds (up to the screen's width), so items opening inside it are never squeezed. */
+.dock { width: max-content; max-width: calc(100vw - 2 * var(--space-sm)); view-transition-name: dock; }
+.dock__subs { display: grid; grid-template-columns: 0fr; transition: grid-template-columns var(--dur-long) var(--ease-out); }
+.dock__subs > div { display: flex; align-items: center; gap: var(--space-3xs); min-width: 0; overflow: hidden; }
+.dock.is-work .dock__subs { grid-template-columns: 1fr; }
+.dock:not(.is-work) .dock__subs { margin-inline-end: calc(-1 * var(--space-3xs)); } /* folded, it takes no gap of its own */
+.dock .dock__sub { min-width: 0; min-height: 22px; padding: 0 var(--space-xs); color: var(--color-muted); font-size: 0.6875rem; opacity: 0; translate: calc(-1 * var(--space-sm)) 0; transition: opacity var(--dur-short) var(--ease-out), translate var(--dur-long) var(--ease-out), color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out); }
+.dock.is-work .dock__sub { opacity: 1; translate: none; }
+/* A sub-menu, so the half in view gets only a faint fill: much quieter than the main items' highlight, and no border. */
+.dock .dock__sub[aria-current="true"] { background-color: color-mix(in oklab, var(--color-bone) 6%, transparent); color: var(--color-ink-2); }
+.dock .dock__sub:hover { background-color: color-mix(in oklab, var(--color-bone) 4%, transparent); color: var(--color-ink-2); }
+.dock__long { font-weight: inherit; }
+@media (max-width: 40rem) { .dock__long { display: none; } }
+@media (max-width: 24rem) { .dock.is-work > a[aria-current] span { display: none; } } /* on the narrowest phones the two halves say where you are */
 @media (prefers-reduced-transparency: reduce) {
   .dock { background: var(--color-paper-2); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dock__subs, .dock .dock__sub { transition: none; }
 }
 
 /* The grip: the pointer's tendril takes hold of a button or a tile. grip.js draws it with the web's own renderer on
@@ -304,14 +322,15 @@ html:not(.webgl) .panel__text { max-width: none; }
 .copy-status { min-height: 1lh; }
 
 /* Footer: index columns on solid night, so the page ends on something firm */
-.footer { padding-block: var(--space-xl) var(--space-lg); border-top: var(--rule-hair) solid var(--color-rule); background: var(--color-night); color: var(--color-ink); }
-.footer__in { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 3fr); gap: var(--space-sm) var(--gap-columns); }
+.footer { padding-block: var(--space-lg); border-top: var(--rule-hair) solid var(--color-rule); background: var(--color-night); color: var(--color-ink); }
+.footer__in { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 2fr) minmax(0, 3fr); gap: var(--space-sm) var(--gap-columns); }
 .footer__brand { display: grid; gap: var(--space-xs); align-self: start; color: var(--color-ink-2); text-decoration: none; }
 .footer__line { margin-top: var(--space-2xs); color: var(--color-ink); font: 600 var(--text-md)/1.2 var(--font-display); }
-.footer__aim { max-width: 22rem; font-size: var(--text-sm); }
-.footer__brand img { width: auto; height: 2.75rem; }
+.footer__aim { max-width: 26rem; font-size: var(--text-sm); }
+.footer__brand img { width: auto; height: 2.5rem; }
 .footer__title { margin-bottom: var(--space-2xs); color: var(--color-muted); font: 500 var(--text-sm)/1.4 var(--font-body); letter-spacing: 0; }
-.footer__col ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.25rem, 1fr)); column-gap: var(--space-md); margin: 0; padding: 0; list-style: none; }
+/* Each list flows and wraps, so a long list of projects takes a few short lines rather than a tall column. */
+.footer__col ul { display: flex; flex-wrap: wrap; gap: 0 var(--space-md); margin: 0; padding: 0; list-style: none; }
 .footer__col a, .footer__legal a { display: inline-flex; align-items: center; gap: var(--space-xs); min-height: 28px; color: var(--color-ink-2); font-size: var(--text-sm); text-decoration: none; transition: color var(--dur-short) var(--ease-out); }
 .footer__col a:hover, .footer__legal a:hover { color: var(--color-ink); text-decoration: underline; }
 .footer__legal { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); padding-top: var(--space-xs); border-top: var(--rule-hair) solid var(--color-rule); color: var(--color-muted); font-size: var(--text-sm); }
@@ -335,6 +354,7 @@ html:not(.webgl) .panel__text { max-width: none; }
 /* A button's icon bobs just after the button lands. */
 @media (prefers-reduced-motion: no-preference) {
   .btn:hover .icon, .social a:hover .icon:first-child, .copy-code:hover .icon { animation: bob 560ms var(--ease-out) 140ms both; }
+  .dock .icon.is-arriving { animation: bob 560ms var(--ease-out) both; } /* on a case study, before Work turns into the project */
   @keyframes bob { 0%, 100% { transform: none; } 30% { transform: translateY(-4px) rotate(-12deg); } 60% { transform: translateY(1px) rotate(5deg); } 80% { transform: translateY(-1px) rotate(-2deg); } }
 }
 
@@ -367,7 +387,7 @@ html:not(.webgl) .panel__text { max-width: none; }
 
 @media (max-width: 60rem) {
   .footer__in { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .footer__brand { grid-column: 1 / -1; }
+  .footer__brand, .footer__in > nav:first-of-type { grid-column: 1 / -1; } /* the brand and the projects take the full width */
 }
 
 @media (max-width: 46rem) {
