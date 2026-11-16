@@ -152,23 +152,46 @@
 
     <section class="panel" id="stanza" data-focus="stanza" data-zoom="2" data-at="0.74,0.5">
       <div class="container">
-        <div class="panel__text panel__text--wide">
-          <article class="feature card" data-lift data-tilt data-reveal>
-            <a class="shot" href="projects/stanza/">
-              <img src="projects/stanza/media/window.jpg" width="1180" height="740" alt="The Stanza window: the Branches style playing, a path that switches on a node for each word as it is sung" loading="lazy">
+        <div class="panel__text">
+          <img class="panel__mark" src="projects/stanza/media/logo.png?v=20261116b" width="256" height="256" alt="Stanza logo" data-reveal>
+          <h2 data-reveal>The song you’re playing, word by word</h2>
+          <p class="lead" data-reveal style="--i:1">Stanza is a menu-bar app for Mac. It follows Spotify or Apple Music and draws the lyrics over your desktop and above the lock screen, one word at a time.</p>
+          <dl class="figures" data-reveal style="--i:2">
+            <div><dt>Lyric styles</dt><dd>13</dd></div>
+            <div><dt>Players it follows</dt><dd>2</dd></div>
+          </dl>
+          <dl class="facts card" id="stanza-facts" data-lift="#stanza-forward" data-tilt data-reveal style="--i:3">
+            <div><dt>Timed to the singing</dt><dd>Each word lights up as it’s sung. Songs with only line timing get an estimated time for each word.</dd></div>
+            <div><dt>Above every window</dt><dd>The words sit over the desktop, and above the lock screen too.</dd></div>
+            <div><dt>Thirteen styles</dt><dd>Kinetic type, small motion scenes, and four that borrow the look of a phone.</dd></div>
+            <div><dt>Previews that are the real thing</dt><dd>Every style plays live in the app’s window, through the same view that draws the overlay.</dd></div>
+          </dl>
+          <p class="actions" data-reveal style="--i:4"><a class="btn" href="https://github.com/Rayhanson-Git/stanza/releases/latest" data-latest-dmg="Rayhanson-Git/stanza"><svg class="icon" aria-hidden="true"><use href="#i-apple"/></svg>Download for Mac</a></p>
+          <p class="links" data-reveal style="--i:4">
+            <a href="projects/stanza/">View the Stanza case study</a>
+            <a href="https://github.com/Rayhanson-Git/stanza" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Stanza on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+            <button class="text-link peek" type="button" data-peek="#stanza-facts">Quick look<span class="visually-hidden">, Stanza</span></button>
+          </p>
+          <article class="feature card" id="stanza-forward" hidden>
+            <a class="shot shot--mark" href="projects/stanza/" data-slot="stanza" data-kind="mark" data-alt="Stanza logo">
+              <img src="projects/stanza/media/logo.png?v=20261116b" width="256" height="256" alt="Stanza logo" loading="lazy">
             </a>
             <div class="feature__text">
               <h2>Stanza</h2>
-              <p class="hook">The song you are playing<br>Word by word, on your Mac</p>
+              <p class="hook">The song you’re playing, word by word</p>
               <p class="meta">macOS app design and development, 2026</p>
               <p>A menu-bar app that follows the song in Spotify or Apple Music and draws its lyrics over the desktop and above the lock screen, one word at a time, in thirteen styles from kinetic type to a chat thread.</p>
+              <dl class="figures">
+                <div><dt>Lyric styles</dt><dd>13</dd></div>
+                <div><dt>Players it follows</dt><dd>2</dd></div>
+              </dl>
               <ul class="tags"><li>macOS</li><li>Swift</li><li>SwiftUI</li><li>Motion design</li></ul>
               <div class="more" hidden>
                 <p>Every style plays as a live preview in the app’s window, through the same view that draws the real overlay. Songs that only have line timing get an estimated time for each word.</p>
                 <dl class="more__facts"><div><dt>Role</dt><dd>Design and development</dd></div><div><dt>Built with</dt><dd>Swift, AppKit, and SwiftUI</dd></div><div><dt>Runs on</dt><dd>macOS 15 or later, Apple silicon</dd></div><div><dt>Get it</dt><dd>Free download for Mac, updates itself, MIT license</dd></div></dl>
               </div>
               <p class="actions"><a class="btn" href="https://github.com/Rayhanson-Git/stanza/releases/latest" data-latest-dmg="Rayhanson-Git/stanza"><svg class="icon" aria-hidden="true"><use href="#i-apple"/></svg>Download for Mac</a></p>
-              <p class="links"><a href="projects/stanza/">View the Stanza case study</a><a href="https://github.com/Rayhanson-Git/stanza" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Stanza on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a><button class="text-link peek" type="button" data-peek>Quick look<span class="visually-hidden">, Stanza</span></button></p>
+              <p class="links"><a href="projects/stanza/">View the Stanza case study</a><a href="https://github.com/Rayhanson-Git/stanza" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Stanza on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></p>
             </div>
           </article>
         </div>
