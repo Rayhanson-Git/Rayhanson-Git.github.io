@@ -3,7 +3,11 @@
 .app-window figcaption { max-width: 1180px; margin: var(--space-sm) auto 0; }
 .styles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-lg); margin: 0; padding: 0; list-style: none; }
 .styles figure, .views figure { display: grid; gap: var(--space-xs); }
-.styles img, .views img { width: 100%; height: auto; border: 1px solid var(--color-rule); border-radius: var(--radius-card); }
+.styles img, .styles video, .views img { display: block; width: 100%; height: auto; border: 1px solid var(--color-rule); border-radius: var(--radius-card); }
+.styles video { background: var(--color-night); }
+/* One button pauses or plays every style clip; it shows what a press will do */
+.loop-all .icon--play, .loop-all[data-state="paused"] .icon--pause { display: none; }
+.loop-all[data-state="paused"] .icon--play { display: inline-block; }
 .styles figcaption, .views figcaption { color: var(--color-ink-2); font-size: var(--text-sm); }
 .styles figcaption b, .views figcaption b { color: var(--color-ink); font-weight: 500; }
 /* The 23 styles in their three families, each family under its own heading and count */

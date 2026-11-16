@@ -160,24 +160,41 @@
   // A looping film plays by itself while it is on screen, like a moving picture, and stops when it scrolls away.
   // With reduced motion it keeps its ordinary controls; if the browser refuses to start it, the controls come back.
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const loops = new Map(); // each looping film: whether the visitor paused it, and whether it is on screen
+    const watch = new IntersectionObserver((entries) => entries.forEach(({ target, isIntersecting }) => {
+      const loop = loops.get(target);
+      loop.seen = isIntersecting;
+      if (!isIntersecting) target.pause();
+      else if (!loop.held) { target.preload = 'auto'; loop.start(); }
+    }), { threshold: 0.25 });
     document.querySelectorAll('video[data-loop]').forEach((video) => {
       const toggle = video.parentElement.querySelector('[data-loop-toggle]');
-      let held = false; // the visitor paused it, so scrolling back does not restart it
       const show = (playing) => {
         if (!toggle) return;
         toggle.dataset.state = playing ? 'playing' : 'paused';
         toggle.setAttribute('aria-label', playing ? 'Pause animation' : 'Play animation');
       };
-      const start = () => video.play().then(() => show(true), () => { video.controls = true; if (toggle) toggle.hidden = true; });
+      const loop = { held: false, seen: false }; // held: paused by the visitor, so scrolling back does not restart it
+      loop.start = () => video.play().then(() => show(true), () => { video.controls = true; if (toggle) toggle.hidden = true; });
+      loop.hold = (pause) => {
+        loop.held = pause;
+        if (pause) { video.pause(); show(false); } else if (loop.seen) loop.start(); else show(true);
+      };
+      loops.set(video, loop);
       video.controls = false;
-      if (toggle) toggle.hidden = false;
-      new IntersectionObserver(([entry]) => {
-        if (!entry.isIntersecting) video.pause();
-        else if (!held) { video.preload = 'auto'; start(); }
-      }, { threshold: 0.25 }).observe(video);
-      if (toggle) toggle.addEventListener('click', () => {
-        held = !video.paused;
-        if (held) { video.pause(); show(false); } else start();
+      if (toggle) { toggle.hidden = false; toggle.addEventListener('click', () => loop.hold(!video.paused)); }
+      watch.observe(video);
+    });
+    // One button pauses or plays every looping film in its section, so a page of clips is never motion you can't stop.
+    document.querySelectorAll('[data-loop-all]').forEach((button) => {
+      const scope = button.closest('section') || document;
+      const label = button.querySelector('[data-label]');
+      button.hidden = false;
+      button.addEventListener('click', () => {
+        const pause = button.dataset.state !== 'paused';
+        button.dataset.state = pause ? 'paused' : 'playing';
+        if (label) label.textContent = pause ? 'Play the animations' : 'Pause the animations';
+        scope.querySelectorAll('video[data-loop]').forEach((video) => loops.get(video)?.hold(pause));
       });
     });
   }
