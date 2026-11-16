@@ -205,7 +205,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: calc(-1 * var(--z
 /* A panel leaves its other half to the web */
 .panel { display: grid; align-items: center; padding-block: var(--section-gap-s); }
 .panel__text { display: grid; gap: var(--space-md); max-width: var(--tile); }
-.panel__mark { width: 3rem; height: 3rem; scale: 1.25; transform-origin: left bottom; } /* grows into the space above, so nothing below moves */
+.panel__mark { width: 3rem; height: 3rem; scale: 1.5; transform-origin: left bottom; } /* grows into the space above, so nothing below moves */
 .aside h3, .head--small h2, .film-card h2 { font-size: var(--text-title); line-height: 1.2; }
 .aside { display: grid; gap: var(--space-xs); max-width: 26rem; padding: var(--space-lg); font-size: var(--text-sm); }
 .panel__text--wide { gap: var(--space-lg); }

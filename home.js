@@ -157,6 +157,31 @@
     film.addEventListener('click', (e) => { if ((e.target === film && pressedOutside) || e.target.closest('[data-film-close]')) film.close(); });
   });
 
+  // A looping film plays by itself while it is on screen, like a moving picture, and stops when it scrolls away.
+  // With reduced motion it keeps its ordinary controls; if the browser refuses to start it, the controls come back.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    document.querySelectorAll('video[data-loop]').forEach((video) => {
+      const toggle = video.parentElement.querySelector('[data-loop-toggle]');
+      let held = false; // the visitor paused it, so scrolling back does not restart it
+      const show = (playing) => {
+        if (!toggle) return;
+        toggle.dataset.state = playing ? 'playing' : 'paused';
+        toggle.setAttribute('aria-label', playing ? 'Pause animation' : 'Play animation');
+      };
+      const start = () => video.play().then(() => show(true), () => { video.controls = true; if (toggle) toggle.hidden = true; });
+      video.controls = false;
+      if (toggle) toggle.hidden = false;
+      new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) video.pause();
+        else if (!held) { video.preload = 'auto'; start(); }
+      }, { threshold: 0.25 }).observe(video);
+      if (toggle) toggle.addEventListener('click', () => {
+        held = !video.paused;
+        if (held) { video.pause(); show(false); } else start();
+      });
+    });
+  }
+
   // While the sound story plays, its loudness swells the waveform in the scene.
   const audio = document.querySelector('.sound__player');
   if (audio && (window.AudioContext || window.webkitAudioContext)) {
