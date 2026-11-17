@@ -83,6 +83,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: calc(-1 * var(--z
 .dock .dock__sub[aria-current="true"] { background-color: color-mix(in oklab, var(--color-bone) 6%, transparent); color: var(--color-ink-2); }
 .dock .dock__sub:hover { background-color: color-mix(in oklab, var(--color-bone) 4%, transparent); color: var(--color-ink-2); }
 .dock__long { font-weight: inherit; }
+.dock .dock__sub { gap: 0.25em; } /* "Creative" and "Work" are two flex items: a word space between them, not the icon gap */
 @media (max-width: 40rem) { .dock__long { display: none; } }
 @media (max-width: 24rem) { .dock.is-work > a[aria-current] span { display: none; } } /* on the narrowest phones the two halves say where you are */
 @media (prefers-reduced-transparency: reduce) {
