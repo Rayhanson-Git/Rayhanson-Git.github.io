@@ -174,8 +174,51 @@
         toggle.dataset.state = playing ? 'playing' : 'paused';
         toggle.setAttribute('aria-label', playing ? 'Pause animation' : 'Play animation');
       };
-      const loop = { held: false, seen: false }; // held: paused by the visitor, so scrolling back does not restart it
-      loop.start = () => video.play().then(() => show(true), () => { video.controls = true; if (toggle) toggle.hidden = true; });
+      const sound = video.parentElement.querySelector('[data-loop-sound]');
+      // A film without the muted attribute is meant to be heard; the visitor can still mute it, and then it stays muted.
+      const wantsSound = Boolean(sound) && !video.defaultMuted;
+      const loop = { held: false, seen: false, muted: false }; // held: paused by the visitor; muted: muted by the visitor
+      const mark = () => {
+        if (!sound) return;
+        sound.dataset.state = video.muted ? 'muted' : 'loud';
+        sound.setAttribute('aria-label', video.muted ? 'Turn sound on' : 'Turn sound off');
+      };
+      const giveUp = () => {
+        video.controls = true; // the browser's own controls take over, sound included
+        if (toggle) toggle.hidden = true;
+        if (sound) sound.hidden = true;
+      };
+      loop.start = () => {
+        if (wantsSound && !loop.muted) video.muted = false;
+        return video.play().then(() => { show(true); mark(); }, (error) => {
+          // Most browsers allow sound only after a click on the site; until then the film plays muted.
+          if (!video.muted && error && error.name === 'NotAllowedError') {
+            video.muted = true;
+            mark();
+            return video.play().then(() => show(true), giveUp);
+          }
+          giveUp();
+        });
+      };
+      if (sound) {
+        sound.hidden = false;
+        mark();
+        sound.addEventListener('click', () => {
+          video.muted = !video.muted;
+          loop.muted = video.muted;
+          mark();
+        });
+      }
+      // A film that had to start muted gets its sound at the visitor's first click or key press anywhere on the page.
+      if (wantsSound) {
+        const done = new AbortController();
+        const unmute = (event) => {
+          if (sound && sound.contains(event.target)) { done.abort(); return; } // the speaker's own click decides
+          done.abort();
+          if (!loop.muted && video.muted) { video.muted = false; mark(); }
+        };
+        ['pointerdown', 'keydown'].forEach((type) => addEventListener(type, unmute, { capture: true, signal: done.signal }));
+      }
       loop.hold = (pause) => {
         loop.held = pause;
         if (pause) { video.pause(); show(false); } else if (loop.seen) loop.start(); else show(true);
