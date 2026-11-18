@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" width="1440" height="800" role="img" aria-labelledby="t d">
+  <title id="t">The Stanza window, annotated</title>
+  <desc id="d">A to-scale wireframe of the 1180 by 740 point window with eleven numbered parts: hero preview, name block, Select and star, chevrons and page dots, Favourites row, All styles grid, the bottom settings pill, a panel rolled up from the Size button, the Settings gear, the vertical player pill, and the player card it grows into.</desc>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif; fill: #EADCC8; }
+    .h1 { font-size: 26px; font-weight: 700; }
+    .sub { font-size: 14px; fill: #7FB3B8; }
+    .ui { font-size: 10.5px; fill: #EADCC8; }
+    .uis { font-size: 9px; fill: #9FA8AE; }
+    .uih { font-size: 15px; font-weight: 700; }
+    .serif { font-family: "New York", "Iowan Old Style", Georgia, "Times New Roman", serif; font-size: 31px; }
+    .num { font-size: 12px; font-weight: 700; fill: #FFFFFF; }
+    .lt { font-size: 14px; font-weight: 700; }
+    .ld { font-size: 12.5px; fill: #C9BBA8; }
+    .foot { font-size: 12px; fill: #7FB3B8; }
+    .ghost { font-size: 11px; fill: #7FB3B8; font-style: italic; }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#10202B"/>
+      <stop offset="1" stop-color="#0A0F14"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1B2733"/>
+      <stop offset="0.55" stop-color="#121A22"/>
+      <stop offset="1" stop-color="#2A2618"/>
+    </linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#05080B" stop-opacity="0"/>
+      <stop offset="1" stop-color="#05080B" stop-opacity="1"/>
+    </linearGradient>
+    <clipPath id="win"><rect x="40" y="110" width="944" height="592" rx="16"/></clipPath>
+  </defs>
+
+  <rect x="0" y="0" width="1440" height="800" rx="24" fill="url(#bg)"/>
+  <text x="40" y="54" class="h1">The window, part by part</text>
+  <text x="40" y="78" class="sub">Drawn to scale from the 1180 × 740 point window. Numbers match the notes on the right.</text>
+
+  <!-- window -->
+  <g clip-path="url(#win)">
+    <rect x="40" y="110" width="944" height="592" fill="#05080B"/>
+    <rect x="40" y="110" width="944" height="468" fill="url(#hero)"/>
+    <rect x="40" y="440" width="944" height="140" fill="url(#fade)"/>
+
+    <!-- board preview -->
+    <rect x="332" y="212" width="360" height="152" rx="7" fill="#151719" stroke="#3A4552"/>
+    <g stroke="#262A2F" stroke-width="1">
+      <line x1="342" y1="238" x2="682" y2="238"/><line x1="342" y1="262" x2="682" y2="262"/>
+      <line x1="342" y1="286" x2="682" y2="286"/><line x1="342" y1="310" x2="682" y2="310"/>
+      <line x1="342" y1="334" x2="682" y2="334"/>
+    </g>
+    <text x="350" y="228" class="uis" fill="#C98A3A">● DEPARTURES</text>
+    <text x="676" y="228" class="uis" text-anchor="end">00:16</text>
+    <rect x="340" y="306" width="2.5" height="46" fill="#EADCC8"/>
+    <rect x="350" y="309" width="270" height="16" rx="2" fill="#F2A53A"/>
+    <rect x="350" y="333" width="214" height="16" rx="2" fill="#F2A53A"/>
+
+    <!-- chevrons -->
+    <text x="70" y="338" class="uih" font-size="30" font-weight="300" text-anchor="middle">‹</text>
+    <text x="954" y="338" class="uih" font-size="30" font-weight="300" text-anchor="middle">›</text>
+
+    <!-- name block -->
+    <text x="85" y="426" class="uis">Motion scenes</text>
+    <text x="85" y="458" class="serif">Departure Board</text>
+    <text x="85" y="484" class="ui" fill="#C9BBA8">A split-flap board clatters through letters until each word lands.</text>
+    <rect x="85" y="507" width="102" height="34" rx="17" fill="#2A2F35" stroke="#454C54"/>
+    <text x="136" y="528" class="ui" font-weight="700" text-anchor="middle">✓ Selected</text>
+    <circle cx="214" cy="524" r="17" fill="#2A2F35" stroke="#454C54"/>
+    <text x="214" y="529" class="ui" font-size="14" text-anchor="middle">☆</text>
+
+    <!-- page dots -->
+    <g fill="#5E666D">
+      <circle cx="370" cy="556" r="2.4"/><circle cx="383" cy="556" r="2.4"/><circle cx="396" cy="556" r="2.4"/><circle cx="409" cy="556" r="2.4"/>
+      <circle cx="421" cy="556" r="2.4"/><circle cx="434" cy="556" r="2.4"/><circle cx="447" cy="556" r="2.4"/><circle cx="460" cy="556" r="2.4"/>
+      <circle cx="473" cy="556" r="2.4"/><circle cx="486" cy="556" r="2.4"/><circle cx="499" cy="556" r="2.4"/><circle cx="511" cy="556" r="2.4"/>
+      <circle cx="537" cy="556" r="2.4"/><circle cx="550" cy="556" r="2.4"/><circle cx="563" cy="556" r="2.4"/><circle cx="576" cy="556" r="2.4"/>
+      <circle cx="589" cy="556" r="2.4"/><circle cx="601" cy="556" r="2.4"/><circle cx="614" cy="556" r="2.4"/><circle cx="627" cy="556" r="2.4"/>
+      <circle cx="640" cy="556" r="2.4"/><circle cx="653" cy="556" r="2.4"/>
+    </g>
+    <circle cx="524" cy="556" r="2.6" fill="#FFFFFF"/>
+
+    <!-- shelf -->
+    <text x="75" y="618" class="uih">Favourites</text>
+    <text x="75" y="637" class="uis">Star a style to add it here. Favourites are what the menu bar menu shows.</text>
+    <text x="75" y="682" class="uih">All styles</text>
+    <rect x="75" y="694" width="266" height="40" rx="14" fill="#1A232C"/>
+    <rect x="357" y="694" width="266" height="40" rx="14" fill="#1E1A2C"/>
+    <rect x="639" y="694" width="266" height="40" rx="14" fill="#14261F"/>
+
+    <!-- panel rolled up from Size -->
+    <path d="M415,658 L415,650" stroke="#7FB3B8" stroke-width="1" stroke-dasharray="2 2"/>
+    <rect x="288" y="574" width="254" height="74" rx="16" fill="#2B2E31" fill-opacity="0.96" stroke="#5B6268"/>
+    <text x="302" y="597" class="uis">Aa</text>
+    <rect x="325" y="592" width="168" height="3" rx="1.5" fill="#5B6268"/>
+    <circle cx="424" cy="593.5" r="7.5" fill="#E6E6E6"/>
+    <text x="510" y="600" class="uih" font-size="16" font-weight="400">Aa</text>
+    <text x="302" y="628" class="ui" font-weight="700">100%</text>
+    <rect x="482" y="616" width="46" height="18" rx="9" fill="#3A3E42"/>
+    <text x="505" y="629" class="uis" text-anchor="middle">Reset</text>
+
+    <!-- settings pill -->
+    <rect x="392" y="658" width="240" height="27" rx="13.5" fill="#24282C" stroke="#4A5157"/>
+    <rect x="395" y="660.5" width="38" height="22" rx="11" fill="#4A5157"/>
+    <text x="414" y="675" class="ui" font-weight="600" text-anchor="middle">Size</text>
+    <text x="457" y="675" class="ui" font-weight="600" text-anchor="middle">Font</text>
+    <text x="518" y="675" class="ui" font-weight="600" text-anchor="middle">Lock Screen</text>
+    <text x="594" y="675" class="ui" font-weight="600" text-anchor="middle">Aesthetics</text>
+
+    <!-- player card ghost -->
+    <rect x="714" y="162" width="254" height="314" rx="21" fill="#2E6F73" fill-opacity="0.12" stroke="#7FB3B8" stroke-width="1.3" stroke-dasharray="6 5"/>
+    <circle cx="738" cy="186" r="12" fill="none" stroke="#7FB3B8" stroke-dasharray="3 3"/>
+    <circle cx="768" cy="186" r="12" fill="none" stroke="#7FB3B8" stroke-dasharray="3 3"/>
+    <text x="730" y="226" class="ghost">open: the same glass, grown</text>
+    <text x="730" y="242" class="ghost">icons in one row on top</text>
+    <rect x="730" y="256" width="150" height="7" rx="3.5" fill="#7FB3B8" fill-opacity="0.35"/>
+    <rect x="730" y="272" width="190" height="7" rx="3.5" fill="#7FB3B8" fill-opacity="0.25"/>
+    <rect x="730" y="288" width="170" height="7" rx="3.5" fill="#7FB3B8" fill-opacity="0.25"/>
+    <rect x="730" y="304" width="180" height="7" rx="3.5" fill="#7FB3B8" fill-opacity="0.25"/>
+
+    <!-- gear and player pill -->
+    <circle cx="952" cy="137" r="17.5" fill="#24282C" stroke="#4A5157"/>
+    <circle cx="952" cy="137" r="6" fill="none" stroke="#EADCC8" stroke-width="2.2" stroke-dasharray="2.4 2.3"/>
+    <circle cx="952" cy="137" r="3.6" fill="none" stroke="#EADCC8" stroke-width="1.6"/>
+    <rect x="934" y="161" width="35" height="64" rx="17.5" fill="#24282C" stroke="#4A5157"/>
+    <rect x="943" y="171" width="15" height="15" rx="4" fill="#2A1218" stroke="#E5484D"/>
+    <circle cx="950.5" cy="208" r="7.5" fill="#1DB954"/>
+    <circle cx="961" cy="190" r="2.6" fill="#8A9096"/>
+    <circle cx="961" cy="215" r="2.6" fill="#8A9096"/>
+  </g>
+  <rect x="40" y="110" width="944" height="592" rx="16" fill="none" stroke="#7FB3B8" stroke-opacity="0.6" stroke-width="1.5"/>
+
+  <!-- markers -->
+  <g>
+    <circle cx="320" cy="206" r="11" fill="#C2302F"/><text x="320" y="210.5" class="num" text-anchor="middle">1</text>
+    <circle cx="62" cy="446" r="11" fill="#C2302F"/><text x="62" y="450.5" class="num" text-anchor="middle">2</text>
+    <circle cx="248" cy="524" r="11" fill="#C2302F"/><text x="248" y="528.5" class="num" text-anchor="middle">3</text>
+    <circle cx="672" cy="556" r="11" fill="#C2302F"/><text x="672" y="560.5" class="num" text-anchor="middle">4</text>
+    <circle cx="172" cy="612" r="11" fill="#C2302F"/><text x="172" y="616.5" class="num" text-anchor="middle">5</text>
+    <circle cx="170" cy="676" r="11" fill="#C2302F"/><text x="170" y="680.5" class="num" text-anchor="middle">6</text>
+    <circle cx="648" cy="671" r="11" fill="#C2302F"/><text x="648" y="675.5" class="num" text-anchor="middle">7</text>
+    <circle cx="556" cy="578" r="11" fill="#C2302F"/><text x="556" y="582.5" class="num" text-anchor="middle">8</text>
+    <circle cx="918" cy="137" r="11" fill="#C2302F"/><text x="918" y="141.5" class="num" text-anchor="middle">9</text>
+    <circle cx="918" cy="210" r="11" fill="#C2302F"/><text x="918" y="214.5" class="num" text-anchor="middle">10</text>
+    <circle cx="732" cy="458" r="11" fill="#C2302F"/><text x="732" y="462.5" class="num" text-anchor="middle">11</text>
+  </g>
+
+  <!-- notes -->
+  <g>
+    <circle cx="1024" cy="128" r="11" fill="#C2302F"/><text x="1024" y="132.5" class="num" text-anchor="middle">1</text>
+    <text x="1044" y="133" class="lt">Hero preview</text>
+    <text x="1044" y="152" class="ld">The browsed style plays large, zoomed 1.15×, in time</text>
+    <text x="1044" y="168" class="ld">with your song, or with a two-line demo.</text>
+
+    <circle cx="1024" cy="190" r="11" fill="#C2302F"/><text x="1024" y="194.5" class="num" text-anchor="middle">2</text>
+    <text x="1044" y="195" class="lt">Name block</text>
+    <text x="1044" y="214" class="ld">Group, the name in a 42-point serif, one line of what</text>
+    <text x="1044" y="230" class="ld">it does.</text>
+
+    <circle cx="1024" cy="252" r="11" fill="#C2302F"/><text x="1024" y="256.5" class="num" text-anchor="middle">3</text>
+    <text x="1044" y="257" class="lt">Select and star</text>
+    <text x="1044" y="276" class="ld">Select (Return) puts the style to work; the star makes</text>
+    <text x="1044" y="292" class="ld">it a Favourite.</text>
+
+    <circle cx="1024" cy="314" r="11" fill="#C2302F"/><text x="1024" y="318.5" class="num" text-anchor="middle">4</text>
+    <text x="1044" y="319" class="lt">Chevrons and page dots</text>
+    <text x="1044" y="338" class="ld">← and → step through all 23; the white dot is your place.</text>
+
+    <circle cx="1024" cy="360" r="11" fill="#C2302F"/><text x="1024" y="364.5" class="num" text-anchor="middle">5</text>
+    <text x="1044" y="365" class="lt">Favourites</text>
+    <text x="1044" y="384" class="ld">Starred styles get their own row, and the menu-bar</text>
+    <text x="1044" y="400" class="ld">menu lists only these.</text>
+
+    <circle cx="1024" cy="422" r="11" fill="#C2302F"/><text x="1024" y="426.5" class="num" text-anchor="middle">6</text>
+    <text x="1044" y="427" class="lt">All styles</text>
+    <text x="1044" y="446" class="ld">Tiles zoomed 1.1×; a tile plays once the pointer has</text>
+    <text x="1044" y="462" class="ld">rested on it for 0.18 s. The grid scrolls under the pill.</text>
+
+    <circle cx="1024" cy="484" r="11" fill="#C2302F"/><text x="1024" y="488.5" class="num" text-anchor="middle">7</text>
+    <text x="1044" y="489" class="lt">Settings pill</text>
+    <text x="1044" y="508" class="ld">Size, Font, Lock Screen, Aesthetics: 12.5-point labels</text>
+    <text x="1044" y="524" class="ld">on a glass capsule 20 points above the bottom.</text>
+
+    <circle cx="1024" cy="546" r="11" fill="#C2302F"/><text x="1024" y="550.5" class="num" text-anchor="middle">8</text>
+    <text x="1044" y="551" class="lt">Panel, rolled up</text>
+    <text x="1044" y="570" class="ld">320 points wide, centred on its button and growing</text>
+    <text x="1044" y="586" class="ld">out of it; kept inside the window.</text>
+
+    <circle cx="1024" cy="608" r="11" fill="#C2302F"/><text x="1024" y="612.5" class="num" text-anchor="middle">9</text>
+    <text x="1044" y="613" class="lt">Settings gear</text>
+    <text x="1044" y="632" class="ld">Open at login, updates, version, About Stanza.</text>
+
+    <circle cx="1024" cy="654" r="11" fill="#C2302F"/><text x="1024" y="658.5" class="num" text-anchor="middle">10</text>
+    <text x="1044" y="659" class="lt">Player pill</text>
+    <text x="1044" y="678" class="ld">Apple Music over Spotify, each with a health dot.</text>
+    <text x="1044" y="694" class="ld">Point at it and it widens to show their names.</text>
+
+    <circle cx="1024" cy="716" r="11" fill="#C2302F"/><text x="1024" y="720.5" class="num" text-anchor="middle">11</text>
+    <text x="1044" y="721" class="lt">Player card</text>
+    <text x="1044" y="740" class="ld">Click an icon and the same glass grows into its panel,</text>
+    <text x="1044" y="756" class="ld">with both icons side by side across the top.</text>
+  </g>
+
+  <text x="40" y="738" class="foot">Panels close on a second click, on another button, on a click anywhere in the page, or with Esc.</text>
+  <text x="40" y="758" class="foot">The glass is Liquid Glass on macOS 26 and frosted material before it.</text>
+</svg>

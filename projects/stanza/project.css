@@ -34,7 +34,7 @@
 
 /* Diagrams drawn for this page: plain shapes in the page's own colours, wide enough to stay legible on a phone */
 .diagram { margin: 0; overflow-x: auto; }
-.diagram svg { display: block; width: 100%; min-width: 40rem; height: auto; }
+.diagram svg, .diagram img { display: block; width: 100%; min-width: 40rem; height: auto; }
 .diagram figcaption { margin-top: var(--space-sm); color: var(--color-ink-2); font-size: var(--text-sm); }
 .d-box { fill: var(--color-paper-2); stroke: var(--color-rule); stroke-width: 1.5; }
 .d-box--key { stroke: var(--color-accent); }

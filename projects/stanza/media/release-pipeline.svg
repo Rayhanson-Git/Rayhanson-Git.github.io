@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" role="img" aria-labelledby="t d">
+  <title id="t">Stanza release and update pipeline</title>
+  <desc id="d">On the maintainer's Mac: raise the version, build and sign with the release certificate, make the disk image, sign it with the EdDSA key and write appcast.xml; with --publish, and only from a clean tree that matches origin/main, create the GitHub release. On your Mac, Sparkle checks the latest appcast once a day, downloads quietly, verifies the EdDSA signature and installs on quit or on Restart to Update.</desc>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif; fill: #EADCC8; }
+    .h1 { font-size: 26px; font-weight: 700; }
+    .sub { font-size: 14px; fill: #7FB3B8; }
+    .lane { font-size: 11px; font-weight: 700; letter-spacing: 1.6px; fill: #7FB3B8; }
+    .bt { font-size: 14.5px; font-weight: 700; }
+    .bl { font-size: 12.5px; fill: #C9BBA8; }
+    .mono { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12px; fill: #C9BBA8; }
+    .al { font-size: 11.5px; fill: #7FB3B8; font-style: italic; }
+    .stop { font-size: 11.5px; fill: #F2A7A6; font-weight: 700; }
+    .leg { font-size: 12.5px; fill: #C9BBA8; }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#10202B"/>
+      <stop offset="1" stop-color="#0A0F14"/>
+    </linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7FB3B8"/>
+    </marker>
+    <marker id="arrHot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C2302F"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="660" rx="24" fill="url(#bg)"/>
+  <text x="40" y="54" class="h1">From a commit to every installed copy</text>
+  <text x="40" y="78" class="sub">scripts/release.sh on the maintainer's Mac, GitHub in the middle, Sparkle on yours. Gates in crimson.</text>
+
+  <!-- lanes -->
+  <rect x="24" y="96" width="1152" height="214" rx="16" fill="#0A0F14" fill-opacity="0.45" stroke="#2E6F73" stroke-opacity="0.6"/>
+  <text x="40" y="118" class="lane">MAINTAINER'S MAC</text>
+  <rect x="24" y="324" width="1152" height="100" rx="16" fill="#0A0F14" fill-opacity="0.45" stroke="#2E6F73" stroke-opacity="0.6"/>
+  <text x="40" y="346" class="lane">GITHUB</text>
+  <rect x="24" y="438" width="1152" height="150" rx="16" fill="#0A0F14" fill-opacity="0.45" stroke="#2E6F73" stroke-opacity="0.6"/>
+  <text x="40" y="460" class="lane">YOUR MAC</text>
+
+  <!-- row 1 -->
+  <rect x="40" y="132" width="172" height="100" rx="14" fill="#10202B" stroke="#2E6F73" stroke-width="1.5"/>
+  <text x="54" y="157" class="bt">Raise the version</text>
+  <text x="54" y="178" class="bl">Info.plist, a CHANGELOG</text>
+  <text x="54" y="195" class="bl">section; commit and</text>
+  <text x="54" y="212" class="bl">push</text>
+
+  <rect x="236" y="132" width="196" height="100" rx="14" fill="#10202B" stroke="#2E6F73" stroke-width="1.5"/>
+  <text x="250" y="157" class="bt">./build.sh</text>
+  <text x="250" y="178" class="bl">pinned Sparkle (SHA-256),</text>
+  <text x="250" y="195" class="bl">swiftc -O, signed with</text>
+  <text x="250" y="212" class="bl">the release certificate</text>
+
+  <rect x="456" y="132" width="162" height="100" rx="14" fill="#10202B" stroke="#C2302F" stroke-width="1.8"/>
+  <text x="470" y="157" class="bt">Self-check and</text>
+  <text x="470" y="175" class="bt">certificate gate</text>
+  <text x="470" y="194" class="bl">a failed check or</text>
+  <text x="470" y="210" class="bl">an ad hoc signature</text>
+  <text x="470" y="226" class="stop">stops the release</text>
+
+  <rect x="642" y="132" width="160" height="100" rx="14" fill="#10202B" stroke="#2E6F73" stroke-width="1.5"/>
+  <text x="656" y="157" class="bt">Disk image</text>
+  <text x="656" y="178" class="bl">app, Applications</text>
+  <text x="656" y="195" class="bl">link, background,</text>
+  <text x="656" y="212" class="bl">compressed</text>
+
+  <rect x="826" y="132" width="160" height="100" rx="14" fill="#10202B" stroke="#2E6F73" stroke-width="1.5"/>
+  <text x="840" y="157" class="bt">EdDSA signature</text>
+  <text x="840" y="178" class="bl">key read from the</text>
+  <text x="840" y="195" class="bl">Keychain only for the</text>
+  <text x="840" y="212" class="bl">moment of signing</text>
+
+  <rect x="1010" y="132" width="152" height="100" rx="14" fill="#10202B" stroke="#2E6F73" stroke-width="1.5"/>
+  <text x="1024" y="157" class="bt">appcast.xml</text>
+  <text x="1024" y="178" class="bl">version, minimum</text>
+  <text x="1024" y="195" class="bl">macOS, notes, URL,</text>
+  <text x="1024" y="212" class="bl">signature</text>
+
+  <path d="M212,182 L234,182" stroke="#7FB3B8" stroke-width="1.6" marker-end="url(#arr)"/>
+  <path d="M432,182 L454,182" stroke="#7FB3B8" stroke-width="1.6" marker-end="url(#arr)"/>
+  <path d="M618,182 L640,182" stroke="#7FB3B8" stroke-width="1.6" marker-end="url(#arr)"/>
+  <path d="M802,182 L824,182" stroke="#7FB3B8" stroke-width="1.6" marker-end="url(#arr)"/>
+  <path d="M986,182 L1008,182" stroke="#7FB3B8" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <!-- row 2 -->
+  <text x="54" y="268" class="mono">scripts/release.sh</text>
+  <text x="54" y="288" class="al">without --publish it stops here, with the DMG and feed in build/release/</text>
+
+  <rect x="690" y="246" width="472" height="52" rx="14" fill="#10202B" stroke="#C2302F" stroke-width="1.8"/>
+  <text x="704" y="268" class="bt">--publish gate</text>
+  <text x="704" y="288" class="bl">clean working tree, and HEAD exactly origin/main</text>
+  <path d="M1086,232 L1086,244" stroke="#7FB3B8" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <!-- github -->
+  <rect x="690" y="356" width="472" height="54" rx="14" fill="#10202B" stroke="#EADCC8" stroke-width="1.5"/>
+  <text x="704" y="379" class="bt">gh release create v&lt;version&gt;</text>
+  <text x="704" y="399" class="bl">the DMG, appcast.xml, and notes from CHANGELOG.md</text>
+  <path d="M926,298 L926,354" stroke="#C2302F" stroke-width="2.2" marker-end="url(#arrHot)"/>
+  <text x="80" y="384" class="bl">Installed copies read the feed attached to the latest release (SUFeedURL),</text>
+  <text x="80" y="402" class="bl">so publishing the release is what makes them update.</text>
+
+  <!-- your mac (right to left) -->
+  <rect x="966" y="476" width="196" height="96" rx="14" fill="#10202B" stroke="#2E6F73" stroke-width="1.5"/>
+  <text x="980" y="501" class="bt">Check</text>
+  <text x="980" y="522" class="bl">once a day, or Check</text>
+  <text x="980" y="539" class="bl">for Updates…; only in</text>
+  <text x="980" y="556" class="bl">a normal launch</text>
+
+  <rect x="744" y="476" width="196" height="96" rx="14" fill="#10202B" stroke="#2E6F73" stroke-width="1.5"/>
+  <text x="758" y="501" class="bt">Download quietly</text>
+  <text x="758" y="522" class="bl">a background check</text>
+  <text x="758" y="539" class="bl">never throws a window</text>
+  <text x="758" y="556" class="bl">in front of your work</text>
+
+  <rect x="522" y="476" width="196" height="96" rx="14" fill="#10202B" stroke="#C2302F" stroke-width="1.8"/>
+  <text x="536" y="501" class="bt">Verify</text>
+  <text x="536" y="522" class="bl">EdDSA signature must</text>
+  <text x="536" y="539" class="bl">match SUPublicEDKey</text>
+  <text x="536" y="558" class="stop">or it is not installed</text>
+
+  <rect x="300" y="476" width="196" height="96" rx="14" fill="#10202B" stroke="#2E6F73" stroke-width="1.5"/>
+  <text x="314" y="501" class="bt">Install</text>
+  <text x="314" y="522" class="bl">on quit, or now with</text>
+  <text x="314" y="539" class="bl">Restart to Update in the</text>
+  <text x="314" y="556" class="bl">menu and the window</text>
+
+  <rect x="40" y="476" width="234" height="96" rx="14" fill="#0A0F14" stroke="#EADCC8" stroke-width="1.5"/>
+  <text x="54" y="501" class="bt">Same app to macOS</text>
+  <text x="54" y="522" class="bl">the fixed certificate keeps</text>
+  <text x="54" y="539" class="bl">the Automation permission</text>
+  <text x="54" y="556" class="bl">across updates</text>
+
+  <path d="M1064,410 L1064,474" stroke="#7FB3B8" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="1072" y="446" class="al">appcast</text>
+  <path d="M966,524 L942,524" stroke="#7FB3B8" stroke-width="1.6" marker-end="url(#arr)"/>
+  <path d="M744,524 L720,524" stroke="#7FB3B8" stroke-width="1.6" marker-end="url(#arr)"/>
+  <path d="M522,524 L498,524" stroke="#7FB3B8" stroke-width="1.6" marker-end="url(#arr)"/>
+  <path d="M300,524 L276,524" stroke="#7FB3B8" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <!-- legend -->
+  <rect x="40" y="610" width="14" height="14" rx="4" fill="none" stroke="#C2302F" stroke-width="1.8"/>
+  <text x="62" y="622" class="leg">a gate that stops the line</text>
+  <text x="270" y="622" class="leg">Two keys, two jobs: the EdDSA key proves an update is this project's; the certificate keeps it the same app.</text>
+</svg>
