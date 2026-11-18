@@ -26,20 +26,74 @@
   if (subs && work && creative) {
     const [toProjects, toCreative] = subs.querySelectorAll('a');
     const mark = (link, on) => (on ? link.setAttribute('aria-current', 'true') : link.removeAttribute('aria-current'));
-    let queued = false;
+    const workLink = subs.previousElementSibling;
+    let queued = false, peekWork = false;
     const update = () => {
       queued = false;
       const middle = innerHeight / 2, box = work.getBoundingClientRect();
       const inWork = box.top <= middle && box.bottom >= middle, inCreative = inWork && creative.getBoundingClientRect().top <= middle;
       dock.classList.toggle('is-work', inWork);
-      if (!inWork && subs.contains(document.activeElement)) subs.previousElementSibling.focus(); // keep keyboard focus on Work
-      subs.inert = !inWork; // folded away, the two pills are out of the tab order
+      const open = inWork || peekWork;
+      if (!open && subs.contains(document.activeElement)) workLink.focus(); // keep keyboard focus on Work
+      subs.inert = !open; // folded away, the two pills are out of the tab order
       mark(toProjects, inWork && !inCreative);
       mark(toCreative, inCreative);
     };
     addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
     addEventListener('resize', update);
     update();
+
+    // Pointing at an item (with a mouse) or tabbing to it opens its name and folds the current one; Work also opens its
+    // two halves, and they stay open while the pointer or focus is on them. Leaving the bar puts it back. Touch is unchanged.
+    const tops = [...dock.querySelectorAll(':scope > a')];
+    // Each name opens exactly as wide as its text, so the whole slide is visible.
+    const measure = () => tops.forEach((a) => { const s = a.querySelector('span'); s.style.setProperty('--label-w', `${Math.ceil(s.scrollWidth) + 1}px`); });
+    // While open, the bar keeps its left edge where it is and grows to the right, so the item under the pointer stays
+    // under it. At rest the bar is centred on that same edge, so letting go after it shrinks back is seamless.
+    const peekMs = 450; // matches --peek-dur in home.css
+    let held = false, release = 0, closing = 0;
+    const hold = () => {
+      clearTimeout(release);
+      if (held) return;
+      held = true;
+      dock.style.left = `${dock.getBoundingClientRect().left}px`;
+      dock.style.translate = 'none';
+    };
+    const letGo = (now) => {
+      clearTimeout(release);
+      const free = () => { if (!dock.classList.contains('is-peeking')) { held = false; dock.style.left = ''; dock.style.translate = ''; } };
+      if (now) free(); else release = setTimeout(free, peekMs + 50);
+    };
+    const peek = (link) => {
+      clearTimeout(closing);
+      if (link) hold();
+      tops.forEach((a) => a.classList.toggle('is-peek', a === link));
+      dock.classList.toggle('is-peeking', !!link);
+      peekWork = link === workLink;
+      dock.classList.toggle('is-peek-work', peekWork);
+      update();
+      if (!link) letGo();
+    };
+    const owner = (el) => (subs.contains(el) ? workLink : tops.includes(el) ? el : null);
+    measure();
+    if (document.fonts) document.fonts.ready.then(measure);
+    dock.classList.add('has-peek');
+    dock.addEventListener('pointerover', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const link = owner(e.target.closest('a'));
+      if (link) peek(link);
+      else clearTimeout(closing); // in the gap between items: keep what is open
+    });
+    dock.addEventListener('pointerleave', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const focused = document.activeElement;
+      const keep = dock.contains(focused) && focused.matches(':focus-visible') ? owner(focused) : null;
+      clearTimeout(closing);
+      closing = setTimeout(() => peek(keep), 200); // a short grace, so slipping off the edge does not snap it shut
+    });
+    dock.addEventListener('focusin', (e) => { if (e.target.matches(':focus-visible')) peek(owner(e.target)); });
+    dock.addEventListener('focusout', (e) => { if (!dock.contains(e.relatedTarget) && !dock.matches(':hover')) peek(null); });
+    addEventListener('resize', () => { if (held) { peek(null); letGo(true); } measure(); });
   }
 
   // Cards lean toward the pointer and light up under it.

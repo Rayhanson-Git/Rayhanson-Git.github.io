@@ -86,11 +86,28 @@ body::after { content: ""; position: fixed; inset: 0; z-index: calc(-1 * var(--z
 .dock .dock__sub { gap: 0.25em; } /* "Creative" and "Work" are two flex items: a word space between them, not the icon gap */
 @media (max-width: 40rem) { .dock__long { display: none; } }
 @media (max-width: 24rem) { .dock.is-work > a[aria-current] span { display: none; } } /* on the narrowest phones the two halves say where you are */
+/* Homepage only (home.js adds has-peek): the item you point at or tab to opens its name, the current one folds to its icon
+   with a faint fill so you still know where you are, and Work opens its two halves. Names slide rather than pop. */
+/* A quick move that runs a little past and settles back, for a small nudge of momentum; each name opens exactly as wide
+   as its text (--label-w, measured by home.js). */
+.dock.has-peek { --peek-dur: 450ms; --peek-ease: cubic-bezier(0.34, 1.45, 0.55, 1); }
+.dock.has-peek > a { transition: color var(--peek-dur) var(--peek-ease), background-color var(--peek-dur) var(--peek-ease), padding var(--peek-dur) var(--peek-ease); }
+/* width (not max-width) so the overshoot shows: the pill opens a little past the name and settles back. */
+.dock.has-peek > a span { display: inline-block; width: 0; max-width: none; margin-inline-start: calc(-1 * var(--space-xs)); overflow: hidden; opacity: 0; transition: width var(--peek-dur) var(--peek-ease), margin var(--peek-dur) var(--peek-ease), opacity var(--peek-dur) var(--peek-ease); }
+.dock.has-peek > a[aria-current="true"] span, .dock.has-peek > a.is-peek span { width: var(--label-w, auto); margin-inline-start: 0; opacity: 1; }
+.dock.has-peek .dock__subs { transition: grid-template-columns var(--peek-dur) var(--peek-ease); }
+.dock.has-peek .dock__sub { transition: opacity var(--peek-dur) var(--peek-ease), translate var(--peek-dur) var(--peek-ease), color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out); }
+.dock.is-peeking > a[aria-current="true"]:not(.is-peek) { padding-inline: var(--space-xs); background-color: color-mix(in oklab, var(--color-bone) 6%, transparent); color: var(--color-ink-2); }
+.dock.is-peeking > a[aria-current="true"]:not(.is-peek) span { width: 0; margin-inline-start: calc(-1 * var(--space-xs)); opacity: 0; }
+.dock.is-peeking > a.is-peek { padding-inline: var(--space-sm); background-color: color-mix(in oklab, var(--color-bone) 14%, transparent); color: var(--color-ink); }
+.dock.is-peek-work .dock__subs { grid-template-columns: 1fr; }
+.dock.is-peek-work:not(.is-work) .dock__subs { margin-inline-end: 0; }
+.dock.is-peek-work .dock__sub { opacity: 1; translate: none; }
 @media (prefers-reduced-transparency: reduce) {
   .dock { background: var(--color-paper-2); -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .dock__subs, .dock .dock__sub { transition: none; }
+  .dock__subs, .dock .dock__sub, .dock.has-peek > a, .dock.has-peek > a span, .dock.has-peek .dock__subs, .dock.has-peek .dock__sub { transition: none; }
 }
 
 /* The grip: the pointer's tendril takes hold of a button or a tile. grip.js draws it with the web's own renderer on
