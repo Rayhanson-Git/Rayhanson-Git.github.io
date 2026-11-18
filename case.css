@@ -88,6 +88,7 @@ dialog::backdrop { background: color-mix(in oklab, var(--color-night) 82%, trans
 .case-film figcaption { margin-top: var(--space-sm); }
 .case-film__frame { position: relative; }
 .case-film video { display: block; background: var(--color-night); }
+.case-film iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 1px solid var(--color-rule); border-radius: var(--radius-card); background: var(--color-night); }
 /* The looping film's pause button: the same ghost circle as the page's motion button, in the film's corner. */
 .film-toggle { position: absolute; right: var(--space-sm); bottom: var(--space-sm); display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid color-mix(in oklab, var(--color-muted) 32%, transparent); border-radius: 50%; background: color-mix(in oklab, var(--color-night) 45%, transparent); color: var(--color-ink-2); cursor: pointer; opacity: 0.6; transition: opacity var(--dur-short) var(--ease-out); }
 .film-toggle:hover, .film-toggle:focus-visible { opacity: 1; }
