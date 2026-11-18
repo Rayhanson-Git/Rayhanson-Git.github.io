@@ -123,7 +123,8 @@
   if (!matchMedia('(hover: hover)').matches) return;
   const allowed = () => !calm.matches && !scene.paused && document.documentElement.classList.contains('webgl');
 
-  const TARGETS = '.card, .plate, .web__node, .hero .btn'; // a tile brought forward by lift.js is a .card too
+  // Every big filled button is held, wherever it sits (Explore my work, Download for Mac); quiet ones only in the hero.
+  const TARGETS = '.card, .plate, .web__node, .btn:not(.btn--quiet), .hero .btn'; // a tile brought forward by lift.js is a .card too
   const GROW_PER_SECOND = 5;   // the hold closes in about half a second and lets go as fast
   const MAX_TENDRILS = 18;     // two strands each, plus the web's own tendril, stays inside the renderer's limit
   const LATE = 0.6;            // how much of a tendril's delay still applies, so all of them finish arriving
