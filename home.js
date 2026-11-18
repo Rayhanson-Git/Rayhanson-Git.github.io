@@ -143,18 +143,32 @@
   // A film's small play button opens it in a window over the page. Closing the window, by its X, Escape or a click
   // on the dimmed page, stops the film. The button stays hidden where the browser has no such window.
   document.querySelectorAll('[data-film]').forEach((button) => {
-    const film = document.querySelector(button.dataset.film), video = film && film.querySelector('video');
-    if (!video || !film.showModal) return;
+    const film = document.querySelector(button.dataset.film);
+    const video = film && film.querySelector('video'), frame = film && film.querySelector('iframe[data-src]');
+    if ((!video && !frame) || !film.showModal) return;
     button.hidden = false;
     button.addEventListener('click', () => {
       film.showModal();
-      video.play().catch(() => {}); // a browser may refuse to start it; the controls are right there
+      if (frame) {
+        frame.src = frame.dataset.src; // an embedded player loads, and starts, only when opened
+        // The player grabs the keyboard as it starts; hand it back for its first seconds so Escape still closes the window.
+        const closer = film.querySelector('[data-film-close]'), opened = Date.now();
+        const reclaim = () => { if (film.open && Date.now() - opened < 4000) setTimeout(() => closer?.focus(), 0); };
+        addEventListener('blur', reclaim);
+        film.addEventListener('close', () => removeEventListener('blur', reclaim), { once: true });
+      } else video.play().catch(() => {}); // a browser may refuse to start it; the controls are right there
     });
-    film.addEventListener('close', () => video.pause());
+    const stop = () => {
+      if (frame) frame.removeAttribute('src'); // unloading the player is what stops it
+      else video.pause();
+    };
+    const shut = () => { film.close(); stop(); };
+    film.addEventListener('close', stop); // a backstop: every way out below also stops the film directly
+    film.addEventListener('cancel', (e) => { e.preventDefault(); shut(); }); // Escape
     // A click on the dimmed page closes it, but not a drag that began on the film, such as its seek bar.
     let pressedOutside = false;
     film.addEventListener('pointerdown', (e) => { pressedOutside = e.target === film; });
-    film.addEventListener('click', (e) => { if ((e.target === film && pressedOutside) || e.target.closest('[data-film-close]')) film.close(); });
+    film.addEventListener('click', (e) => { if ((e.target === film && pressedOutside) || e.target.closest('[data-film-close]')) shut(); });
   });
 
   // A looping film plays by itself while it is on screen, like a moving picture, and stops when it scrolls away.
