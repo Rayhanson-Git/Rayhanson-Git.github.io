@@ -1,6 +1,6 @@
 # Harvey Rayhanson
 
-> Harvey Rayhanson is a media artist, graphic designer and AI engineer. He builds AI systems, apps, creative code and sound work, from a shared memory for AI agents to a Mac lyrics app. He designs every system he builds, from the architecture and data model to how it behaves when something fails, and nothing ships until it passes the tests he wrote.
+> Harvey Rayhanson is a media artist, graphic designer and AI engineer. He builds AI systems, apps, creative code and sound work, from a shared memory for AI agents to a Mac lyrics app. He doesn’t ship what he doesn’t understand. He designs the architecture, writes the parts that need real care himself, and takes systems apart until he knows exactly why they work, down to the data model and how they behave when something fails. Nothing goes out until it passes the tests he wrote.
 
 Each project below has a case study on this site: what it does, how it works, and how it was tested. Live apps and source code are linked from each page.
 
