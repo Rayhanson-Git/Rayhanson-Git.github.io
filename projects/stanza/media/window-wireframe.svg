@@ -187,7 +187,7 @@
 
     <circle cx="1024" cy="608" r="11" fill="#C2302F"/><text x="1024" y="612.5" class="num" text-anchor="middle">9</text>
     <text x="1044" y="613" class="lt">Settings gear</text>
-    <text x="1044" y="632" class="ld">Open at login, updates, version, About Stanza.</text>
+    <text x="1044" y="632" class="ld">Open at login, shortcuts, updates, version, About Stanza.</text>
 
     <circle cx="1024" cy="654" r="11" fill="#C2302F"/><text x="1024" y="658.5" class="num" text-anchor="middle">10</text>
     <text x="1044" y="659" class="lt">Player pill</text>
