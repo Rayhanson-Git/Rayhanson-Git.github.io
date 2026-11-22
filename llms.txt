@@ -6,7 +6,7 @@ Each project below has a case study on this site: what it does, how it works, an
 
 ## AI systems and apps
 
-- [Enigma MCP](https://rayhanson.tech/projects/enigma/): one Rust binary that gives Claude Code, Codex and other AI agents a shared long-term memory, kept as plain Markdown notes in an Obsidian vault. Published on crates.io and the MCP Registry. Source: https://github.com/Rayhanson-Git/enigma
+- [Enigma MCP](https://rayhanson.tech/projects/enigma/): one Rust binary that gives Claude Code, Codex and other AI agents a shared long-term memory, kept as plain Markdown notes in an Obsidian vault, inspired by Tesseract MCP (https://github.com/DeepExtrema/tesseract). Published on crates.io and the MCP Registry. Source: https://github.com/Rayhanson-Git/enigma
 - [Stanza](https://rayhanson.tech/projects/stanza/): a free, open-source macOS menu-bar app that shows the song playing in Spotify or Apple Music word by word, on the desktop and above the lock screen, in 23 styles. Source: https://github.com/Rayhanson-Git/stanza
 - [JimBro](https://rayhanson.tech/projects/jimbro/): a local-first gym companion with workout planning, editable routines, set logging, progress and backups.
 - [LeaveBy](https://rayhanson.tech/projects/leaveby/): a workout transition planner that works out when to stop, get ready and leave for class or work.
