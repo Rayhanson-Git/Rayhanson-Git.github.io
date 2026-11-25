@@ -1,24 +1,24 @@
 # Harvey Rayhanson
 
-> Harvey Rayhanson is a media artist, graphic designer and AI engineer. He builds AI systems, apps, creative code and sound work, from a shared memory for AI agents to a Mac lyrics app. He doesn’t ship what he doesn’t understand. He designs the architecture, writes the parts that need real care himself, and takes systems apart until he knows exactly why they work, down to the data model and how they behave when something fails. Nothing goes out until it passes the tests he wrote.
+> Harvey Rayhanson is a media artist, graphic designer, and AI engineer. He builds AI systems, apps, creative code, and sound work, from a shared memory for AI agents to a Mac lyrics app. He doesn’t ship what he doesn’t understand. He designs the architecture, writes the parts that need real care himself, and takes systems apart until he knows exactly why they work, down to the data model and how they behave when something fails. Nothing goes out until it passes the tests he wrote.
 
 Each project below has a case study on this site: what it does, how it works, and how it was tested. Live apps and source code are linked from each page.
 
 ## AI systems and apps
 
-- [Enigma MCP](https://rayhanson.tech/projects/enigma/): one Rust binary that gives Claude Code, Codex and other AI agents a shared long-term memory, kept as plain Markdown notes in an Obsidian vault, inspired by Tesseract MCP (https://github.com/DeepExtrema/tesseract). Published on crates.io and the MCP Registry. Source: https://github.com/Rayhanson-Git/enigma
+- [Enigma MCP](https://rayhanson.tech/projects/enigma/): one Rust binary that gives Claude Code, Codex, and other AI agents a shared long-term memory, kept as plain Markdown notes in an Obsidian vault, inspired by Tesseract MCP (https://github.com/DeepExtrema/tesseract). Published on crates.io and the MCP Registry. Source: https://github.com/Rayhanson-Git/enigma
 - [Stanza](https://rayhanson.tech/projects/stanza/): a free, open-source macOS menu-bar app that shows the song playing in Spotify or Apple Music word by word, on the desktop and above the lock screen, in 23 styles. Source: https://github.com/Rayhanson-Git/stanza
-- [JimBro](https://rayhanson.tech/projects/jimbro/): a local-first gym companion with workout planning, editable routines, set logging, progress and backups.
-- [LeaveBy](https://rayhanson.tech/projects/leaveby/): a workout transition planner that works out when to stop, get ready and leave for class or work.
+- [JimBro](https://rayhanson.tech/projects/jimbro/): a local-first gym companion with workout planning, editable routines, set logging, progress, and backups.
+- [LeaveBy](https://rayhanson.tech/projects/leaveby/): a workout transition planner that works out when to stop, get ready, and leave for class or work.
 - [Tesseract MCP contribution](https://rayhanson.tech/projects/tesseract/): atomic create-only writes and per-agent identity for an open-source memory server for AI agents.
 - [GymLog](https://rayhanson.tech/projects/gymlog/): a design case study for a workout tracker built around logging after each set.
 
 ## Creative code
 
 - [Gesture Particles](https://rayhanson.tech/projects/gesture-particles/): a browser particle system shaped by webcam hand tracking, up to 100,000 glowing particles.
-- [Virtual Theremin](https://rayhanson.tech/projects/virtual-theremin/): a webcam instrument that maps hand movement to vocals, bass and finger-tap drums, with looping and recording.
-- [Neon Orbit Arcade](https://rayhanson.tech/projects/neon-orbit/): a particle playground where clicks open portals that pull, push and swirl particles.
-- [Orbit Playground](https://rayhanson.tech/projects/orbit-playground/): an interactive canvas of orbiting dots with palettes, orbit shapes and a kaleidoscope.
+- [Virtual Theremin](https://rayhanson.tech/projects/virtual-theremin/): a webcam instrument that maps hand movement to vocals, bass, and finger-tap drums, with looping and recording.
+- [Neon Orbit Arcade](https://rayhanson.tech/projects/neon-orbit/): a particle playground where clicks open portals that pull, push, and swirl particles.
+- [Orbit Playground](https://rayhanson.tech/projects/orbit-playground/): an interactive canvas of orbiting dots with palettes, orbit shapes, and a kaleidoscope.
 - [Wasp Dodge+](https://rayhanson.tech/projects/wasp-dodge/): a browser survival game: guide a wasp through moving circles for as long as you can.
 
 ## Film and sound
@@ -28,7 +28,7 @@ Each project below has a case study on this site: what it does, how it works, an
 
 ## Contact
 
-- Email: Harvey@Rayhanson.tech
-- GitHub: https://github.com/Rayhanson-Git
-- LinkedIn: https://www.linkedin.com/in/rayhason/
-- X: https://x.com/AlexRayhanson
+- [Email](mailto:Harvey@Rayhanson.tech): Harvey@Rayhanson.tech
+- [GitHub](https://github.com/Rayhanson-Git): source for Enigma MCP, Stanza, and the creative-code pieces
+- [LinkedIn](https://www.linkedin.com/in/rayhason/)
+- [X](https://x.com/AlexRayhanson)

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-  <url><loc>https://rayhanson.tech/</loc></url>
-  <url><loc>https://rayhanson.tech/projects/enigma/</loc></url>
-  <url><loc>https://rayhanson.tech/projects/stanza/</loc></url>
-  <url><loc>https://rayhanson.tech/projects/gesture-particles/</loc></url>
-  <url><loc>https://rayhanson.tech/projects/gymlog/</loc></url>
-  <url><loc>https://rayhanson.tech/projects/jimbro/</loc></url>
-  <url><loc>https://rayhanson.tech/projects/leaveby/</loc></url>
-  <url><loc>https://rayhanson.tech/projects/neon-orbit/</loc></url>
-  <url><loc>https://rayhanson.tech/projects/orbit-playground/</loc></url>
-  <url><loc>https://rayhanson.tech/projects/devil-may-cry-music-video/</loc>
+  <url><loc>https://rayhanson.tech/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://rayhanson.tech/projects/enigma/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://rayhanson.tech/projects/stanza/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://rayhanson.tech/projects/gesture-particles/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://rayhanson.tech/projects/gymlog/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://rayhanson.tech/projects/jimbro/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://rayhanson.tech/projects/leaveby/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://rayhanson.tech/projects/neon-orbit/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://rayhanson.tech/projects/orbit-playground/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://rayhanson.tech/projects/devil-may-cry-music-video/</loc><lastmod>2026-11-24</lastmod>
     <video:video>
       <video:thumbnail_loc>https://rayhanson.tech/projects/devil-may-cry-music-video/media/poster.jpg</video:thumbnail_loc>
       <video:title>Devil May Cry GMV: Three Games, One Cut</video:title>
@@ -19,8 +19,8 @@
       <video:publication_date>2026-11-17</video:publication_date>
     </video:video>
   </url>
-  <url><loc>https://rayhanson.tech/projects/studio-apartment-evening/</loc></url>
-  <url><loc>https://rayhanson.tech/projects/tesseract/</loc></url>
-  <url><loc>https://rayhanson.tech/projects/virtual-theremin/</loc></url>
-  <url><loc>https://rayhanson.tech/projects/wasp-dodge/</loc></url>
+  <url><loc>https://rayhanson.tech/projects/studio-apartment-evening/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://rayhanson.tech/projects/tesseract/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://rayhanson.tech/projects/virtual-theremin/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://rayhanson.tech/projects/wasp-dodge/</loc><lastmod>2026-11-24</lastmod></url>
 </urlset>

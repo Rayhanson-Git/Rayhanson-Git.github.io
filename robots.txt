@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+# Search and AI answers may use this site, and so may AI training (Cloudflare Content Signals).
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 # AI training: GPTBot, ClaudeBot, PerplexityBot and Google-Extended are welcome (covered by * above).
 # Everyone below is kept out; Cloudflare also returns 403 to most of them.
